@@ -1388,7 +1388,7 @@ FormatDateTimePage.label.preview.group=预览
 FormatDateTimePage.label.preview.label=带格式预览:
 FormatDateTimePage.label.table.column.format.name=示例格式
 FormatDateTimePage.label.table.column.format.result=示例格式结果
-FormatDateTimePage.label.table.column.format.code=Example code
+FormatDateTimePage.label.table.column.format.code=示例代码
 FormatDateTimePage.preview.invalid.dateTime=要预览的日期时间无效
 FormatDateTimePage.preview.invalid.formatCode=无效格式代码
 
@@ -3606,10 +3606,10 @@ ThumbnailBuilder.FileDialog.FileNameError.Message=您选择的文件不是图像。
 ###########################################################
 #FragmentResourceEntry properties
 FragmentResourceEntry.RootName=片段
-FragmentResourceEntry.RootDisplayName=Built-in Libraries
+FragmentResourceEntry.RootDisplayName=内置库
 
 ###########################################################
 #PathResourceEntry properties
 PathResourceEntry.RootName=资源文件夹
-PathResourceEntry.RootDisplayName=Shared Libraries
+PathResourceEntry.RootDisplayName=共享库
 

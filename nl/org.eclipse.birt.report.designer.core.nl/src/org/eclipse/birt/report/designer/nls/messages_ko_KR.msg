@@ -1388,7 +1388,7 @@ FormatDateTimePage.label.preview.group=미리 보기
 FormatDateTimePage.label.preview.label=형식 미리 보기:
 FormatDateTimePage.label.table.column.format.name=예 형식
 FormatDateTimePage.label.table.column.format.result=예 형식 결과
-FormatDateTimePage.label.table.column.format.code=Example code
+FormatDateTimePage.label.table.column.format.code=코드 예
 FormatDateTimePage.preview.invalid.dateTime=잘못된 미리 보기 날짜 시간
 FormatDateTimePage.preview.invalid.formatCode=잘못된 형식 코드
 
@@ -3606,9 +3606,9 @@ ThumbnailBuilder.FileDialog.FileNameError.Message=선택한 파일이 이미지가 아닙니�
 ###########################################################
 #FragmentResourceEntry properties
 FragmentResourceEntry.RootName=조각
-FragmentResourceEntry.RootDisplayName=Built-in Libraries
+FragmentResourceEntry.RootDisplayName=기본 제공 라이브러리
 
 ###########################################################
 #PathResourceEntry properties
 PathResourceEntry.RootName=리소스 폴더
-PathResourceEntry.RootDisplayName=Shared Libraries
+PathResourceEntry.RootDisplayName=공유 라이브러리

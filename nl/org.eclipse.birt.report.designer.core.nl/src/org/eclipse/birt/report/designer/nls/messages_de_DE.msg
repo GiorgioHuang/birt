@@ -1388,7 +1388,7 @@ FormatDateTimePage.label.preview.group=Vorschau
 FormatDateTimePage.label.preview.label=Vorschau mit Format:
 FormatDateTimePage.label.table.column.format.name=Beispielformat
 FormatDateTimePage.label.table.column.format.result=Beispiel-Formatergebnis
-FormatDateTimePage.label.table.column.format.code=Example code
+FormatDateTimePage.label.table.column.format.code=Beispielcode
 FormatDateTimePage.preview.invalid.dateTime=Ungültige(s) Datum/Uhrzeit für Vorschau
 FormatDateTimePage.preview.invalid.formatCode=Ungültiger Formatcode
 
@@ -3606,10 +3606,10 @@ ThumbnailBuilder.FileDialog.FileNameError.Message=Die ausgewählte Datei ist kein
 ###########################################################
 #FragmentResourceEntry properties
 FragmentResourceEntry.RootName=Fragmente
-FragmentResourceEntry.RootDisplayName=Built-in Libraries
+FragmentResourceEntry.RootDisplayName=Integrierte Bibliotheken
 
 ###########################################################
 #PathResourceEntry properties
 PathResourceEntry.RootName=Ressourcenordner
-PathResourceEntry.RootDisplayName=Shared Libraries
+PathResourceEntry.RootDisplayName=Gemeinsam genutzte Bibliotheken
 

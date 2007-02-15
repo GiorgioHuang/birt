@@ -516,30 +516,30 @@ TriggerDataComposite.Lbl.SeriesDefinition=Definición de series:
 TriggerDataComposite.Label.CallbackDescription=La acción de devolución de llamada es para el uso de API en procesamientos SWT o Swing y permite adjuntar un controlador de evento de Java.
 TriggerDataComposite.Label.HighlightDescription=Resalta el elemento de datos correspondiente cuando es necesario.
 TriggerDataComposite.Label.VisiblityDescription=Alterna la visibilidad del elemento de datos correspondiente cuando es necesario.
-TriggerDataComposite.Label.Description=Defina los nombres de parámetros de la URL que describe el valor de datapoint vinculado a este hipervínculo. El nombre y el valor se añadirán a la URL como \u2026&&&paramName=value
+TriggerDataComposite.Label.Description=Editar la URL según su tipo, incluyendo URI, marcador interno y aumento.
 TriggerDataComposite.Label.DPVisibilityDescription=Alterna la visibilidad de la etiqueta del elemento de datos correspondiente cuando es necesario.
-TriggerDataComposite.Label.OptionalURLParameters=Indique un nombre para el parámetro de URL que representa el valor de:
+TriggerDataComposite.Label.OptionalURLParameters=Nombrar parámetros de URL opcionales que representen, para cada punto de datos, sus siguientes valores:
 TriggerDataComposite.Label.TooltipUsingDataLabelOfSeries=Si el texto de información sobre herramientas es nulo, utilice entonces la etiqueta de datos de la serie correspondiente.
 TriggerDataComposite.Tooltip.InvokeURLBuilder=Llamar al compilador de URL
-TriggerDataComposite.Tooltip.Advanced=Show Optional URL Parameters
-TriggerDataComposite.Label.None=None
-TriggerDataComposite.Lbl.BaseURL=Edit Base URL:
+TriggerDataComposite.Tooltip.Advanced=Mostrar parámetros de URL opcionales
+TriggerDataComposite.Label.None=Ninguno
+TriggerDataComposite.Lbl.BaseURL=Editar URL base:
 TriggerDataComposite.Tooltip.ParameterCategory=Nombre del parámetro de la categoría: \u2026&&&name=<categoría>
 TriggerDataComposite.Tooltip.ParameterValue=Nombre del parámetro del valor: \u2026&&&name=<valor>
 TriggerDataComposite.Tooltip.ParameterSeries=Nombre del parámetro de la serie: \u2026&&&name=<serie>
 TriggerDataComposite.Lbl.TooltipDelay=Retardo de la &información sobre herramientas (en ms):
-TriggerDataComposite.Lbl.ParameterNames=Nombres de los parámetros URL
+TriggerDataComposite.Lbl.ParameterNames=Parámetros de URL de punto de datos opcionales
 TriggerDataComposite.Lbl.CategorySeries=Serie de categoría:
 TriggerDataComposite.Text.EditBaseURL=&Editar URL base...
-TriggerDataComposite.Text.Advanced=&Advanced>>
-TriggerDataComposite.Text.OpenAdvanced=&Advanced<<
+TriggerDataComposite.Text.Advanced=&Avanzado>>
+TriggerDataComposite.Text.OpenAdvanced=&Avanzado<<
 TriggerDataComposite.Lbl.ValueSeries=Serie del valor:
 TriggerDataComposite.Lbl.ValueSeriesName=Nombre de serie del valor:
 TriggerDataComposite.Tooltip.InputScript=\ Introduzca un script (normalmente JavaScript) para ejecutarlo en el entorno de procesamiento.
 TriggerEditorComposite.Lbl.Remove=&Quitar
 TriggerEditorComposite.Lbl.Add=&Añadir
-TriggerDataComposite.Lbl.Event=&Event:
-TriggerDataComposite.Lbl.None=<None>
+TriggerDataComposite.Lbl.Event=&Evento:
+TriggerDataComposite.Lbl.None=<Ninguno>
 TriggerDataComposite.Lbl.Action=A&cción:
 TriggerDataComposite.Lbl.Script=Scri&pt:
 TriggerDataComposite.Lbl.Target=Destino:

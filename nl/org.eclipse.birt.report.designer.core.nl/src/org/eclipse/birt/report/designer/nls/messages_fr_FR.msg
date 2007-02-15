@@ -1388,7 +1388,7 @@ FormatDateTimePage.label.preview.group=Aperçu
 FormatDateTimePage.label.preview.label=Aperçu au format :
 FormatDateTimePage.label.table.column.format.name=Format exemple
 FormatDateTimePage.label.table.column.format.result=Exemple de résultat de format
-FormatDateTimePage.label.table.column.format.code=Example code
+FormatDateTimePage.label.table.column.format.code=Exemple de code
 FormatDateTimePage.preview.invalid.dateTime=Format de date/heure incorrect pour l'aperçu
 FormatDateTimePage.preview.invalid.formatCode=Code de format incorrect
 
@@ -3606,10 +3606,10 @@ ThumbnailBuilder.FileDialog.FileNameError.Message=Le fichier sélectionné n'est p
 ###########################################################
 #FragmentResourceEntry properties
 FragmentResourceEntry.RootName=Fragments
-FragmentResourceEntry.RootDisplayName=Built-in Libraries
+FragmentResourceEntry.RootDisplayName=Bibliothèques intégrées
 
 ###########################################################
 #PathResourceEntry properties
 PathResourceEntry.RootName=Dossier de ressources
-PathResourceEntry.RootDisplayName=Shared Libraries
+PathResourceEntry.RootDisplayName=Bibliothèques partagées
 
