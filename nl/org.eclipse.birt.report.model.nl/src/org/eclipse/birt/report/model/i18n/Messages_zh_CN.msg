@@ -90,7 +90,7 @@ Choices.lineStyle.none=无线条样式
 Choices.lineStyle.solid=实线
 Choices.lineStyle.dotted=点线
 Choices.lineStyle.dashed=虚线
-Choices.lineStyle.double=双线
+Choices.lineStyle.double=双精度
 Choices.lineStyle.groove=槽线
 Choices.lineStyle.ridge=脊线
 Choices.lineStyle.inset=内凹
@@ -233,7 +233,7 @@ Choices.lineType.none=无线条类型
 Choices.lineType.solid=实线
 Choices.lineType.dotted=点线
 Choices.lineType.dashed=虚线
-Choices.lineType.double=双线
+Choices.lineType.double=双精度
   
 #25.pageBreakBefore
 Choices.pageBreakBefore.auto=自动
@@ -3281,7 +3281,7 @@ New.TabularDimension=组
 New.TabularHierarchy=新建表格式层次结构
 New.TabularLevel=新建表格式级别
 New.TabularMeasure=新建表格式度量
-New.TabularMeasureGroup=Summary Field
+New.TabularMeasureGroup=摘要字段
 New.OdaCube=新建 ODA 多维数据集
 New.OdaDimension=新建 ODA 维
 New.OdaHierarchy=新建 ODA 层次结构
