@@ -342,62 +342,70 @@ public class ActionContent implements IHyperlinkAction
 				}
 				break;
 			case FIELD_BOOKMARK :
+				String bk = IOUtil.readString( in );
 				if ( isDrillThrough( ) )
 				{
-					drillThrough.setBookmark( IOUtil.readString( in ) );
+					drillThrough.setBookmark( bk );
 				}
 				else
-				{	
-					bookmark = IOUtil.readString( in );
+				{
+					bookmark = bk;
 				}
 				break;
 			case FIELD_HYPERLINK :
 				hyperlink = IOUtil.readString( in );
 				break;
 			case FIELD_REPORTNAME :
+				String name = IOUtil.readString( in );
 				if ( isDrillThrough( ) )
 				{
-					drillThrough.setReportName( IOUtil.readString( in ) );
+					drillThrough.setReportName( name );
 				}
 				break;
 			case FIELD_PARAMETERBINDINGS :
+				Map bindings = IOUtil.readMap( in );
 				if ( isDrillThrough( ) )
 				{
-					drillThrough.setParameterBindings( IOUtil.readMap( in ) );
+					drillThrough.setParameterBindings( bindings );
 				}
 				break;
 			case FIELD_SEARCHCRITERIA :
+				Map search = IOUtil.readMap( in );
 				if ( isDrillThrough( ) )
 				{
-					drillThrough.setSearchCriteria( IOUtil.readMap( in ) );
+					drillThrough.setSearchCriteria( search );
 				}
 				break;
 			case FIELD_TARGET :
-				if ( isDrillThrough( ) ) 
+				String tgt = IOUtil.readString( in );
+				if ( isDrillThrough( ) )
 				{
-					drillThrough.setTargetWindow( IOUtil.readString( in ) );
+					drillThrough.setTargetWindow( tgt );
 				}
 				else
-				{	
-					target = IOUtil.readString( in );
+				{
+					target = tgt;
 				}
 				break;
 			case FIELD_FORMAT :
+				String fmt = IOUtil.readString( in );
 				if ( isDrillThrough( ) )
 				{
-					drillThrough.setFormat( IOUtil.readString( in ) );
+					drillThrough.setFormat( fmt );
 				}
 				break;
-			case FIELD_ISBOOKMARK:
+			case FIELD_ISBOOKMARK :
+				boolean isBk = IOUtil.readBool( in );
 				if ( isDrillThrough( ) )
-				{					
-					drillThrough.setBookmarkType( IOUtil.readBool( in ) );
+				{
+					drillThrough.setBookmarkType( isBk );
 				}
 				break;
-			case FIELD_TARGETFILETYPE:
+			case FIELD_TARGETFILETYPE :
+				String tgtType = IOUtil.readString( in );
 				if ( isDrillThrough( ) )
-				{					
-					drillThrough.setTargetFileType( IOUtil.readString( in ) );
+				{
+					drillThrough.setTargetFileType( tgtType );
 				}
 				break;
 		}
