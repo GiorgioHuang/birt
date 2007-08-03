@@ -27,6 +27,7 @@ public class ExportManifestUtils
 		"org.w3c.css.sac_.*.jar", 
 		"scriptapi.jar",
 		"modelodaapi.jar",
+		"odadesignapi.jar",
 		"javax.servlet_.*.jar",
 		"javax.servlet.jsp_.*.jar"
 	};
