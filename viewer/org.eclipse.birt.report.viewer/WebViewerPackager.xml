@@ -465,6 +465,9 @@
 		<fileset dir="../org.eclipse.birt.report.model.adapter.oda">
 			<include name="modelodaapi.jar" />
 		</fileset>
+		<fileset dir="../org.eclipse.birt.report.model.adapter.oda/lib">
+			<include name="*.jar" />
+		</fileset>
 		<fileset dir="../org.eclipse.birt.report.engine">
 			<include name="engineapi.jar" />
 			<include name="scriptapi.jar" />
