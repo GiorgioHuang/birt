@@ -435,7 +435,7 @@ public class PPTRender implements IAreaVisitor
 	{
 		if ( imageContent.getURI( ) == null )
 		{
-			exportImageHeader( imageContent.getName( ) );
+			exportImageHeader( getImageIdentifier( imageContent ) );
 		}
 		else
 		{
@@ -1366,17 +1366,18 @@ public class PPTRender implements IAreaVisitor
 		else
 		// Chart is render as a image, but hasn't URI
 		{
-			if ( imageNames.containsKey( imageContent.getName( ) ) )
+			String imageId = getImageIdentifier( imageContent );
+			if ( imageNames.containsKey( imageId ) )
 			{
-				imageName = (String) imageNames.get( imageContent.getName( ) );
+				imageName = (String) imageNames.get( imageId );
 			}
 			else
 			{
 				// Save in global image names map
 				String extension = imageContent.getExtension( );
 				imageName = imageTitle + "." + extension;
-				imageNames.put( imageContent.getName( ), imageName );
-				imageExtensions.put( imageContent.getName( ), extension );
+				imageNames.put( imageId, imageName );
+				imageExtensions.put( imageId, extension );
 				recordFileLists( imageName );
 				currentImageContents.add( imageContent );
 			}
@@ -1403,6 +1404,11 @@ public class PPTRender implements IAreaVisitor
 		{
 			logger.log( Level.WARNING, ioe.getMessage( ), ioe );
 		}
+	}
+
+	private String getImageIdentifier( IImageContent imageContent )
+	{
+		return imageContent.getInstanceID( ).toUniqueString( );
 	}
 
 	private String getImageExtension( String imageURI )
