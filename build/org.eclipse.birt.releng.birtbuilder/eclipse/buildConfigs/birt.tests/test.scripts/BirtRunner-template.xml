@@ -3,7 +3,7 @@
 
 	<property name="working.dir" value="${test.home}/eclipse/plugins"/>
 	<property name="eclipse-home" value="${test.home}/eclipse"/>
-	<property name="test-output" value="${test.home}/unitTestReport/xml"/>
+	<property name="test-output-dir" value="${test.home}/unitTestReport/xml"/>
 	<property name="jvm.15.home" value="${jvm15_home}/bin/java" />
 	<property name="os" value="linux"/>
 
