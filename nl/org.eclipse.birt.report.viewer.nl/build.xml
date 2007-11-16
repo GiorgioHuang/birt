@@ -61,7 +61,7 @@
 					  src="${dir.src}" 
 					  dest="${dir.src}" 
 					  ext=".properties" 
-					  includes="**/*_de_DE.msg, **/*_fr_FR.msg, **/*_es_ES.msg"/>
+					  includes="**/*_de_DE.msg, **/*_fr_FR.msg, **/*_es_ES.msg, **/*_pt_BR.msg"/>
 		<native2ascii encoding="GBK" 
 					  src="${dir.src}" 
 					  dest="${dir.src}" 
