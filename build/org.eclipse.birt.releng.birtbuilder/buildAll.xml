@@ -39,6 +39,7 @@
 		
 		<antcall target="buildBirtThirdPartyFeature"/>
 		<antcall target="buildBirtFeature"/>
+		<antcall target="buildBirtOSGI"/>
 		<antcall target="fetchBirtWtpFeature"/>
 		<antcall target="fetchRCP"/>
 		<antcall target="buildBirtRCPFeature"/>
@@ -119,6 +120,14 @@
 		<echo message="BIRT sdk feature build finished"/>
 	</target>
 
+	<target name="buildBirtOSGI">
+		<echo message="BIRT OSGI sdk feature build started"/>
+		<ant antfile="build.xml" dir="${basedir}">
+			<property name="component" value="${eclipse.build.configs}/birt.osgi" />
+		</ant>
+	    <echo message="BIRT OSGI sdk feature build finished"/>
+	</target>
+		
 	<target name="buildChartFeature">
 	      <echo message="Chart Framework feature build started"/>
 	        
