@@ -101,6 +101,7 @@ import org.eclipse.birt.report.model.api.ListHandle;
 import org.eclipse.birt.report.model.api.ListingHandle;
 import org.eclipse.birt.report.model.api.ModuleUtil;
 import org.eclipse.birt.report.model.api.ParamBindingHandle;
+import org.eclipse.birt.report.model.api.ReportDesignHandle;
 import org.eclipse.birt.report.model.api.ReportItemHandle;
 import org.eclipse.birt.report.model.api.SlotHandle;
 import org.eclipse.birt.report.model.api.SortKeyHandle;
@@ -1257,6 +1258,18 @@ public class ReportQueryBuilder
 			String expr = columnBinding.getExpression( );
 			String type = columnBinding.getDataType( );
 			String displayName = columnBinding.getDisplayName( );
+			String displayNameId = columnBinding.getDisplayNameID( );
+			if ( displayNameId != null )
+			{
+				ReportDesignHandle handle = report.getReportDesign( );
+				String tmpName = handle.getMessage( displayNameId, context
+						.getLocale( ) );
+				if ( tmpName != null )
+				{
+					displayName = tmpName;
+				}
+			}
+
 			String aggregateOn = columnBinding.getAggregateOn( );
 			int dbType = ModelDteApiAdapter.toDteDataType( type );
 
