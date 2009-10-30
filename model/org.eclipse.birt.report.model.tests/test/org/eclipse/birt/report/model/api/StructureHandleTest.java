@@ -546,14 +546,17 @@ public class StructureHandleTest extends BaseTestCase
 		PropertyHandle propHandle = tableHandle
 				.getPropertyHandle( IStyleModel.MAP_RULES_PROP );
 
-		ThreadResources.setLocale( new ULocale( "en" ) ); //$NON-NLS-1$
+		ModuleOption option = new ModuleOption( );
+		design.setOptions( option );
+
+		option.setLocale( new ULocale( "en" ) ); //$NON-NLS-1$
 
 		MapRuleHandle structHandle = (MapRuleHandle) propHandle.get( 0 );
 		String value = structHandle.getExternalizedValue(
 				MapRule.DISPLAY_ID_MEMBER, MapRule.DISPLAY_MEMBER );
 		assertEquals( "en", value ); //$NON-NLS-1$
 
-		ThreadResources.setLocale( new ULocale( "en_US" ) );//$NON-NLS-1$
+		option.setLocale( new ULocale( "en_US" ) );//$NON-NLS-1$
 
 		structHandle = (MapRuleHandle) propHandle.get( 0 );
 		value = structHandle.getExternalizedValue( MapRule.DISPLAY_ID_MEMBER,
@@ -619,9 +622,9 @@ public class StructureHandleTest extends BaseTestCase
 	}
 
 	/**
-	 * When <code>EmbeddedImage</code> has reference to library embedded
-	 * image, the method hasExtends in <code>EmbeddedImageHandle</code> return
-	 * true, else return false.
+	 * When <code>EmbeddedImage</code> has reference to library embedded image,
+	 * the method hasExtends in <code>EmbeddedImageHandle</code> return true,
+	 * else return false.
 	 * 
 	 * @throws Exception
 	 */

@@ -1539,7 +1539,7 @@ public abstract class Module extends DesignElement
 	{
 		URL url = getSession( ).getResourceLocator( ).findResource(
 				(ModuleHandle) getHandle( this ), fileName, fileType );
-		
+
 		return url;
 	}
 
@@ -2965,5 +2965,29 @@ public abstract class Module extends DesignElement
 			cachedBundles = new CachedBundles( );
 
 		return cachedBundles;
+	}
+
+	/**
+	 * Gets the locale for this module.
+	 * 
+	 * @return
+	 */
+	public ULocale getLocale( )
+	{
+		// first, read it from module option
+		ModuleOption option = getOptions( );
+		if ( option != null )
+		{
+			ULocale optionLocale = option.getLocale( );
+			if ( optionLocale != null )
+				return optionLocale;
+		}
+
+		// second, read it from session
+		ULocale sessionLocale = this.session.getLocale( );
+		if ( sessionLocale != null )
+			return sessionLocale;
+
+		return ThreadResources.getLocale( );
 	}
 }

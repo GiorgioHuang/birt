@@ -23,7 +23,6 @@ import org.eclipse.birt.report.model.api.metadata.PropertyValueException;
 import org.eclipse.birt.report.model.command.ComplexPropertyCommand;
 import org.eclipse.birt.report.model.core.CachedMemberRef;
 import org.eclipse.birt.report.model.core.MemberRef;
-import org.eclipse.birt.report.model.i18n.ThreadResources;
 import org.eclipse.birt.report.model.metadata.ElementPropertyDefn;
 import org.eclipse.birt.report.model.metadata.StructPropertyDefn;
 import org.eclipse.birt.report.model.util.ModelUtil;
@@ -109,8 +108,8 @@ public class StructureHandle extends ValueHandle
 	 * 
 	 * @param memberName
 	 *            name of the member to get
-	 * @return String value of the member, or <code>null</code> if the member
-	 *         is not set or is not found.
+	 * @return String value of the member, or <code>null</code> if the member is
+	 *         not set or is not found.
 	 */
 
 	public Object getProperty( String memberName )
@@ -127,8 +126,8 @@ public class StructureHandle extends ValueHandle
 	 * 
 	 * @param memberName
 	 *            name of the member to get
-	 * @return String value of the member, or <code>null</code> if the member
-	 *         is not set or is not found.
+	 * @return String value of the member, or <code>null</code> if the member is
+	 *         not set or is not found.
 	 */
 
 	protected String getStringProperty( String memberName )
@@ -211,8 +210,8 @@ public class StructureHandle extends ValueHandle
 	 * 
 	 * @param memberName
 	 *            the name of the member
-	 * @return a handle to the member or <code>null</code> if the member is
-	 *         not defined on the structure.
+	 * @return a handle to the member or <code>null</code> if the member is not
+	 *         defined on the structure.
 	 */
 
 	public MemberHandle getMember( String memberName )
@@ -302,9 +301,10 @@ public class StructureHandle extends ValueHandle
 
 	public String getExternalizedValue( String textIDProp, String textProp )
 	{
-		return ModelUtil.getExternalizedStructValue( getElement( ).getRoot( ),
-				getStructure( ), textIDProp, textProp, ThreadResources
-						.getLocale( ) );
+		return ModelUtil
+				.getExternalizedStructValue( getElement( ).getRoot( ),
+						getStructure( ), textIDProp, textProp, getModule( )
+								.getLocale( ) );
 	}
 
 	/**
