@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Business Intelligence and Reporting Tools
-Bundle-SymbolicName: org.eclipse.birt;singleton:=true
-Bundle-Version: 2.5.2.qualifier
-Bundle-Vendor: Eclipse BIRT Project
-Bundle-Localization: plugin
