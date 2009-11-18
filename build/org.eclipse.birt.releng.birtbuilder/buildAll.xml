@@ -116,7 +116,7 @@
         <tstamp prefix="timestamp">
             <format property="sdk.start" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-		<echo message="[${timestamp.sdk.start}]-BIRT sdk feature build started" file="${basedir}/monitor.log" append="true"/>
+		<echo message="[${timestamp.sdk.start}]-BIRT sdk feature build started\n" file="${basedir}/monitor.log" append="true"/>
 		
 		<ant antfile="build.xml" dir="${basedir}">
 			<property name="component" value="${eclipse.build.configs}/birt" />
@@ -125,7 +125,7 @@
         <tstamp prefix="timestamp">
             <format property="sdk.end" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-		<echo message="[${timestamp.sdk.end}]-BIRT sdk feature build finished" file="${basedir}/monitor.log" append="true"/>
+		<echo message="[${timestamp.sdk.end}]-BIRT sdk feature build finished\n" file="${basedir}/monitor.log" append="true"/>
 	</target>
 
 	<target name="buildBirtOSGI" unless="skip.build.OSGI">
