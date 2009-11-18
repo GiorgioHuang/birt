@@ -116,7 +116,7 @@
         <tstamp prefix="timestamp">
             <format property="sdk.start" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-		<echo message="[${timestamp.sdk.start}]-BIRT sdk feature build started" file="${basedir}/monitor.log"/>
+		<echo message="[${timestamp.sdk.start}]-BIRT sdk feature build started" file="${basedir}/monitor.log" append="true"/>
 		
 		<ant antfile="build.xml" dir="${basedir}">
 			<property name="component" value="${eclipse.build.configs}/birt" />
@@ -125,14 +125,14 @@
         <tstamp prefix="timestamp">
             <format property="sdk.end" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-		<echo message="[${timestamp.sdk.end}]-BIRT sdk feature build finished" file="${basedir}/monitor.log"/>
+		<echo message="[${timestamp.sdk.end}]-BIRT sdk feature build finished" file="${basedir}/monitor.log" append="true"/>
 	</target>
 
 	<target name="buildBirtOSGI" unless="skip.build.OSGI">
         <tstamp prefix="timestamp">
             <format property="osgi.start" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-		<echo message="[${timestamp.osgi.start}]-BIRT OSGI sdk feature build started" file="${basedir}/monitor.log"/>
+		<echo message="[${timestamp.osgi.start}]-BIRT OSGI sdk feature build started" file="${basedir}/monitor.log" append="true"/>
 		
 		<ant antfile="build.xml" dir="${basedir}">
 			<property name="component" value="${eclipse.build.configs}/birt.osgi" />
@@ -141,7 +141,7 @@
         <tstamp prefix="timestamp">
             <format property="osgi.end" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-	    <echo message="[${timestamp.osgi.end}]-BIRT OSGI sdk feature build finished" file="${basedir}/monitor.log"/>
+	    <echo message="[${timestamp.osgi.end}]-BIRT OSGI sdk feature build finished" file="${basedir}/monitor.log" append="true"/>
 	</target>
 		
 	
@@ -149,7 +149,7 @@
         <tstamp prefix="timestamp">
             <format property="package.start" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-		<echo message="[${timestamp.package.start}]-Packaging started" file="${basedir}/monitor.log"/>
+		<echo message="[${timestamp.package.start}]-Packaging started" file="${basedir}/monitor.log" append="true"/>
 		
 		<mkdir dir="${postingDirectory}/${buildId}"/>
 		
@@ -212,7 +212,7 @@
         <tstamp prefix="timestamp">
             <format property="package.end" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-		<echo message="[${timestamp.package.end}]-Packaging finished" file="${basedir}/monitor.log"/>
+		<echo message="[${timestamp.package.end}]-Packaging finished" file="${basedir}/monitor.log" append="true"/>
 		
 
 	</target>
@@ -505,7 +505,7 @@
         <tstamp prefix="timestamp">
             <format property="testsuite.start" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-		<echo message="[${timestamp.testsuite.start}]-BIRT test feature build started" file="${basedir}/monitor.log"/>
+		<echo message="[${timestamp.testsuite.start}]-BIRT test feature build started" file="${basedir}/monitor.log" append="true"/>
 		
 		<ant antfile="build.xml" dir="${basedir}">
 			<property name="component" value="${eclipse.build.configs}/birt.tests" />
@@ -514,7 +514,7 @@
         <tstamp prefix="timestamp">
             <format property="testsuite.end" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-		<echo message="[${timestamp.testsuite.end}]-BIRT test feature build finished" file="${basedir}/monitor.log"/>
+		<echo message="[${timestamp.testsuite.end}]-BIRT test feature build finished" file="${basedir}/monitor.log" append="true"/>
 		
 	</target>
 	
@@ -577,8 +577,8 @@
         <tstamp prefix="timestamp">
             <format property="copy.start" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-		<echo message="[${timestamp.copy.start}]-start copying to download area..." file="${basedir}/monitor.log"/>
-	    <echo message="                          from dir: ${postingDirectory}/${buildId}" file="${basedir}/monitor.log"/>
+		<echo message="[${timestamp.copy.start}]-start copying to download area..." file="${basedir}/monitor.log" append="true"/>
+	    <echo message="                          from dir: ${postingDirectory}/${buildId}" file="${basedir}/monitor.log" append="true"/>
         <copy todir="${test.dir}/../../downloads/${package.version}" failonerror="false" overwrite="true">
 	        <fileset dir="${postingDirectory}/${buildId}" >
                 <include name="*.zip"/>
@@ -600,14 +600,14 @@
         <tstamp prefix="timestamp">
             <format property="3rd.start" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-		<echo message="[${timestamp.3rd.start}]-Third party feature building started" file="${basedir}/monitor.log"/>
+		<echo message="[${timestamp.3rd.start}]-Third party feature building started" file="${basedir}/monitor.log" append="true"/>
 		<ant antfile="build.xml" dir="${basedir}">
 			<property name="component" value="${eclipse.build.configs}/birt.third.party" />
 		</ant>
         <tstamp prefix="timestamp">
             <format property="3rd.end" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-		<echo message="[timestamp.3rd.end]-Third party feature building finished" file="${basedir}/monitor.log"/>
+		<echo message="[timestamp.3rd.end]-Third party feature building finished" file="${basedir}/monitor.log" append="true"/>
 	</target>
 	<!-- - - - - - - - - - - - - - - - - - 
           target: buildBirtRCPFeature                      
@@ -616,7 +616,7 @@
         <tstamp prefix="timestamp">
             <format property="rcp.start" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-    	<echo message="[${timestamp.rcp.start}]-Export BIRT RCP product started" file="${basedir}/monitor.log"/>
+    	<echo message="[${timestamp.rcp.start}]-Export BIRT RCP product started" file="${basedir}/monitor.log" append="true"/>
     	
     	<ant antfile="productBuild.xml" dir="${eclipse.pdebuild.scripts}/productBuild">
     		<property name="builder" value="${eclipse.build.configs}/birt.rcp"/>
@@ -625,14 +625,14 @@
         <tstamp prefix="timestamp">
             <format property="rcp.end" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-    	<echo message="[${timestamp.rcp.end}]-Export BIRT RCP product finished" file="${basedir}/monitor.log"/>
+    	<echo message="[${timestamp.rcp.end}]-Export BIRT RCP product finished" file="${basedir}/monitor.log" append="true"/>
     </target>
 
 	<target name="fetchBirtWtpFeature">
         <tstamp prefix="timestamp">
             <format property="wtp.start" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-		<echo message="[${timestamp.wtp.start}]-Fetch birt wtp integration feature started" file="${basedir}/monitor.log"/>
+		<echo message="[${timestamp.wtp.start}]-Fetch birt wtp integration feature started" file="${basedir}/monitor.log" append="true"/>
 		
         <ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="preBuild">
             <property name="builder" value="${eclipse.build.configs}/birt.wtp" />
@@ -643,14 +643,14 @@
         <tstamp prefix="timestamp">
             <format property="wtp.end" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-		<echo message="[${timestamp.wtp.end}]-Fetch birt wtp integration feature finished" file="${basedir}/monitor.log"/>
+		<echo message="[${timestamp.wtp.end}]-Fetch birt wtp integration feature finished" file="${basedir}/monitor.log" append="true"/>
 	</target>
 	
 	<target name="fetchRCP">
         <tstamp prefix="timestamp">
             <format property="getrcp.start" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-		<echo message="[${timestamp.getrcp.start}]-Fetch birt rcp plugin started" file="${basedir}/monitor.log"/>
+		<echo message="[${timestamp.getrcp.start}]-Fetch birt rcp plugin started" file="${basedir}/monitor.log" append="true"/>
 		
         <ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="preBuild">
             <property name="builder" value="${eclipse.build.configs}/birt.designer.rcp" />
@@ -662,14 +662,14 @@
         <tstamp prefix="timestamp">
             <format property="getrcp.end" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-		<echo message="[${timestamp.getrcp.end}]-Fetch birt rcp plugin finished" file="${basedir}/monitor.log"/>
+		<echo message="[${timestamp.getrcp.end}]-Fetch birt rcp plugin finished" file="${basedir}/monitor.log" append="true"/>
 	</target>
 	
 	<target name="BuildChartViewer">
         <tstamp prefix="timestamp">
             <format property="getchartviewer.start" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-		<echo message="[${timestamp.getchartviewer.start}]-Fetch birt chart viewer started" file="${basedir}/monitor.log"/>
+		<echo message="[${timestamp.getchartviewer.start}]-Fetch birt chart viewer started" file="${basedir}/monitor.log" append="true"/>
 		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="preBuild">
 			<property name="builder" value="${eclipse.build.configs}/birt.chart.viewer" />
 		</ant>
@@ -680,14 +680,14 @@
         <tstamp prefix="timestamp">
             <format property="getchartviewer.end" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-		<echo message="[${timestamp.getchartviewer.end}]-Fetch birt chart viewer finished" file="${basedir}/monitor.log"/>
+		<echo message="[${timestamp.getchartviewer.end}]-Fetch birt chart viewer finished" file="${basedir}/monitor.log" append="true"/>
 	</target>
 	
 	<target name="buildBirtNLFeature">
 		<tstamp prefix="timestamp">
             <format property="nl.start" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-        <echo message="[${timestamp.nl.start}]-BIRT nl feature build started" file="${basedir}/monitor.log"/>
+        <echo message="[${timestamp.nl.start}]-BIRT nl feature build started" file="${basedir}/monitor.log" append="true"/>
 
 		<property name="NLtmpsite" value="${buildDirectory}/NLtmpsite"/>
         <ant antfile="build.xml" dir="${basedir}">
@@ -700,8 +700,8 @@
 		<tstamp prefix="timestamp">
             <format property="nl.end" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>		
-        <echo message="[${timestamp.nl.end}]-BIRT nl feature build finished" file="${basedir}/monitor.log"/>		
-		<echo message="[${timestamp.nl.end}]-BIRT RCP nl feature build started" file="${basedir}/monitor.log"/>
+        <echo message="[${timestamp.nl.end}]-BIRT nl feature build finished" file="${basedir}/monitor.log" append="true"/>		
+		<echo message="[${timestamp.nl.end}]-BIRT RCP nl feature build started" file="${basedir}/monitor.log" append="true"/>
 		
 		<ant antfile="build.xml" dir="${basedir}">
 			<property name="component" value="${eclipse.build.configs}/birt.rcp.nl" />
@@ -713,8 +713,8 @@
 		<tstamp prefix="timestamp">
             <format property="rcp.end" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-		<echo message="[${timestamp.rcp.end}]-BIRT RCP feature build finished" file="${basedir}/monitor.log"/>		
-        <echo message="[${timestamp.rcp.end}]-BIRT-DTP nl feature build started" file="${basedir}/monitor.log"/>
+		<echo message="[${timestamp.rcp.end}]-BIRT RCP feature build finished" file="${basedir}/monitor.log" append="true"/>		
+        <echo message="[${timestamp.rcp.end}]-BIRT-DTP nl feature build started" file="${basedir}/monitor.log" append="true"/>
 		
         <ant antfile="build.xml" dir="${basedir}">
         	<property name="component" value="${eclipse.build.configs}/birt.dtp.nl" />
@@ -726,8 +726,8 @@
 		<tstamp prefix="timestamp">
             <format property="dtp.nl.end" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-        <echo message="[${timestamp.dtp.nl.end}]-BIRT-DTP nl feature build finished" file="${basedir}/monitor.log"/>		
-        <echo message="[${timestamp.dtp.nl.end}]-BIRT-DTP sybase nl feature build started" file="${basedir}/monitor.log"/>
+        <echo message="[${timestamp.dtp.nl.end}]-BIRT-DTP nl feature build finished" file="${basedir}/monitor.log" append="true"/>		
+        <echo message="[${timestamp.dtp.nl.end}]-BIRT-DTP sybase nl feature build started" file="${basedir}/monitor.log" append="true"/>
 		
         <ant antfile="build.xml" dir="${basedir}">
         	<property name="component" value="${eclipse.build.configs}/birt.dtp.sybase.nl" />
@@ -739,7 +739,7 @@
 		<tstamp prefix="timestamp">
             <format property="sybase.end" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-        <echo message="[${timestamp.sybase.end}]-BIRT-DTP sybase nl feature build finished" file="${basedir}/monitor.log"/>
+        <echo message="[${timestamp.sybase.end}]-BIRT-DTP sybase nl feature build finished" file="${basedir}/monitor.log" append="true"/>
 		
 		<mkdir dir="${NLtmpsite}"/>
 		<mkdir dir="${NLtmpsite}/new"/>
@@ -841,7 +841,7 @@
         <tstamp prefix="timestamp">
             <format property="upload" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-     	<echo message="[${timestamp.upload}]-Upload ${source.name} to build.eclipse.org started" file="${basedir}/monitor.log"/>
+     	<echo message="[${timestamp.upload}]-Upload ${source.name} to build.eclipse.org started" file="${basedir}/monitor.log" append="true"/>
 
     	<scp todir="${username.sign}:${password.sign}@${hostname.sign}:${home.dir}" trust="true">
             <fileset dir="${source.dir}" includes="${source.name}"/>
@@ -850,7 +850,7 @@
         <tstamp prefix="timestamp">
             <format property="sign" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-     	<echo message="[${timestamp.sign}]-Upload ended. Wait for 30 mins for jarsigning..." file="${basedir}/monitor.log"/>
+     	<echo message="[${timestamp.sign}]-Upload ended. Wait for 30 mins for jarsigning..." file="${basedir}/monitor.log" append="true"/>
 
         <sshexec host="${hostname.sign}" username="${username.sign}" password="${password.sign}" trust="true"
              command="cd ${sign.dir};cp ${home.dir}/${source.name} ./;sign  ${source.name} nomail;"/>
@@ -859,7 +859,7 @@
     	<tstamp prefix="timestamp">
             <format property="download" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-     	<echo message="[${timestamp.download}]-Download signed jars started" file="${basedir}/monitor.log"/>
+     	<echo message="[${timestamp.download}]-Download signed jars started" file="${basedir}/monitor.log" append="true"/>
     	
         <scp localtofile="${target.dir}/${target.name}" trust="true"
            file="${username.sign}:${password.sign}@${hostname.sign}:${sign.dir}/${source.name}"/>
@@ -867,7 +867,7 @@
     	<tstamp prefix="timestamp">
             <format property="download.end" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-     	<echo message="[${timestamp.download.end}]-Download signed jars ended. Compare signed jars with unsigned." file="${basedir}/monitor.log"/>
+     	<echo message="[${timestamp.download.end}]-Download signed jars ended. Compare signed jars with unsigned." file="${basedir}/monitor.log" append="true"/>
     	
         <condition property="CompareSignPack" value="true">
             <filesmatch file1="${source.dir}/${source.name}"
@@ -883,7 +883,7 @@
     	<tstamp prefix="timestamp">
             <format property="package" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-     	<echo message="[${timestamp.package}]-Packaging starts" file="${basedir}/monitor.log"/>
+     	<echo message="[${timestamp.package}]-Packaging starts" file="${basedir}/monitor.log" append="true"/>
 
     </target>
 
@@ -892,14 +892,14 @@
     	<tstamp prefix="timestamp">
             <format property="download.again" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-     	<echo message="[${timestamp.download.again}]-Compare fails. Wait 10 mins to download again..." file="${basedir}/monitor.log"/>
+     	<echo message="[${timestamp.download.again}]-Compare fails. Wait 10 mins to download again..." file="${basedir}/monitor.log" append="true"/>
 
         <sleep minutes="10"/>
     	
     	<tstamp prefix="timestamp">
             <format property="download.again.start" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-        <echo message="[${timestamp.download.again}]-Download signed package started" file="${basedir}/monitor.log"/>
+        <echo message="[${timestamp.download.again}]-Download signed package started" file="${basedir}/monitor.log" append="true"/>
     	
         <scp localtofile="${target.dir}/${target.name}" trust="true"
              file="${username.sign}:${password.sign}@${hostname.sign}:${sign.dir}/${source.name}"/>
@@ -907,7 +907,7 @@
     	<tstamp prefix="timestamp">
             <format property="download.again.end" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-        <echo message="[${timestamp.download.again.end}]-Download signed package ended" file="${basedir}/monitor.log"/>
+        <echo message="[${timestamp.download.again.end}]-Download signed package ended" file="${basedir}/monitor.log" append="true"/>
  
     </target>
 
@@ -925,12 +925,12 @@
     	<tstamp prefix="timestamp">
             <format property="webviewer.start" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-    	<echo message="[${timestamp.webviewer.start}]-Build BIRT web viewer started" file="${basedir}/monitor.log"/>
+    	<echo message="[${timestamp.webviewer.start}]-Build BIRT web viewer started" file="${basedir}/monitor.log" append="true"/>
         <ant antfile="${eclipse.build.configs}/../helper.xml" target="BuildWebViewer" />
     	<tstamp prefix="timestamp">
             <format property="webviewer.end" pattern="yyyy-MM-dd HH:mm:ss" locale="en" />
         </tstamp>
-    	<echo message="[${timestamp.webviewer.end}]-Build BIRT web viewer finished" file="${basedir}/monitor.log"/>
+    	<echo message="[${timestamp.webviewer.end}]-Build BIRT web viewer finished" file="${basedir}/monitor.log" append="true"/>
     </target>
 
 	<target name="generateJavaCrossReference" if="genJavaDoc">
