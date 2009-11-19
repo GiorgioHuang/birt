@@ -35,8 +35,7 @@
     <property name="home.dir" value="" />
     <property name="sign.dir" value="" />
 
-	<target name="main" depends="init">
-		
+	<target name="main" depends="init">		
 		<antcall target="buildBirtThirdPartyFeature"/>
 		<antcall target="buildBirtFeature"/>
 		<antcall target="buildBirtOSGI"/>
