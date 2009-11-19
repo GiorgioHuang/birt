@@ -285,10 +285,11 @@
         <exec executable="unzip" dir="${buildDirectory}">
             <arg line="-o -q birt-all-${package.version}.bak.zip -d ${updateJarWorkingDir}" />
         </exec>
+		<!--
 		<exec executable="unzip" dir="${buildDirectory}">
 			<arg line="-o -q birt-all-${package.version}.sign.zip -d ${updateJarWorkingDir}" />
 		</exec>
-	
+		-->
 		<exec executable="unzip" dir="${buildDirectory}/${buildId}">
 			<arg line="-o -q birt-wtp-integration-sdk-${package.version}.zip -d ${updateJarWorkingDir}" />
 		</exec>
@@ -768,8 +769,12 @@
 			<param name="target.name" value="birt-all-${package.version}.sign.zip"/>
 		</antcall>
 		
+		<move file="${buildDirectory}/birt-all-${package.version}.sign.zip"
+		      tofile="${buildDirectory}/birt-all-${package.version}.bak.zip" 
+		      overwrite="true"/>
+		      	
         <delete dir="${tmpsite}" failonerror="false" />
-        <unzip src="${buildDirectory}/birt-all-${package.version}.sign.zip" dest="${tmpsite}"/>
+        <unzip src="${buildDirectory}/birt-all-${package.version}.bak.zip" dest="${tmpsite}"/>
  
 	</target>
 	
