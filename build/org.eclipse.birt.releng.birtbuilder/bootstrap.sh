@@ -221,9 +221,6 @@ echo $sign >> adb.log
 
 cp /home/adb/releng.dtp.172/dtpURLmonitor.properties /home/adb/releng.250/src/
 
-
-cp /home/adb/releng.250/org.eclipse.birt.releng.birtbuilder/customTargets.xml /home/adb/releng.250/org.eclipse.birt.releng.birtbuilder/eclipse/buildConfigs/birt.third.party/
-
 buildCommand="$antRunner -q -buildfile buildAll.xml $mail $testBuild $compareMaps $unitTest $CheckNewJars \
 -DmapVersionTag=$mapVersionTag -DpostingDirectory=$postingDirectory \
 -Dbootclasspath=$bootclasspath_15 -DbuildType=$buildType -D$buildType=true \
