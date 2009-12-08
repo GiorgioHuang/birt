@@ -465,7 +465,7 @@
 		</ant>
 	</target>
 	
-	<target name="buildBirtTestFeature">
+	<target name="buildBirtTestFeature" unless="skip.build.testsuite">
   		<antcall target="logger">
 			<param name="message" value="BIRT test feature build started"/>
 		</antcall>
