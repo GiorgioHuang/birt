@@ -240,18 +240,21 @@
 	</target>
 
 	<target name="verifyCompileUtil">
-        <path id="customjar.classpath">
-        	    <fileset dir="${eclipse.build.configs}/../../extras/">
-                        <include name="*.jar"/>
-                </fileset>
-        </path>
+		<path id="customjar.classpath">
+			<fileset dir="${eclipse.build.configs}/../../extras/">
+				<include name="*.jar"/>
+			</fileset>
+			<fileset dir="${buildDirectory}/plugins">
+				<include name="org.apache.xerces_*.jar"/>
+			</fileset>
+		</path>
 		
-        <!-- Using custom build tools to get failure/error summary of test result -->
-        <java classname="org.eclipse.birt.build.VerifyCompileUtils">
-             <classpath refid="customjar.classpath" />
-             <arg value="${postingDirectory}/${buildId}/compilelogs/plugins" />
-             <arg value="${eclipse.build.configs}/../../monitor.properties" />
-         </java>
+		<!-- Using custom build tools to get failure/error summary of test result -->
+		<java classname="org.eclipse.birt.build.VerifyCompileUtils">
+			<classpath refid="customjar.classpath" />
+			<arg value="${postingDirectory}/${buildId}/compilelogs/plugins" />
+			<arg value="${eclipse.build.configs}/../../monitor.properties" />
+		</java>
 	</target>
 	
 	<!-- ===================================================================== -->
@@ -1327,7 +1330,7 @@ Have a nice day!
             </mail>
     </target>
 	
-	<target name="generateCompileSummary">
+	<target name="generateCompileSummary" unless="HQ.BIRT.skip">
 		
         <property file="config.properties" />
 	    <property name="compile.log.summary" value="${postingDirectory}/compileSummary.properties"/>
