@@ -542,14 +542,6 @@
 	<target name="verifyCompile">
 		<!-- verify compile result -->
 		<ant antfile="${eclipse.build.configs}/../helper.xml" target="verifyCompile" />
-		
-        <!--copy all packages to upload area-->
-  		<antcall target="logger">
-			<param name="message" value="start copying to download area"/>
-		</antcall>
-  		<antcall target="logger">
-			<param name="message" value="from dir: ${postingDirectory}/${buildId}"/>
-		</antcall>
 
 		<antcall target="copy2UploadArea"/>
 
@@ -560,6 +552,10 @@
 	</target>
 	
 	<target name="copy2UploadArea" unless="HQ.BIRT.skip">
+		<!--copy all packages to upload area-->
+  		<antcall target="logger">
+			<param name="message" value="start copying to download area"/>
+		</antcall>
 		<copy todir="${test.dir}/../../downloads/${package.version}" failonerror="false" overwrite="true">
 	        <fileset dir="${postingDirectory}/${buildId}" >
                 <include name="*.zip"/>
@@ -571,6 +567,9 @@
 		    </fileset>
             <fileset file="monitor.properties"/>
 	    </copy>
+  		<antcall target="logger">
+			<param name="message" value="from dir: ${postingDirectory}/${buildId}"/>
+		</antcall>
 	</target>
 	
 	<target name="buildBirtThirdPartyFeature">
