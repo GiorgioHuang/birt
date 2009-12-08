@@ -550,6 +550,16 @@
   		<antcall target="logger">
 			<param name="message" value="from dir: ${postingDirectory}/${buildId}"/>
 		</antcall>
+
+		<antcall target="copy2UploadArea"/>
+
+		<antcall target="renameBirtPackage"/>
+        
+		<antcall target="sendNotification"/> 
+		
+	</target>
+	
+	<target name="copy2UploadArea" unless="HQ.BIRT.skip">
 		<copy todir="${test.dir}/../../downloads/${package.version}" failonerror="false" overwrite="true">
 	        <fileset dir="${postingDirectory}/${buildId}" >
                 <include name="*.zip"/>
@@ -561,10 +571,6 @@
 		    </fileset>
             <fileset file="monitor.properties"/>
 	    </copy>
-		
-		<antcall target="renameBirtPackage"/>
-        
-		<antcall target="sendNotification"/> 
 	</target>
 	
 	<target name="buildBirtThirdPartyFeature">
