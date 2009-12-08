@@ -1146,13 +1146,15 @@
 		</ant>
 	</target>
 	
+	<!--
 	<target name="InformQA">
           <exec executable="${ant.dir}/ant" failifexecutionfails="false">
             <arg line="-f ${eclipse.build.configs}/../helper.xml -propertyfile ${postingDirectory}/monitor.properties -propertyfile ${eclipse.build.configs}/../../build.properties informqa"/>
           </exec>
-        </target>
-        
-        <target name="informqa">
+    </target>
+    -->    
+	
+    <target name="InformQA">
         <property file="${eclipse.build.configs}/../../config.properties" />
         <mail mailport="${mail.port}" tolist="${QA.members}" from="${mail.from}" replyto="${replyto.address}" subject="${BranchVersion} Build Is Ready (BuildId: ${buildId})" >
                 <message>

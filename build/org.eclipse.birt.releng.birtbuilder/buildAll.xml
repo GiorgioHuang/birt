@@ -81,18 +81,36 @@
 		
 		<condition property="fetchTag" value="HEAD">
 			<equals arg1="${buildType}" arg2="N" />
-		</condition>
-		
+		</condition>		
 		<condition property="forceContextQualifier" value="${buildId}">
 			<equals arg1="${buildType}" arg2="N" />
 		</condition>
-		
 		<condition property="generateFeatureVersionSuffix" value="false">
 			<equals arg1="${buildType}" arg2="N" />
 		</condition>
-		
 		<condition property="createUpdateSite" value="true">
 			<equals arg1="${buildType}" arg2="I" />
+		</condition>
+		
+		<!-- concise build setting -->
+		
+		<condition property="skip.build.OSGI" value="true">
+			<equals arg1="${HQ.BIRT.skip}" arg2="true" />
+		</condition>
+		<condition property="skip.build.WTP" value="true">
+			<equals arg1="${HQ.BIRT.skip}" arg2="true" />
+		</condition>
+		<condition property="skip.build.testsuite" value="true">
+			<equals arg1="${HQ.BIRT.skip}" arg2="true" />
+		</condition>	
+		<condition property="skip.unit.test" value="true">
+			<equals arg1="${HQ.BIRT.skip}" arg2="true" />
+		</condition>
+		<condition property="skip.allinone.linux" value="true">
+			<equals arg1="${HQ.BIRT.skip}" arg2="true" />
+		</condition>
+		<condition property="skip.chart.package" value="true">
+			<equals arg1="${HQ.BIRT.skip}" arg2="true" />
 		</condition>
 		
 		<!--compiler args-->
@@ -188,10 +206,9 @@
 		<delete file="${temp.dir}/chart-viewer-sample.war" failonerror="false"/>
 		<delete file="${temp.dir}/chart-viewer-sample/WEB-INF/web.xml" failonerror="false"/>
 
-        <exec executable="/bin/sh" dir="${temp.dir}/chart-viewer-sample">
-            <arg value="-c"/>
-            <arg value="zip -r -q ${temp.dir}/chart.zip *" />
-        </exec>
+        <zip destfile="${temp.dir}/chart.zip">
+        	<zipfileset dir="${temp.dir}/chart-viewer-sample" includes="**/*" />
+        </zip>               
 
 		<delete dir="${temp.dir}/chart-viewer-sample" failonerror="false"/>
 
