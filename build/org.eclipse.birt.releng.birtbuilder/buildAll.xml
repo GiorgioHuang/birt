@@ -155,6 +155,12 @@
 		</antcall>
 	</target>
 		
+	<target name="createGenReport" unless="HQ.BIRT.skip">
+		<exec executable="${eclipse.build.configs}/../../extras/genReportGenerator.sh">
+			<arg line="${buildDirectory}/${buildId}/birt_web/org.eclipse.birt.report.viewer/birt_web/WEB-INF/platform/lib" />
+			<arg line="${template.dir}/engine.runtime.bin" />
+		</exec>
+	</target>
 	
 	<target name="CreateDistribute">
  		<antcall target="logger">
@@ -171,10 +177,8 @@
 			</fileset>
 		</delete>
 		
-		<exec executable="${eclipse.build.configs}/../../extras/genReportGenerator.sh">
-			<arg line="${buildDirectory}/${buildId}/birt_web/org.eclipse.birt.report.viewer/birt_web/WEB-INF/platform/lib" />
-			<arg line="${template.dir}/engine.runtime.bin" />
-		</exec>
+		<antcall target="createGenReport"/>
+
 		<!-- create Runtime -->
 		<property file="${buildDirectory}/finalPluginsVersions.properties"/>
 		
@@ -346,16 +350,10 @@
 				<include name="org.eclipse.birt.report.designer.source_*.jar"/>
 			</fileset>	
 		</delete>
-		
-		<!-- repack update jar -->
-		<replace file="${eclipse.build.configs}/../../extras/pack200" token="@pack200@" value="${jvm15_home}/bin/pack200"/>
-		<chmod file="${eclipse.build.configs}/../../extras/pack200" perm="755"/>
-
-		<exec executable="dos2unix" dir="${eclipse.build.configs}/../../extras">
-			<arg line=" pack200" />
-		</exec>
-		
+			
+		<!-- create site.xml -->
 		<antcall target="generateCategory"/>
+		
 		<!-- TODO: generate p2 composite update site -->
         <antcall target="GenP2CompositeUpdateSite"/>
                 
@@ -365,22 +363,36 @@
 		
 	</target>
 
+	<target name="generatePack200" unless="HQ.BIRT.skip">
+		<property name="p2.repo.name" value="BIRT TEST" />
+		<mkdir dir="${repo}"/>
+		
+		<replace file="${eclipse.build.configs}/../../extras/pack200" token="@pack200@" value="${jvm15_home}/bin/pack200"/>
+		<chmod file="${eclipse.build.configs}/../../extras/pack200" perm="755"/>
+	
+		<exec executable="dos2unix" dir="${eclipse.build.configs}/../../extras">
+			<arg line=" pack200" />
+		</exec>
+	
+        <java jar="${basedir}/../org.eclipse.releng.basebuilder/plugins/org.eclipse.equinox.launcher.jar"
+              fork="true"
+              timeout="10800000"
+              jvm="${jvm15_home}/bin/java"
+              failonerror="true"
+              maxmemory="512m"
+              dir="${updateJarWorkingDir}">
+              <jvmarg value="-Dorg.eclipse.update.jarprocessor.pack200=${eclipse.build.configs}/../../extras"/>
+              <arg line="-application org.eclipse.update.core.siteOptimizer -verbose"/>
+              <arg line="-jarProcessor -outputDir ${updateJarWorkingDir}/site -processAll -pack eclipse"/>
+        </java>
+	</target>
+		
     <target name="GenP2CompositeUpdateSite">
             <property name="p2.repo.name" value="BIRT TEST" />
             <mkdir dir="${repo}" />
             
             <!-- generate pack200 -->
-            <java jar="${basedir}/../org.eclipse.releng.basebuilder/plugins/org.eclipse.equinox.launcher.jar"
-                  fork="true"
-                  timeout="10800000"
-                  jvm="${jvm15_home}/bin/java"
-                  failonerror="true"
-                  maxmemory="512m"
-                  dir="${updateJarWorkingDir}">
-                  <jvmarg value="-Dorg.eclipse.update.jarprocessor.pack200=${eclipse.build.configs}/../../extras"/>
-                  <arg line="-application org.eclipse.update.core.siteOptimizer -verbose"/>
-                  <arg line="-jarProcessor -outputDir ${updateJarWorkingDir}/site -processAll -pack eclipse"/>
-            </java>
+			<antcall target="generatePack200"/>
 
             <!--generator features and plugins metadata -->
             <!--p2.generator source="${repo}" compress="true" append="true" flavor="tooling"
