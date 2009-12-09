@@ -250,7 +250,7 @@
 		</path>
 		
 		<!-- Using custom build tools to get failure/error summary of test result -->
-		<java classname="org.eclipse.birt.build.VerifyCompileUtils">
+		<java classname="org.eclipse.birt.build.VerifyCompileUtils" output="${eclipse.build.configs}/../../verifyCompile.log">
 			<classpath refid="customjar.classpath" />
 			<arg value="${postingDirectory}/${buildId}/compilelogs/plugins" />
 			<arg value="${eclipse.build.configs}/../../monitor.properties" />
