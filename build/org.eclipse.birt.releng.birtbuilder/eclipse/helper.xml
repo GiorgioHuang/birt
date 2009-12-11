@@ -1146,10 +1146,32 @@
           </exec>
     </target>
     -->    
+	<target name="getBuildMachine">
+		<condition property="fetchTag" value="HEAD">
+			<equals arg1="${buildType}" arg2="N" />
+		</condition>
+	</target>
 	
-    <target name="InformQA">
+	<target name="checkOS">
+		<property environment="env"/> 
+		
+        <condition property="hostname" value="${env.HOSTNAME}">
+                <equals arg1="${osgi.os}" arg2="linux" />
+        </condition>
+		
+        <condition property="hostname" value="${env.USERDOMAIN}">
+                <equals arg1="${osgi.os}" arg2="win32" />
+        </condition>
+       
+	</target>
+	
+    <target name="InformQA" depends="checkOS">
         <property file="${eclipse.build.configs}/../../config.properties" />
-        <mail mailport="${mail.port}" tolist="${QA.members}" from="${mail.from}" replyto="${replyto.address}" subject="${BranchVersion} Build Is Ready (BuildId: ${buildId})" >
+        <mail mailport="${mail.port}" 
+        	tolist="${QA.members}" 
+        	from="${mail.from}" 
+        	replyto="${replyto.address}" 
+        	subject="${BranchVersion} Build Is Ready on ${hostname}(BuildId: ${buildId})" >
                 <message>
 Hi All,
 
@@ -1272,8 +1294,8 @@ Have a nice day!
 		</condition>
 	</target>
 	
-	<target name="checkDTPVersion" depends="getDTPVersionProperty" unless="latest.dtp.version">
-		<mail mailport="${mail.port}" subject="WARNING: The installed DTP build is not the latest version" tolist="${build.engineer}">
+	<target name="checkDTPVersion" depends="getDTPVersionProperty,checkOS" unless="latest.dtp.version">
+		<mail mailport="${mail.port}" subject="WARNING: The installed DTP build is not the latest version (${hostname})" tolist="${build.engineer}">
 			<from address="${mail.from}"/>
 			<replyto address="${replyto.address}"/>
 			<message>
@@ -1301,10 +1323,10 @@ Have a nice day!
        </exec>
     </target>
 		
-    <target name="checkcompileerror">
-                <property file="${eclipse.build.configs}/../../config.properties" />
+    <target name="checkcompileerror" depends="checkOS">
+    	<property file="${eclipse.build.configs}/../../config.properties" />
 		<property file="${eclipse.build.configs}/../../monitor.properties" />
-		<mail mailport="${mail.port}" subject="Compile errors found in Today's Build (BuildId: ${buildId} ) " tolist="${COMPILE.ERROR.RECIPIENTS}">
+		<mail mailport="${mail.port}" subject="Compile errors found in Today's Build on ${hostname}(BuildId: ${buildId} ) " tolist="${COMPILE.ERROR.RECIPIENTS}">
                     <from address="${mail.from}"/>
                     <replyto address="${replyto.address}"/>
                     <message>
