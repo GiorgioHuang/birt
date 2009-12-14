@@ -234,7 +234,16 @@ public class ModelAdapter implements IModelAdapter
 		result.setAggrFunction( org.eclipse.birt.report.data.adapter.api.DataAdapterUtil.adaptModelAggregationType( handle.getAggregateFunction( ) ) );
 		result.setFilter( handle.getFilterExpression( ) == null ? null
 				: new ScriptExpression( handle.getFilterExpression( ) ) );
-		populateArgument( result, handle );
+		try
+		{
+			result.setDisplayName( handle.getExternalizedValue( org.eclipse.birt.report.model.api.elements.structures.ComputedColumn.DISPLAY_NAME_ID_MEMBER,
+					org.eclipse.birt.report.model.api.elements.structures.ComputedColumn.DISPLAY_NAME_MEMBER,
+					this.context.getDataEngineContext( ).getLocale( ) ) );
+		}
+		catch ( Exception e )
+		{	
+		}
+		populateArgument(result, handle);
 
 		populateAggregateOns( result, handle );
 		return result;
