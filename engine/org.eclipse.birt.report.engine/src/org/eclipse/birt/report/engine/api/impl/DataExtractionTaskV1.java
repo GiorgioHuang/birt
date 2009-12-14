@@ -202,10 +202,6 @@ public class DataExtractionTaskV1 extends EngineTask
 		usingParameterValues( );
 		executionContext.registerGlobalBeans( reportDocReader
 				.getGlobalVariables( null ) );
-
-		Map appContext = executionContext.getAppContext( );
-		IDataEngine dataEngine = executionContext.getDataEngine( );
-		dataEngine.prepare( report, appContext );
 	}
 
 	/*
@@ -215,6 +211,10 @@ public class DataExtractionTaskV1 extends EngineTask
 	{
 		if ( isMetaDataPrepared == true )
 			return;
+
+		Map appContext = executionContext.getAppContext( );
+		IDataEngine dataEngine = executionContext.getDataEngine( );
+		dataEngine.prepare( report, appContext );
 
 		HashMap queryIds = report.getQueryIDs( );
 		HashMap query2itemMapping = report.getReportItemToQueryMap( );
