@@ -109,9 +109,7 @@
 		<condition property="skip.allinone.linux" value="true">
 			<equals arg1="${HQ.BIRT.skip}" arg2="true" />
 		</condition>
-		<condition property="skip.chart.package" value="true">
-			<equals arg1="${HQ.BIRT.skip}" arg2="true" />
-		</condition>
+
 		
 		<!--compiler args-->
 		<property name="compilerArg" value="-enableJavadoc -encoding utf-8 -warn:-discouraged,forbidden" />
