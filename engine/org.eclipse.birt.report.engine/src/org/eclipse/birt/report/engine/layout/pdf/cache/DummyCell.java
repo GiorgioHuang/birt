@@ -9,6 +9,7 @@ package org.eclipse.birt.report.engine.layout.pdf.cache;
  * Contributors:
  * Actuate Corporation - initial API and implementation
  ***********************************************************************/
+import org.eclipse.birt.report.engine.content.ICellContent;
 import org.eclipse.birt.report.engine.content.IContent;
 import org.eclipse.birt.report.engine.layout.area.impl.CellArea;
 
@@ -45,6 +46,8 @@ public class DummyCell extends CellArea
 	public void setRowSpan(int rowSpan)
 	{
 		this.rowSpan = rowSpan;
+		//Update the row span for the cells extending to next page.
+		((ICellContent)getContent( )).setRowSpan( rowSpan );
 	}
 	
 	public int getRowSpan()
