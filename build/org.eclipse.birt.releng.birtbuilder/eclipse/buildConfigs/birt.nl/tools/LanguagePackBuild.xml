@@ -383,84 +383,84 @@
 	</projectList>
 	<projectList id="ODA.language.pack.list">
 		<projectInfo>
-			<property name="projectName" value="org.eclipse.datatools.connectivity.oda.nl" />
+			<property name="projectName" value="org.eclipse.datatools.connectivity.oda.nl1" />
 			<property name="repositoryPath" value="${ODA.repository.nl.path}" />
 			<property name="buildFileName" value="build.xml" />
 			<property name="cvs.options" value="${oda.build.version}" />
 			<property name="cvsRoot" value="${oda.cvs.root}" />
 		</projectInfo>
 		<projectInfo>
-			<property name="projectName" value="org.eclipse.datatools.connectivity.oda.consumer.nl" />
+			<property name="projectName" value="org.eclipse.datatools.connectivity.oda.consumer.nl1" />
 			<property name="repositoryPath" value="${ODA.repository.nl.path}" />
 			<property name="buildFileName" value="build.xml" />
 			<property name="cvs.options" value="${oda.build.version}" />
 			<property name="cvsRoot" value="${oda.cvs.root}" />
 		</projectInfo>
 		<projectInfo>
-			<property name="projectName" value="org.eclipse.datatools.connectivity.oda.flatfile.nl" />
+			<property name="projectName" value="org.eclipse.datatools.connectivity.oda.flatfile.nl1" />
 			<property name="repositoryPath" value="${ODA.repository.nl.path}" />
 			<property name="buildFileName" value="build.xml" />
 			<property name="cvs.options" value="${oda.build.version}" />
 			<property name="cvsRoot" value="${oda.cvs.root}" />
 		</projectInfo>
 		<projectInfo>
-			<property name="projectName" value="org.eclipse.datatools.connectivity.oda.profile.nl" />
+			<property name="projectName" value="org.eclipse.datatools.connectivity.oda.profile.nl1" />
 			<property name="repositoryPath" value="${ODA.repository.nl.path}" />
 			<property name="buildFileName" value="build.xml" />
 			<property name="cvs.options" value="${oda.build.version}" />
 			<property name="cvsRoot" value="${oda.cvs.root}" />
 		</projectInfo>
 		<projectInfo>
-			<property name="projectName" value="org.eclipse.datatools.connectivity.oda.design.nl" />
+			<property name="projectName" value="org.eclipse.datatools.connectivity.oda.design.nl1" />
 			<property name="repositoryPath" value="${ODA.repository.nl.path}" />
 			<property name="buildFileName" value="build.xml" />
 			<property name="cvs.options" value="${oda.build.version}" />
 			<property name="cvsRoot" value="${oda.cvs.root}" />
 		</projectInfo>
 		<projectInfo>
-			<property name="projectName" value="org.eclipse.datatools.connectivity.oda.design.ui.nl" />
+			<property name="projectName" value="org.eclipse.datatools.connectivity.oda.design.ui.nl1" />
 			<property name="repositoryPath" value="${ODA.repository.nl.path}" />
 			<property name="buildFileName" value="build.xml" />
 			<property name="cvs.options" value="${oda.build.version}" />
 			<property name="cvsRoot" value="${oda.cvs.root}" />
 		</projectInfo>
 		<projectInfo>
-			<property name="projectName" value="org.eclipse.datatools.connectivity.oda.flatfile.ui.nl" />
+			<property name="projectName" value="org.eclipse.datatools.connectivity.oda.flatfile.ui.nl1" />
 			<property name="repositoryPath" value="${ODA.repository.nl.path}" />
 			<property name="buildFileName" value="build.xml" />
 			<property name="cvs.options" value="${oda.build.version}" />
 			<property name="cvsRoot" value="${oda.cvs.root}" />
 		</projectInfo>
 		<projectInfo>
-			<property name="projectName" value="org.eclipse.datatools.connectivity.nl" />
+			<property name="projectName" value="org.eclipse.datatools.connectivity.nl1" />
 			<property name="repositoryPath" value="${ODA.repository.nl.path}" />
 			<property name="buildFileName" value="build.xml" />
 			<property name="cvs.options" value="${oda.build.version}" />
 			<property name="cvsRoot" value="${oda.cvs.root}" />
 		</projectInfo>
 		<projectInfo>
-			<property name="projectName" value="org.eclipse.datatools.connectivity.ui.nl" />
+			<property name="projectName" value="org.eclipse.datatools.connectivity.ui.nl1" />
 			<property name="repositoryPath" value="${ODA.repository.nl.path}" />
 			<property name="buildFileName" value="build.xml" />
 			<property name="cvs.options" value="${oda.build.version}" />
 			<property name="cvsRoot" value="${oda.cvs.root}" />
 		</projectInfo>
 		<projectInfo>
-			<property name="projectName" value="org.eclipse.datatools.connectivity.ui.dse.nl" />
+			<property name="projectName" value="org.eclipse.datatools.connectivity.ui.dse.nl1" />
 			<property name="repositoryPath" value="${ODA.repository.nl.path}" />
 			<property name="buildFileName" value="build.xml" />
 			<property name="cvs.options" value="${oda.build.version}" />
 			<property name="cvsRoot" value="${oda.cvs.root}" />
 		</projectInfo>
 		<projectInfo>
-			<property name="projectName" value="org.eclipse.datatools.connectivity.oda.template.ui.nl" />
+			<property name="projectName" value="org.eclipse.datatools.connectivity.oda.template.ui.nl1" />
 			<property name="repositoryPath" value="${ODA.repository.nl.path}" />
 			<property name="buildFileName" value="build.xml" />
 			<property name="cvs.options" value="${oda.build.version}" />
 			<property name="cvsRoot" value="${oda.cvs.root}" />
 		</projectInfo>
                 <projectInfo>
-                        <property name="projectName" value="org.eclipse.datatools.connectivity.console.profile.nl" />
+                        <property name="projectName" value="org.eclipse.datatools.connectivity.console.profile.nl1" />
                         <property name="repositoryPath" value="${ODA.repository.nl.path}" />
                         <property name="buildFileName" value="build.xml" />
                         <property name="cvs.options" value="${oda.build.version}" />
@@ -468,104 +468,104 @@
                 </projectInfo>
 
 		<projectInfo>
-			<property name="projectName" value="org.eclipse.datatools.connectivity.console.profile.nl" />
+			<property name="projectName" value="org.eclipse.datatools.connectivity.console.profile.nl1" />
 			<property name="repositoryPath" value="${ODA.repository.nl.path}" />
 			<property name="buildFileName" value="build.xml" />
 			<property name="cvs.options" value="${oda.build.version}" />
 			<property name="cvsRoot" value="${oda.cvs.root}" />
 		</projectInfo>
 		<projectInfo>
-			<property name="projectName" value="org.eclipse.datatools.enablement.oda.xml.nl" />
+			<property name="projectName" value="org.eclipse.datatools.enablement.oda.xml.nl1" />
 			<property name="repositoryPath" value="${ODA.repository.nl.path}" />
 			<property name="buildFileName" value="build.xml" />
 			<property name="cvs.options" value="${oda.build.version}" />
 			<property name="cvsRoot" value="${oda.cvs.root}" />
 		</projectInfo>
 		<projectInfo>
-			<property name="projectName" value="org.eclipse.datatools.enablement.oda.xml.ui.nl" />
+			<property name="projectName" value="org.eclipse.datatools.enablement.oda.xml.ui.nl1" />
 			<property name="repositoryPath" value="${ODA.repository.nl.path}" />
 			<property name="buildFileName" value="build.xml" />
 			<property name="cvs.options" value="${oda.build.version}" />
 			<property name="cvsRoot" value="${oda.cvs.root}" />
 		</projectInfo>
 		<projectInfo>
-			<property name="projectName" value="org.eclipse.datatools.enablement.oda.ws.nl" />
+			<property name="projectName" value="org.eclipse.datatools.enablement.oda.ws.nl1" />
 			<property name="repositoryPath" value="${ODA.repository.nl.path}" />
 			<property name="buildFileName" value="build.xml" />
 			<property name="cvs.options" value="${oda.build.version}" />
 			<property name="cvsRoot" value="${oda.cvs.root}" />
 		</projectInfo>
 		<projectInfo>
-			<property name="projectName" value="org.eclipse.datatools.enablement.oda.ws.ui.nl" />
+			<property name="projectName" value="org.eclipse.datatools.enablement.oda.ws.ui.nl1" />
 			<property name="repositoryPath" value="${ODA.repository.nl.path}" />
 			<property name="buildFileName" value="build.xml" />
 			<property name="cvs.options" value="${oda.build.version}" />
 			<property name="cvsRoot" value="${oda.cvs.root}" />
 		</projectInfo>
 		<projectInfo>
-			<property name="projectName" value="org.eclipse.datatools.enablement.sybase.ui.nl" />
+			<property name="projectName" value="org.eclipse.datatools.enablement.sybase.ui.nl1" />
 			<property name="repositoryPath" value="${ODA.repository.nl.path}" />
 			<property name="buildFileName" value="build.xml" />
 			<property name="cvs.options" value="${oda.build.version}" />
 			<property name="cvsRoot" value="${oda.cvs.root}" />
 		</projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.connectivity.apache.derby.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.connectivity.apache.derby.dbdefinition.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.connectivity.apache.derby.ui.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.connectivity.db.generic.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.connectivity.db.generic.ui.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.connectivity.dbdefinition.genericJDBC.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.connectivity.sqm.core.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.connectivity.sqm.core.ui.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.connectivity.sqm.server.ui.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.common.ui.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.db.derby.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.db.generic.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.editor.core.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.parsers.sql.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.parsers.sql.query.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.plan.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.result.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.sql.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.sqlbuilder.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.sqleditor.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.hsqldb.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.hsqldb.dbdefinition.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.hsqldb.ui.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.db2.iseries.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.db2.iseries.dbdefinition.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.db2.iseries.ui.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.db2.luw.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.db2.luw.dbdefinition.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.db2.luw.ui.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.db2.zseries.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.db2.zseries.dbdefinition.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.db2.zseries.ui.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.informix.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.informix.dbdefinition.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.informix.ui.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.ui.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.msft.sqlserver.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.msft.sqlserver.dbdefinition.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.msft.sqlserver.ui.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.mysql.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.mysql.dbdefinition.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.mysql.ui.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.oracle.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.oracle.dbdefinition.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.oracle.ui.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.postgresql.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.postgresql.ui.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.sap.maxdb.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.sap.maxdb.dbdefinition.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.sap.maxdb.ui.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.sybase.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.sybase.asa.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.sybase.asa.models.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
-<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.sybase.ase.dbdefinition.nl" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.connectivity.apache.derby.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.connectivity.apache.derby.dbdefinition.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.connectivity.apache.derby.ui.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.connectivity.db.generic.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.connectivity.db.generic.ui.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.connectivity.dbdefinition.genericJDBC.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.connectivity.sqm.core.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.connectivity.sqm.core.ui.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.connectivity.sqm.server.ui.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.common.ui.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.db.derby.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.db.generic.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.editor.core.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.parsers.sql.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.parsers.sql.query.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.plan.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.result.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.sql.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.sqlbuilder.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.sqltools.sqleditor.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.hsqldb.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.hsqldb.dbdefinition.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.hsqldb.ui.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.db2.iseries.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.db2.iseries.dbdefinition.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.db2.iseries.ui.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.db2.luw.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.db2.luw.dbdefinition.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.db2.luw.ui.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.db2.zseries.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.db2.zseries.dbdefinition.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.db2.zseries.ui.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.informix.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.informix.dbdefinition.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.informix.ui.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.ibm.ui.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.msft.sqlserver.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.msft.sqlserver.dbdefinition.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.msft.sqlserver.ui.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.mysql.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.mysql.dbdefinition.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.mysql.ui.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.oracle.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.oracle.dbdefinition.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.oracle.ui.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.postgresql.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.postgresql.ui.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.sap.maxdb.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.sap.maxdb.dbdefinition.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.sap.maxdb.ui.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.sybase.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.sybase.asa.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.sybase.asa.models.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
+<projectInfo><property name="projectName" value="org.eclipse.datatools.enablement.sybase.ase.dbdefinition.nl1" /><property name="repositoryPath" value="${ODA.repository.nl.path}" /><property name="buildFileName" value="build.xml" /><property name="cvs.options" value="${oda.build.version}" /><property name="cvsRoot" value="${oda.cvs.root}" /></projectInfo>
 
                 <projectInfo>
-                        <property name="projectName" value="org.eclipse.datatools.modelbase.dbdefinition.nl" />
+                        <property name="projectName" value="org.eclipse.datatools.modelbase.dbdefinition.nl1" />
                         <property name="repositoryPath" value="${ODA.repository.nl.path}" />
                         <property name="buildFileName" value="build.xml" />
                         <property name="cvs.options" value="${oda.build.version}" />
@@ -573,7 +573,7 @@
                 </projectInfo>
 
                 <projectInfo>
-                        <property name="projectName" value="org.eclipse.datatools.modelbase.derby.nl" />
+                        <property name="projectName" value="org.eclipse.datatools.modelbase.derby.nl1" />
                         <property name="repositoryPath" value="${ODA.repository.nl.path}" />
                         <property name="buildFileName" value="build.xml" />
                         <property name="cvs.options" value="${oda.build.version}" />
@@ -581,7 +581,7 @@
                 </projectInfo>
 
                 <projectInfo>
-                        <property name="projectName" value="org.eclipse.datatools.modelbase.sql.edit.nl" />
+                        <property name="projectName" value="org.eclipse.datatools.modelbase.sql.edit.nl1" />
                         <property name="repositoryPath" value="${ODA.repository.nl.path}" />
                         <property name="buildFileName" value="build.xml" />
                         <property name="cvs.options" value="${oda.build.version}" />
@@ -589,7 +589,7 @@
                 </projectInfo>
 
                 <projectInfo>
-                        <property name="projectName" value="org.eclipse.datatools.modelbase.sql.nl" />
+                        <property name="projectName" value="org.eclipse.datatools.modelbase.sql.nl1" />
                         <property name="repositoryPath" value="${ODA.repository.nl.path}" />
                         <property name="buildFileName" value="build.xml" />
                         <property name="cvs.options" value="${oda.build.version}" />
@@ -597,7 +597,7 @@
                 </projectInfo>
 
                 <projectInfo>
-                        <property name="projectName" value="org.eclipse.datatools.modelbase.sql.query.edit.nl" />
+                        <property name="projectName" value="org.eclipse.datatools.modelbase.sql.query.edit.nl1" />
                         <property name="repositoryPath" value="${ODA.repository.nl.path}" />
                         <property name="buildFileName" value="build.xml" />
                         <property name="cvs.options" value="${oda.build.version}" />
@@ -605,7 +605,7 @@
                 </projectInfo>
 
                 <projectInfo>
-                        <property name="projectName" value="org.eclipse.datatools.modelbase.sql.query.nl" />
+                        <property name="projectName" value="org.eclipse.datatools.modelbase.sql.query.nl1" />
                         <property name="repositoryPath" value="${ODA.repository.nl.path}" />
                         <property name="buildFileName" value="build.xml" />
                         <property name="cvs.options" value="${oda.build.version}" />
@@ -613,7 +613,7 @@
                 </projectInfo>
 
                 <projectInfo>
-                        <property name="projectName" value="org.eclipse.datatools.modelbase.sql.xml.query.nl" />
+                        <property name="projectName" value="org.eclipse.datatools.modelbase.sql.xml.query.nl1" />
                         <property name="repositoryPath" value="${ODA.repository.nl.path}" />
                         <property name="buildFileName" value="build.xml" />
                         <property name="cvs.options" value="${oda.build.version}" />
