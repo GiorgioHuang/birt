@@ -46,7 +46,7 @@ feature@org.eclipse.birt.thirdparty=r232_v20081010,:pserver:anonymous@dev.eclips
 plugin@org.eclipse.birt.thirdparty=r232_v20090521,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.thirdparty
 feature@org.eclipse.birt.nl=r232_v20090227,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/features/org.eclipse.birt.nl.feature
 feature@org.eclipse.birt.dtp.nl=v200811271130,:pserver:anonymous@dev.eclipse.org:/cvsroot/datatools,,org.eclipse.datatools.build/R1.6_Feature_Projects/org.eclipse.birt.dtp.nl.feature
-feature@org.eclipse.birt.rcp.nl=r232_v20091229,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/features/org.eclipse.birt.nl.feature
+feature@org.eclipse.birt.rcp.nl=r232_v20091229,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/features/org.eclipse.birt.rcp.nl.feature
 feature@org.eclipse.birt.dtp.sybase.nl=v200912291500,:pserver:anonymous@dev.eclipse.org:/cvsroot/datatools,,org.eclipse.datatools.build/R1.6_Feature_Projects/org.eclipse.birt.dtp.sybase.nl.feature
 
 
