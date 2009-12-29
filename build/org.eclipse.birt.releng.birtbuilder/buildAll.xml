@@ -348,16 +348,20 @@
 		<replace file="${updateJarWorkingDir}/site/site.xml" value="${org.w3c.sac}" token="@FEATURE.W3C@"/>
 		<replace file="${updateJarWorkingDir}/site/site.xml" value="${org.eclipse.birt}" token="@FEATURE.BIRT@"/>
 		<replace file="${updateJarWorkingDir}/site/site.xml" value="${org.eclipse.birt.sdk}" token="@FEATURE.BIRT.SDK@"/>
-                <replace file="${updateJarWorkingDir}/site/site.xml" value="${org.eclipse.birt.doc}" token="@FEATURE.BIRT.DOC@"/>
-                <replace file="${updateJarWorkingDir}/site/site.xml" value="${org.eclipse.birt.integration.wtp.sdk}" token="@FEATURE.BIRT.WTP.SDK@"/>
-                <replace file="${updateJarWorkingDir}/site/site.xml" value="${org.eclipse.birt.chart.integration.wtp}" token="@FEATURE.CHART.WTP@"/>
-                <replace file="${updateJarWorkingDir}/site/site.xml" value="${org.eclipse.birt.integration.wtp}" token="@FEATURE.BIRT.WTP@"/>		
+        <replace file="${updateJarWorkingDir}/site/site.xml" value="${org.eclipse.birt.doc}" token="@FEATURE.BIRT.DOC@"/>
+        <replace file="${updateJarWorkingDir}/site/site.xml" value="${org.eclipse.birt.integration.wtp.sdk}" token="@FEATURE.BIRT.WTP.SDK@"/>
+        <replace file="${updateJarWorkingDir}/site/site.xml" value="${org.eclipse.birt.chart.integration.wtp}" token="@FEATURE.CHART.WTP@"/>
+        <replace file="${updateJarWorkingDir}/site/site.xml" value="${org.eclipse.birt.integration.wtp}" token="@FEATURE.BIRT.WTP@"/>		
 
 		<!-- push update site to output directory -->
 		<mkdir dir="${postingDirectory}/${buildId}/UpdateSite"/>
 		<copy todir="${postingDirectory}/${buildId}/UpdateSite">
 			<fileset dir="${updateJarWorkingDir}/eclipse">
 				<include name="**"/>
+				<exclude name="features/org.eclipse.birt.rcp.nl*"/>
+				<exclude name="features/org.eclipse.birt.dtp.sybase.nl*"/>
+				<exclude name="plugins/org.eclipse.birt.report.designer.ui.rcp.nl*"/>
+				<exclude name="plugins/org.eclipse.datatools.enablement.sybase*.nl*"/>
 			</fileset>
 		</copy>
 		<!-- clean last content -->
@@ -451,20 +455,37 @@
 	</target>
 
 	<target name="buildBirtNLFeature">
+		<!-- DTP NL Features -->
 		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="preBuild">
 			<property name="builder" value="${eclipse.build.configs}/birt.dtp.nl" />
 		</ant>
 		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="fetch">
 			<property name="builder" value="${eclipse.build.configs}/birt.dtp.nl" />
-                        <property name="fetchTag" value="DTP_1_6_2_Branch" />
+			<property name="fetchTag" value="DTP_1_6_2_Branch" />
 		</ant>
+		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="preBuild">
+			<property name="builder" value="${eclipse.build.configs}/birt.dtp.sybase.nl" />
+		</ant>
+		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="fetch">
+			<property name="builder" value="${eclipse.build.configs}/birt.dtp.sybase.nl" />
+			<property name="fetchTag" value="DTP_1_6_2_Branch" />
+		</ant>
+		<!-- BIRT NL Features -->
 		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="preBuild">
 			<property name="builder" value="${eclipse.build.configs}/birt.nl" />
 		</ant>
 		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="fetch">
 			<property name="builder" value="${eclipse.build.configs}/birt.nl" />
-                        <property name="fetchTag" value="BIRT_2_3_2_Branch" />
+            <property name="fetchTag" value="BIRT_2_3_2_Branch" />
 		</ant>
+		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="preBuild">
+			<property name="builder" value="${eclipse.build.configs}/birt.rcp.nl" />
+		</ant>
+		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="fetch">
+			<property name="builder" value="${eclipse.build.configs}/birt.rcp.nl" />
+            <property name="fetchTag" value="BIRT_2_3_2_Branch" />
+		</ant>
+		
 		<ant antfile="${eclipse.build.configs}/../helper.xml" target="buildLanguagePack" />
 	</target>
 	
