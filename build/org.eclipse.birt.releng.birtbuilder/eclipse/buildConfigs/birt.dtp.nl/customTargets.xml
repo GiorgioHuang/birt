@@ -2,7 +2,7 @@
 
 	<property name="postingDirectory" value="${buildDirectory}" />
 	<property name="package.version" value="2_2_0" />
-	<property name="archiveName" value="birt-nl-${package.version}.zip"/>
+	<property name="archiveName" value="birt-dtp-nl-${package.version}.zip"/>
 
 	
 	<!-- ===================================================================== -->
@@ -22,8 +22,8 @@
 	<!-- Add one target for each root element and each configuration -->
 	<!-- ===================================================================== -->
 	
-	<target name="assemble.org.eclipse.birt.nl">
-		<property name="archiveName" value="birt-nl-${package.version}.zip"/>
+	<target name="assemble.org.eclipse.birt.dtp.nl">
+		<property name="archiveName" value="birt-dtp-nl-${package.version}.zip"/>
 		<antcall target="assemble" />
 	</target>
 
@@ -34,11 +34,6 @@
 	</target>
 	
 	<target name="postPackage">
-		<move todir="${postingDirectory}/${buildLabel}">
-			<fileset dir="${buildDirectory}/${buildLabel}">
-				<include name="${archiveName}" />
-			</fileset>
-		</move>
 	</target>
 	<!-- ===================================================================== -->
 	<!-- Check out map files from correct repository -->
@@ -147,7 +142,7 @@
 		</antcall>
 	
 		<unzip dest="${postingDirectory}/${buildLabel}/compilelogs" overwrite="true">
-			<fileset dir="${buildDirectory}/features/org.eclipse.birt.nl">
+			<fileset dir="${buildDirectory}/features/org.eclipse.birt.dtp.nl">
 				<include name="*.log.zip" />
 			</fileset>
 		</unzip>

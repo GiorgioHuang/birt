@@ -76,18 +76,12 @@
 	<!-- Steps to do before fetching the build elements -->
 	<!-- ===================================================================== -->
 	<target name="preFetch">
- 		<antcall target="logger">
-			<param name="message" value="Finish fetching DTP sybase nl feature source"/>
-		</antcall>
 	</target>
 
 	<!-- ===================================================================== -->
 	<!-- Steps to do after the fetch -->
 	<!-- ===================================================================== -->
 	<target name="postFetch">
-  		<antcall target="logger">
-			<param name="message" value="Finish fetching DTP sybase nl feature source"/>
-		</antcall>
 	</target>
 	
 	<!-- ===================================================================== -->
