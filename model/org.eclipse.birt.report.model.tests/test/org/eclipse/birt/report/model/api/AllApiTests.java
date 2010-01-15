@@ -88,6 +88,7 @@ public class AllApiTests
 		test.addTestSuite( MultiViewHandleTest.class );
 		test.addTestSuite( ReportDesignCacheTest.class );
 		test.addTestSuite( HighlightRuleHandleTest.class );
+		test.addTestSuite( ColumnHandleTest.class );
 		
 		return test;
 	}
