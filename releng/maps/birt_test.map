@@ -1,27 +1,27 @@
 !**************** chart test ********************
-plugin@org.eclipse.birt.chart.tests=r232_20081009,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.chart.tests
+plugin@org.eclipse.birt.chart.tests=r232_20081009,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.chart.tests
 
 !**************** engine test *******************
-fragment@org.eclipse.birt.core.testhelper=r232_20090202,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.core.testhelper
-plugin@org.eclipse.birt.core.tests=r232_20090202,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.core.tests
-plugin@org.eclipse.birt.report.engine.tests=r232_v20090521,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.engine.tests
-fragment@org.eclipse.birt.report.engine.testhelper=r232_20090202,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.engine.testhelper
-plugin@org.eclipse.birt.report.engine.emitter.html.tests=r232_v20090521,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.engine.emitter.html.tests
-plugin@org.eclipse.birt.report.engine.emitter.pdf.tests=r232_20090202,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.engine.emitter.pdf.tests
-plugin@org.eclipse.birt.report.engine.emitter.postscript.tests=r232_20090202,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.engine.emitter.postscript.tests
-plugin@org.eclipse.birt.report.engine.emitter.prototype.excel.tests=r232_20090202,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.engine.emitter.prototype.excel.tests
+fragment@org.eclipse.birt.core.testhelper=r232_20090202,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.core.testhelper
+plugin@org.eclipse.birt.core.tests=r232_20090202,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.core.tests
+plugin@org.eclipse.birt.report.engine.tests=r232_v20090521,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.engine.tests
+fragment@org.eclipse.birt.report.engine.testhelper=r232_20090202,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.engine.testhelper
+plugin@org.eclipse.birt.report.engine.emitter.html.tests=r232_v20090521,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.engine.emitter.html.tests
+plugin@org.eclipse.birt.report.engine.emitter.pdf.tests=r232_20090202,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.engine.emitter.pdf.tests
+plugin@org.eclipse.birt.report.engine.emitter.postscript.tests=r232_20090202,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.engine.emitter.postscript.tests
+plugin@org.eclipse.birt.report.engine.emitter.prototype.excel.tests=r232_20090202,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.engine.emitter.prototype.excel.tests
 
 !**************** model test  *******************
-plugin@org.eclipse.birt.report.model.tests=r232_v20090521,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.model.tests
-plugin@org.eclipse.birt.report.model.adapter.oda.tests=r232_20081009,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.model.adapter.oda.tests
-fragment@org.eclipse.birt.report.model.testhelper=r232_20081009,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.model.testhelper
+plugin@org.eclipse.birt.report.model.tests=r232_v20090521,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.model.tests
+plugin@org.eclipse.birt.report.model.adapter.oda.tests=r232_20081009,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.model.adapter.oda.tests
+fragment@org.eclipse.birt.report.model.testhelper=r232_20081009,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.model.testhelper
 
 !**************** automated test suite  *******************
-plugin@org.eclipse.birt.report.tests.chart=r232_v20081113,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.tests.chart
-plugin@org.eclipse.birt.report.tests.engine=r232_v20090521,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.tests.engine
-plugin@org.eclipse.birt.report.tests.model=r232_v20090521,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.tests.model
-plugin@org.eclipse.birt.report.tests.engine.emitter.html=r232_v20090521,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.tests.engine.emitter.html
-plugin@org.eclipse.birt.tests.core=r232_v20090521,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.tests.core
-plugin@org.eclipse.birt.tests.data=r232_v20090521,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.tests.data
-plugin@org.eclipse.birt.test.performance=v20070531,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.test.performance
-plugin@org.eclipse.birt.report.tests=v20070529,:pserver:anonymous@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.tests
+plugin@org.eclipse.birt.report.tests.chart=r232_v20081113,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.tests.chart
+plugin@org.eclipse.birt.report.tests.engine=r232_v20090521,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.tests.engine
+plugin@org.eclipse.birt.report.tests.model=r232_v20090521,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.tests.model
+plugin@org.eclipse.birt.report.tests.engine.emitter.html=r232_v20090521,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.tests.engine.emitter.html
+plugin@org.eclipse.birt.tests.core=r232_v20090521,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.tests.core
+plugin@org.eclipse.birt.tests.data=r232_v20090521,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.tests.data
+plugin@org.eclipse.birt.test.performance=v20070531,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.test.performance
+plugin@org.eclipse.birt.report.tests=v20070529,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.report.tests
