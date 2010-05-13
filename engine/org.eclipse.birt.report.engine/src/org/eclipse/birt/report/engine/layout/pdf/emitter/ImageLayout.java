@@ -269,11 +269,12 @@ class ConcreteImageLayout extends Layout
 		if ( image != null )
 		{
 			// The DPI resolution of the image.
-			// the preference of the DPI setting is: 
+			// the preference of the DPI setting is:
 			// 1. the resolution restored in content.
-			// 2. the resolution in image file, if the image is set to "auto" dpi from designer.
-			// 3. use the DPI in render options.
-			// 4. the default DPI (96).
+			// 2. the resolution in image file.
+			// 3. the DPI in report designHandle ( this is not available in 2.3.2).
+			// 4. use the DPI in render options.
+			// 5. the default DPI (96).
 			int contentResolution = content.getResolution( );
 			if ( contentResolution != 0 )
 			{
@@ -282,12 +283,8 @@ class ConcreteImageLayout extends Layout
 			}
 			else
 			{
-//				if ( content.isAutoDPI() )
-// 				the image is set to auto dpi from designer.
-//				{
-//					resolutionX = image.getDpiX( );
-//					resolutionY = image.getDpiY( );	
-//				}
+				resolutionX = image.getDpiX( );
+				resolutionY = image.getDpiY( );
 				if ( 0 == resolutionX || 0 == resolutionY )
 				{
 					resolutionX = context.getDpi( );

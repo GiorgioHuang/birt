@@ -132,24 +132,34 @@ public class PDFPage extends AbstractPage
 		Image img = null;
 		try
 		{
-			img = Image.getInstance( new URL(imageUrl) );
+			img = Image.getInstance( new URL( imageUrl ) );
+			int resolutionX = img.getDpiX( );
+			int resolutionY = img.getDpiY( );
+			if ( 0 == resolutionX || 0 == resolutionY )
+			{
+				resolutionX = 96;
+				resolutionY = 96;
+			}
+			float imageWidth = img.plainWidth( ) / resolutionX * 72;
+			float imageHeight = img.plainHeight( ) / resolutionY * 72;
+
 			if ( "no-repeat".equalsIgnoreCase( repeat ) ) //$NON-NLS-1$
 			{
 				TplValueTriple triple = computeTplHorizontalValPair( absPosX,
-						x, width, img.scaledWidth( ) );
+						x, width, imageWidth );
 				float tplOriginX = triple.getTplOrigin( );
 				float tplWidth = triple.getTplSize( );
 				float translationX = triple.getTranslation( );
-				triple = computeTplVerticalValTriple( absPosY, y, height, img
-						.scaledHeight( ) );
+				triple = computeTplVerticalValTriple( absPosY, y, height,
+						imageHeight );
 				float tplOrininY = triple.getTplOrigin( );
 				float tplHeight = triple.getTplSize( );
 				float translationY = triple.getTranslation( );
 
-				PdfTemplate templateWhole = contentByte.createTemplate( tplWidth,
-						tplHeight );
-				templateWhole.addImage( img, img.scaledWidth( ), 0, 0, img
-						.scaledHeight( ), translationX, translationY );
+				PdfTemplate templateWhole = contentByte.createTemplate(
+						tplWidth, tplHeight );
+				templateWhole.addImage( img, imageWidth, 0, 0, imageHeight,
+						translationX, translationY );
 				contentByte.addTemplate( templateWhole, tplOriginX, tplOrininY );
 
 			}
@@ -159,62 +169,60 @@ public class PDFPage extends AbstractPage
 				float remainX = width;
 				PdfTemplate template = null;
 				// If the width of the container is smaller than the scaled
-				// image width, the repeat will never happen. So it is not 
+				// image width, the repeat will never happen. So it is not
 				// necessary to build a template for further usage.
-				if ( width > img.scaledWidth( ) )
+				if ( width > imageWidth )
 				{
-					if ( height - absPosY > img.scaledHeight( ) )
+					if ( height - absPosY > imageHeight )
 					{
-						template = contentByte.createTemplate( img.scaledWidth( ),
-								img.scaledHeight( ) );
-						template.addImage( img, img.scaledWidth( ), 0, 0, img
-								.scaledHeight( ), 0, 0 );
+						template = contentByte.createTemplate( imageWidth,
+								imageHeight );
+						template.addImage( img, imageWidth, 0, 0, imageHeight,
+								0, 0 );
 					}
 					else
 					{
-						template = contentByte.createTemplate( img.scaledWidth( ),
+						template = contentByte.createTemplate( imageWidth,
 								height );
-						template.addImage( img, img.scaledWidth( ), 0, 0, img
-								.scaledHeight( ), 0, -img.scaledHeight( )
-								+ height );
+						template.addImage( img, imageWidth, 0, 0, imageHeight,
+								0, -imageHeight + height );
 					}
 				}
 				while ( remainX > 0 )
 				{
-					if ( remainX < img.scaledWidth( ) )
+					if ( remainX < imageWidth )
 					{
 
-						if ( height - absPosY > img.scaledHeight( ) )
+						if ( height - absPosY > imageHeight )
 						{
 							PdfTemplate templateX = contentByte.createTemplate(
-									remainX, img.scaledHeight( ) );
-							templateX.addImage( img, img.scaledWidth( ), 0, 0,
-									img.scaledHeight( ), 0, 0 );
-							contentByte.addTemplate( templateX,
-									x + width - remainX, y - absPosY
-											- img.scaledHeight( ) );
+									remainX, imageHeight );
+							templateX.addImage( img, imageWidth, 0, 0,
+									imageHeight, 0, 0 );
+							contentByte.addTemplate( templateX, x + width
+									- remainX, y - absPosY - imageHeight );
 						}
 						else
 						{
 							PdfTemplate templateX = contentByte.createTemplate(
 									remainX, height );
-							templateX.addImage( img, img.scaledWidth( ), 0, 0,
-									img.scaledHeight( ), 0, -img.scaledHeight( )
-											+ height - absPosY );
-							contentByte.addTemplate( templateX,
-									x + width - remainX, y - absPosY - height );
+							templateX.addImage( img, imageWidth, 0, 0,
+									imageHeight, 0, -imageHeight + height
+											- absPosY );
+							contentByte.addTemplate( templateX, x + width
+									- remainX, y - absPosY - height );
 						}
 						remainX = 0;
 					}
 					else
 					{
-						if ( height - absPosY > img.scaledHeight( ) )
-							contentByte.addTemplate( template, x + width - remainX,
-									y - absPosY - img.scaledHeight( ) );
+						if ( height - absPosY > imageHeight )
+							contentByte.addTemplate( template, x + width
+									- remainX, y - absPosY - imageHeight );
 						else
-							contentByte.addTemplate( template, x + width - remainX,
-									y - absPosY - height );
-						remainX -= img.scaledWidth( );
+							contentByte.addTemplate( template, x + width
+									- remainX, y - absPosY - height );
+						remainX -= imageWidth;
 					}
 				}
 			}
@@ -223,38 +231,38 @@ public class PDFPage extends AbstractPage
 			{
 				float remainY = height;
 				// If the height of the container is smaller than the scaled
-				// image height, the repeat will never happen. So it is not 
+				// image height, the repeat will never happen. So it is not
 				// necessary to build a template for further usage.
 				PdfTemplate template = null;
-				if ( height > img.scaledHeight( ) )
+				if ( height > imageHeight )
 				{
-					template = contentByte.createTemplate( width - absPosX > img
-							.scaledWidth( ) ? img.scaledWidth( ) : width
-							- absPosX, img.scaledHeight( ) );
-					template.addImage( img, img.scaledWidth( ), 0, 0, img
-							.scaledHeight( ), 0, 0 );
+					template = contentByte.createTemplate(
+							width - absPosX > imageWidth ? imageWidth : width
+									- absPosX, imageHeight );
+					template
+							.addImage( img, imageWidth, 0, 0, imageHeight, 0, 0 );
 				}
 				while ( remainY > 0 )
 				{
-					if ( remainY < img.scaledHeight( ) )
+					if ( remainY < imageHeight )
 					{
-						PdfTemplate templateY = contentByte.createTemplate( width
-								- absPosX > img.scaledWidth( ) ? img
-								.scaledWidth( ) : width - absPosX, remainY );
-						templateY.addImage( img, width > img.scaledWidth( )
-								? img.scaledWidth( )
-								: width - absPosX, 0, 0, img.scaledHeight( ),
-								0, -( img.scaledHeight( ) - remainY ) );
-						contentByte
-								.addTemplate( templateY, x + absPosX, y
-										- height );
+						PdfTemplate templateY = contentByte.createTemplate(
+								width - absPosX > imageWidth
+										? imageWidth
+										: width - absPosX, remainY );
+						templateY.addImage( img, width > imageWidth
+								? imageWidth
+								: width - absPosX, 0, 0, imageHeight, 0,
+								-( imageHeight - remainY ) );
+						contentByte.addTemplate( templateY, x + absPosX, y
+								- height );
 						remainY = 0;
 					}
 					else
 					{
-						contentByte.addTemplate( template, x + absPosX, y - height
-								+ remainY - img.scaledHeight( ) );
-						remainY -= img.scaledHeight( );
+						contentByte.addTemplate( template, x + absPosX, y
+								- height + remainY - imageHeight );
+						remainY -= imageHeight;
 					}
 				}
 			}
@@ -265,33 +273,31 @@ public class PDFPage extends AbstractPage
 				float remainY = height;
 				PdfTemplate template = null;
 				// If the width of the container is smaller than the scaled
-				// image width, the repeat will never happen. So it is not 
+				// image width, the repeat will never happen. So it is not
 				// necessary to build a template for further usage.
-				if ( width > img.scaledWidth( ) && height > img.scaledHeight( ) )
+				if ( width > imageWidth && height > imageHeight )
 				{
-					template = contentByte.createTemplate( img.scaledWidth( ), img
-							.scaledHeight( ) );
-					template.addImage( img, img.scaledWidth( ), 0, 0, img
-							.scaledHeight( ), 0, 0 );
+					template = contentByte.createTemplate( imageWidth,
+							imageHeight );
+					template
+							.addImage( img, imageWidth, 0, 0, imageHeight, 0, 0 );
 				}
 
 				while ( remainY > 0 )
 				{
 					remainX = width;
 					// the bottom line
-					if ( remainY < img.scaledHeight( ) )
+					if ( remainY < imageHeight )
 					{
 						while ( remainX > 0 )
 						{
 							// the right-bottom one
-							if ( remainX < img.scaledWidth( ) )
+							if ( remainX < imageWidth )
 							{
 								PdfTemplate templateXY = contentByte
 										.createTemplate( remainX, remainY );
-								templateXY.addImage( img, img.scaledWidth( ),
-										0, 0, img.scaledHeight( ), 0, -img
-												.scaledHeight( )
-												+ remainY );
+								templateXY.addImage( img, imageWidth, 0, 0,
+										imageHeight, 0, -imageHeight + remainY );
 								contentByte.addTemplate( templateXY, x + width
 										- remainX, y - height );
 								remainX = 0;
@@ -299,15 +305,13 @@ public class PDFPage extends AbstractPage
 							else
 							// non-right bottom line
 							{
-								PdfTemplate templateY = contentByte.createTemplate(
-										img.scaledWidth( ), remainY );
-								templateY.addImage( img, img.scaledWidth( ), 0,
-										0, img.scaledHeight( ), 0, -img
-												.scaledHeight( )
-												+ remainY );
+								PdfTemplate templateY = contentByte
+										.createTemplate( imageWidth, remainY );
+								templateY.addImage( img, imageWidth, 0, 0,
+										imageHeight, 0, -imageHeight + remainY );
 								contentByte.addTemplate( templateY, x + width
 										- remainX, y - height );
-								remainX -= img.scaledWidth( );
+								remainX -= imageWidth;
 							}
 						}
 						remainY = 0;
@@ -318,26 +322,26 @@ public class PDFPage extends AbstractPage
 						while ( remainX > 0 )
 						{
 							// the right ones
-							if ( remainX < img.scaledWidth( ) )
+							if ( remainX < imageWidth )
 							{
-								PdfTemplate templateX = contentByte.createTemplate(
-										remainX, img.scaledHeight( ) );
-								templateX.addImage( img, img.scaledWidth( ), 0,
-										0, img.scaledHeight( ), 0, 0 );
+								PdfTemplate templateX = contentByte
+										.createTemplate( remainX, imageHeight );
+								templateX.addImage( img, imageWidth, 0, 0,
+										imageHeight, 0, 0 );
 								contentByte.addTemplate( templateX, x + width
 										- remainX, y - height + remainY
-										- img.scaledHeight( ) );
+										- imageHeight );
 								remainX = 0;
 							}
 							else
 							{
 								contentByte.addTemplate( template, x + width
 										- remainX, y - height + remainY
-										- img.scaledHeight( ) );
-								remainX -= img.scaledWidth( );
+										- imageHeight );
+								remainX -= imageWidth;
 							}
 						}
-						remainY -= img.scaledHeight( );
+						remainY -= imageHeight;
 					}
 				}
 			}
