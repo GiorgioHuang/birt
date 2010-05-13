@@ -178,7 +178,6 @@ import org.eclipse.birt.report.model.extension.oda.OdaDummyProvider;
 import org.eclipse.birt.report.model.metadata.Choice;
 import org.eclipse.birt.report.model.metadata.ElementPropertyDefn;
 import org.eclipse.birt.report.model.metadata.ExtensionElementDefn;
-import org.eclipse.birt.report.model.metadata.ExtensionPropertyDefn;
 import org.eclipse.birt.report.model.metadata.PropertyDefn;
 import org.eclipse.birt.report.model.metadata.PropertyType;
 import org.eclipse.birt.report.model.metadata.StructPropertyDefn;
@@ -3216,7 +3215,7 @@ public abstract class ModuleWriter extends ElementVisitor
 		if ( (String) obj.getLocalProperty( getModule( ),
 				IOdaDataSetModel.QUERY_TEXT_PROP ) != null )
 		{
-			property( obj, IOdaDataSetModel.QUERY_TEXT_PROP );
+			propertyCDATA( obj, IOdaDataSetModel.QUERY_TEXT_PROP );
 		}
 
 		property( obj, IOdaDataSetModel.RESULT_SET_NAME_PROP );

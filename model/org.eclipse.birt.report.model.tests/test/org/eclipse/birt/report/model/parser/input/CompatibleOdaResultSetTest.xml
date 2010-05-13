@@ -38,7 +38,6 @@
                     <property name="position">3</property>
                 </structure>
             </list-property>			
-            <property name="queryText">select * from user</property>
             <property name="type">extended</property>
             <property name="resultSetName">userid</property>
         </oda-data-set>

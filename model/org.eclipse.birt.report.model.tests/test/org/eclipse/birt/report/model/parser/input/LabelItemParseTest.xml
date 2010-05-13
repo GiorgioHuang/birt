@@ -7,11 +7,9 @@
     <data-sets>
         <oda-data-set name="firstDataSet">
             <property name="dataSource">myDataSource</property>
-            <property name="queryText">SELECT * FROM Customers</property>
         </oda-data-set>
         <oda-data-set name="secondDataSet">
             <property name="dataSource">myDataSource</property>
-            <property name="queryText">SELECT * FROM Customers</property>
         </oda-data-set>
     </data-sets>
     <styles>

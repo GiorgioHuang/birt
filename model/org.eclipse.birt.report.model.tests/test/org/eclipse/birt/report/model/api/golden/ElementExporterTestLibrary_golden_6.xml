@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<library xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.17" id="1">
+<library xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.18" id="1">
     <property name="theme">defaultTheme</property>
     <data-sources>
         <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="dataSource1" id="6">
@@ -11,7 +11,6 @@
     <data-sets>
         <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="dataSet1" id="5">
             <property name="dataSource">dataSource1</property>
-            <property name="queryText">select * from dbo.order_details</property>
         </oda-data-set>
     </data-sets>
     <themes>

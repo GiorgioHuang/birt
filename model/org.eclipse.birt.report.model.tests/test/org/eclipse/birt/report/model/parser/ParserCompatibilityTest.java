@@ -889,4 +889,20 @@ public class ParserCompatibilityTest extends BaseTestCase
 							.getErrorCode( ) );
 		}
 	}
+	
+	/**
+	 * Tests query text property parser compatibility. The contents in the
+	 * property should be kept when the query text property is converted to
+	 * literal XML.
+	 * 
+	 * @throws Exception
+	 */
+	
+	public void testQueryTextParser( ) throws Exception
+	{
+		openDesign( "CompatibleQueryTextParseTest.xml" ); //$NON-NLS-1$ 	
+		save( );
+		assertTrue( compareFile( "CompatibleQueryTextParseTest_golden.xml" ) ); //$NON-NLS-1$
+
+	}
 }

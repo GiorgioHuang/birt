@@ -55,8 +55,6 @@
                 </list-property>
             </structure>
             <property name="dataSource">Data Source</property>
-            <property name="queryText">select *
-from CLASSICMODELS.ORDERS</property>
         </oda-data-set>
     </data-sets>
     <page-setup>

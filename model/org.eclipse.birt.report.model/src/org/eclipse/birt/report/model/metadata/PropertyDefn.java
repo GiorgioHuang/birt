@@ -90,6 +90,12 @@ public abstract class PropertyDefn
 	protected String displayNameID = null;
 
 	/**
+	 * The trim option value.
+	 * 
+	 */
+	protected int trimOption = XMLPropertyType.NO_VALUE;
+
+	/**
 	 * Default unit of the dimension property. Some properties have special
 	 * default unit, sucha as font-size, margin and so on. Other properties
 	 * share the default unit set on the report design.
@@ -316,7 +322,9 @@ public abstract class PropertyDefn
 
 		// Perform type-specific initialization.
 		MetaDataDictionary dd = MetaDataDictionary.getInstance( );
-		switch ( getTypeCode( ) )
+		int tmpTypeCode = type.getTypeCode( );
+		
+		switch (tmpTypeCode )
 		{
 			case IPropertyType.CHOICE_TYPE :
 
@@ -569,8 +577,48 @@ public abstract class PropertyDefn
 				}
 			}
 		}
+		
+		buildTrimOption( tmpTypeCode );
+
 	}
 
+	/**
+	 * Build trim option according to the type code. If the trim option value of
+	 * the property is not defined in rom, the default value will be set
+	 * according to the property type.
+	 * 
+	 * @param typeCode
+	 *            the type code.
+	 */
+	protected void buildTrimOption( int typeCode )
+	{
+		// if the trim option value of the property is not defined in rom, the
+		// default value will be set according to the property type.
+		if ( trimOption == TextualPropertyType.NO_VALUE )
+		{
+			if ( typeCode == IPropertyType.XML_TYPE
+					|| typeCode == IPropertyType.STRING_TYPE
+					|| typeCode == IPropertyType.HTML_TYPE
+					|| typeCode == IPropertyType.URI_TYPE
+					|| typeCode == IPropertyType.MEMBER_KEY_TYPE
+					|| typeCode == IPropertyType.NAME_TYPE )
+			{
+				setTrimOption( TextualPropertyType.TRIM_SPACE_VALUE
+						| TextualPropertyType.TRIM_EMPTY_TO_NULL_VALUE );
+			}
+			else if ( typeCode == IPropertyType.EXPRESSION_TYPE
+					|| typeCode == IPropertyType.SCRIPT_TYPE
+					|| typeCode == IPropertyType.RESOURCE_KEY_TYPE )
+			{
+				setTrimOption( TextualPropertyType.TRIM_EMPTY_TO_NULL_VALUE );
+			}
+			else if ( typeCode == IPropertyType.LITERAL_STRING_TYPE )
+			{
+				setTrimOption( TextualPropertyType.NO_TRIM_VALUE );
+			}
+		}
+	}
+	
 	/**
 	 * Builds the semantic checks for the element reference type.
 	 * 
@@ -1396,6 +1444,27 @@ public abstract class PropertyDefn
 	public boolean isRuntimeSettable( )
 	{
 		return runtimeSettable;
+	}
+
+	/**
+	 * Set the trim option value.
+	 * 
+	 * @param value
+	 *            trim option value.
+	 */
+	protected void setTrimOption( int trimOption )
+	{
+		this.trimOption = trimOption;
+	}
+
+	/**
+	 * Gets the trim option value.
+	 * 
+	 * @return trim option value.
+	 */
+	int getTrimOption( )
+	{
+		return trimOption;
 	}
 
 	/**

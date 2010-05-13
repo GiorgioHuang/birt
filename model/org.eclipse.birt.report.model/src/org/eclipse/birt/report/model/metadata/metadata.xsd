@@ -294,6 +294,8 @@ The 'extends' attribute is optional, in this case, it means this report element 
 		<xs:attribute name="validator" type="xs:string" use="optional"/>
 		<xs:attribute name="since" type="xs:string" use="optional" default="1.0"/>
 		<xs:attribute name="runtimeSettable" type="xs:boolean" use="optional" default="true"/>
+		<!-- the trim option value could be noTrim, trimSpace and trimEmptyToNull and trimSpace;trimEmptyToNull -->
+		<xs:attribute name="trimOption" type="xs:string" use="optional"/>		
 		<xs:attribute name="context" type="ExprContextType" use="optional"/>
 		<xs:attribute name="returnType" type="xs:string" use="optional"/>
 	</xs:complexType>
@@ -408,6 +410,8 @@ The 'extends' attribute is optional, in this case, it means this report element 
 						</xs:simpleType>
 					</xs:attribute>
 					<xs:attribute name="runtimeSettable" type="xs:boolean" use="optional" default="true"/>
+					<!-- the trim option value could be noTrim, trimSpace and trimEmptyToNull and trimSpace;trimEmptyToNull -->
+					<xs:attribute name="trimOption" type="xs:string" use="optional"/>					
 					<xs:attribute name="valueRequired" type="xs:boolean" use="optional" default="false"/>
 					<xs:attribute name="context" use="optional">
 						<xs:simpleType>

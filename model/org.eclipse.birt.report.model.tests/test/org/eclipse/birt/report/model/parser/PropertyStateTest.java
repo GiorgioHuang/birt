@@ -107,7 +107,7 @@ public class PropertyStateTest extends BaseTestCase
 		LabelHandle labelHandle = (LabelHandle) designHandle
 				.findElement( "label1" ); //$NON-NLS-1$
 		assertEquals( null, labelHandle.getHelpText( ) );
-		assertEquals( null, labelHandle.getHelpTextKey( ) );
+		assertEquals( " ", labelHandle.getHelpTextKey( ) );
 
 		// Test the expression value
 

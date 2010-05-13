@@ -27,9 +27,6 @@
                     <property name="dataType">integer</property>
                 </structure>
             </list-property>
-            <property name="queryText">select dbo.rpt100.Category, dbo.rpt100.SubCat, dbo.rpt100.QTR1, dbo.rpt100.QTR2, dbo.rpt100.QTR3, dbo.rpt100.QTR4
-from dbo.rpt100
-</property>
         </oda-data-set>
     </data-sets>
     <page-setup>

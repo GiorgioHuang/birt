@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.17" id="1">
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.18" id="1">
     <property name="createdBy">Eclipse BIRT Designer Version 2.0.1 Build &lt;20060222-1204></property>
     <property name="units">in</property>
     <text-property name="displayName">rpt100</text-property>
@@ -26,9 +26,6 @@
                 </structure>
             </list-property>
             <property name="dataSource">sqlserver</property>
-            <property name="queryText">select dbo.rpt100.Category, dbo.rpt100.SubCat, dbo.rpt100.QTR1, dbo.rpt100.QTR2, dbo.rpt100.QTR3, dbo.rpt100.QTR4
-from dbo.rpt100
-</property>
         </oda-data-set>
     </data-sets>
     <page-setup>

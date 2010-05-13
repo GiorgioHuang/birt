@@ -51,6 +51,7 @@ import org.eclipse.birt.report.model.elements.interfaces.ICellModel;
 import org.eclipse.birt.report.model.elements.interfaces.IGroupElementModel;
 import org.eclipse.birt.report.model.elements.interfaces.ILevelModel;
 import org.eclipse.birt.report.model.elements.interfaces.IListingElementModel;
+import org.eclipse.birt.report.model.elements.interfaces.IOdaDataSetModel;
 import org.eclipse.birt.report.model.elements.interfaces.IOdaExtendableElementModel;
 import org.eclipse.birt.report.model.elements.interfaces.IReportDesignModel;
 import org.eclipse.birt.report.model.elements.interfaces.IReportItemModel;
@@ -116,7 +117,9 @@ class PropertyState extends AbstractPropertyState
 			.toLowerCase( ).hashCode( );
 	private static final int DATA_TYPE_MEMBER = DataSetParameter.DATA_TYPE_MEMBER
 			.toLowerCase( ).hashCode( );
-
+	private static final int QUERY_TEXT_MEMBER = IOdaDataSetModel.QUERY_TEXT_PROP
+			.toLowerCase( ).hashCode( );
+	
 	/**
 	 * Property defn.
 	 */
@@ -238,6 +241,16 @@ class PropertyState extends AbstractPropertyState
 			}
 
 			( (StyledElement) element ).setStyleName( value );
+		}
+		else if ( element instanceof OdaDataSet
+				&& QUERY_TEXT_MEMBER == nameValue
+				&& handler.versionNumber < VersionUtil.VERSION_3_2_18 )
+		{
+			// the original property type of the query text is
+			// literalString, now the property type is XML, so the
+			// compatibility is necessary.
+			value = deEscape( (String) value );
+			setProperty( name, value );
 		}
 		else if ( handler.versionNumber >= VersionUtil.VERSION_3_2_16
 				&& isXMLorScriptType( jmpDefn )

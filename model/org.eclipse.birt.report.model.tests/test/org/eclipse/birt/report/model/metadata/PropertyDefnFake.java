@@ -34,4 +34,15 @@ class PropertyDefnFake extends PropertyDefn
 	{
 		return 0;
 	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.birt.report.model.metadata.PropertyDefn#setTrimOption(int)
+	 */
+	public void setTrimOption( int trimOption )
+	{
+		super.setTrimOption( trimOption );
+	}
 }

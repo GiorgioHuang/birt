@@ -15,8 +15,6 @@
         <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Data Set" id="5">
             <text-property name="displayName">Data Set</text-property>
             <property name="dataSource">Data Source</property>
-            <property name="queryText">select *
-from CLASSICMODELS.OFFICES</property>
         </oda-data-set>
     </data-sets>
     <page-setup>

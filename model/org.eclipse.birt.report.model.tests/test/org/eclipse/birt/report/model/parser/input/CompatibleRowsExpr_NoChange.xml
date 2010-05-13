@@ -84,8 +84,6 @@
 				</list-property>
 			</structure>
 			<property name="dataSource">Data Source</property>
-			<property name="queryText">select *
-from CUSTOMERS</property>
 		</oda-data-set>
 	</data-sets>
 	<page-setup>
