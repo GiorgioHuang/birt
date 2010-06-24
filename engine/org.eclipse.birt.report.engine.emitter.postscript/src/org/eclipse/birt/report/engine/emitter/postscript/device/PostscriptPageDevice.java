@@ -28,6 +28,7 @@ public class PostscriptPageDevice implements IPageDevice
 
 	private PostscriptWriter writer;
 	private PostscriptPage currentPage;
+	private String orientation;
 
 	public PostscriptPageDevice( OutputStream output, String title,
 			String author, String description ) throws Exception
@@ -61,7 +62,12 @@ public class PostscriptPageDevice implements IPageDevice
 			currentPage.dispose( );
 		}
 		currentPage = new PostscriptPage( width, height, backgroundColor,
-				writer );
+				writer, orientation );
 		return currentPage;
+	}
+	
+	public void setOrientation( String orientation )
+	{
+		this.orientation = orientation;
 	}
 }
