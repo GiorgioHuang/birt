@@ -46,6 +46,7 @@ import org.eclipse.birt.data.engine.core.DataException;
 import org.eclipse.birt.data.engine.olap.api.query.ICubeQueryDefinition;
 import org.eclipse.birt.report.data.adapter.api.DataAdapterUtil;
 import org.eclipse.birt.report.data.adapter.api.DataRequestSession;
+import org.eclipse.birt.report.data.adapter.api.IModelAdapter;
 import org.eclipse.birt.report.data.adapter.api.IQueryDefinitionUtil;
 import org.eclipse.birt.report.engine.adapter.ExpressionUtil;
 import org.eclipse.birt.report.engine.adapter.ITotalExprBindings;
@@ -1250,70 +1251,35 @@ public class ReportQueryBuilder
 			}
 			return null;
 		}
-
-		protected void addColumBinding( IBaseQueryDefinition transfer,
-				ComputedColumnHandle columnBinding ) throws BirtException
+		
+		private void addColumnBinding( ReportItemDesign design,
+				IBaseQueryDefinition query )
 		{
-			String name = columnBinding.getName( );
-			String expr = columnBinding.getExpression( );
-			String type = columnBinding.getDataType( );
-			String displayName = columnBinding.getDisplayName( );
-			String displayNameId = columnBinding.getDisplayNameID( );
-			if ( displayNameId != null )
+			DesignElementHandle elementHandle = design.getHandle( );
+			if ( elementHandle instanceof ReportItemHandle )
 			{
-				ReportDesignHandle handle = report.getReportDesign( );
-				String tmpName = handle.getMessage( displayNameId, context
-						.getLocale( ) );
-				if ( tmpName != null )
+				IModelAdapter adaptor = dteSession.getModelAdaptor( );
+				ReportItemHandle designHandle = (ReportItemHandle) elementHandle;
+				Iterator iter = designHandle.columnBindingsIterator( );;
+				if ( iter != null )
 				{
-					displayName = tmpName;
+					while ( iter.hasNext( ) )
+					{
+						try
+						{
+							ComputedColumnHandle bindingHandle = (ComputedColumnHandle) iter
+									.next( );
+							IBinding binding = adaptor
+									.adaptBinding( bindingHandle );
+							query.addBinding( binding );
+						}
+						catch ( BirtException ex )
+						{
+							context.addException( design, ex );
+						}
+					}
 				}
 			}
-
-			String aggregateOn = columnBinding.getAggregateOn( );
-			int dbType = ModelDteApiAdapter.toDteDataType( type );
-
-			IBaseExpression dbExpr = null;
-			if ( expr != null )
-			{
-				dbExpr = new ScriptExpression( expr, dbType );
-
-				if ( aggregateOn != null )
-				{
-					dbExpr.setGroupName( aggregateOn );
-				}
-			}
-			IBinding binding = new Binding( name, dbExpr );
-			binding.setDisplayName( displayName );
-			if ( aggregateOn != null )
-			{
-				binding.addAggregateOn( aggregateOn );
-			}
-			if ( columnBinding.getAggregateFunction( ) != null )
-			{
-				binding.setAggrFunction( DataAdapterUtil
-						.adaptModelAggregationType( columnBinding
-								.getAggregateFunction( ) ) );
-			}
-			String filter = columnBinding.getFilterExpression( );
-			if ( filter != null )
-			{
-				binding.setFilter( new ScriptExpression( filter ) );
-			}
-			Iterator arguments = columnBinding.argumentsIterator( );
-			if ( arguments != null )
-			{
-				while ( arguments.hasNext( ) )
-				{
-					AggregationArgumentHandle argumentHandle = (AggregationArgumentHandle) arguments
-							.next( );
-					String argument = argumentHandle.getValue( );
-					binding.addArgument( DataAdapterUtil.adaptArgumentName( argumentHandle.getName( ) ),
-								new ScriptExpression( argument ) );
-				}
-			}
-			binding.setDataType( dbType );
-			transfer.addBinding( binding );
 		}
 
 		/**
@@ -1470,24 +1436,9 @@ public class ReportQueryBuilder
 
 			// set max rows
 			query.setMaxRows( maxRows );
-
-			Iterator iter = designHandle.columnBindingsIterator( );
-			while ( iter.hasNext( ) )
-			{
-				ComputedColumnHandle binding = (ComputedColumnHandle) iter
-						.next( );
-				try
-				{
-					addColumBinding( query, binding );
-				}
-				catch ( BirtException ex )
-				{
-					context.addException( designHandle, ex );
-				}
-			}
-
+			
+			addColumnBinding( item, query );
 			addSortAndFilter( item, query );
-
 			return query;
 		}
 
@@ -1516,28 +1467,7 @@ public class ReportQueryBuilder
 
 			// set max rows
 			query.setMaxRows( maxRows );
-
-			if ( item.getHandle( ) instanceof ReportItemHandle )
-			{
-				ReportItemHandle designHandle = (ReportItemHandle) item
-						.getHandle( );
-
-				Iterator iter = designHandle.columnBindingsIterator( );
-				while ( iter.hasNext( ) )
-				{
-					ComputedColumnHandle binding = (ComputedColumnHandle) iter
-							.next( );
-					try
-					{
-						addColumBinding( query, binding );
-					}
-					catch ( BirtException ex )
-					{
-						context.addException( designHandle, ex );
-					}
-				}
-			}
-
+			addColumnBinding( item, query );
 			addSortAndFilter( item, query );
 
 			return query;
