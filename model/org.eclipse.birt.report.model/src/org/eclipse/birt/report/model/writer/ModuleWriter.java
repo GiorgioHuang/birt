@@ -915,6 +915,21 @@ public abstract class ModuleWriter extends ElementVisitor
 		// structure/structure list again.
 
 		String propName = propDefn.getName( );
+		String propNameKey = propName + IDesignElementModel.ID_SUFFIX;
+
+		StructureDefn structDefn = (StructureDefn) struct.getDefn( );
+		StructPropertyDefn propKeyDefn = (StructPropertyDefn) structDefn
+				.getMember( propNameKey );
+		if ( propKeyDefn != null
+				&& propKeyDefn.getType( ).getTypeCode( ) == IPropertyType.RESOURCE_KEY_TYPE )
+		{
+			resourceKey( struct, propNameKey, propName );
+			return;
+		}
+		
+		// the member of the structure list may be the
+		// structure/structure list again.
+
 		switch ( propDefn.getTypeCode( ) )
 		{
 			case IPropertyType.STRUCT_TYPE :
@@ -1041,7 +1056,7 @@ public abstract class ModuleWriter extends ElementVisitor
 		{
 			StructPropertyDefn strcutPropDefn = (StructPropertyDefn) iter
 					.next( );
-
+			
 			// for example: TOC structure contains StringFormat,DateTimeFormat
 			// structure.
 
@@ -1091,6 +1106,11 @@ public abstract class ModuleWriter extends ElementVisitor
 			{
 				PropertyDefn memberDefn = (PropertyDefn) memberIter.next( );
 
+				if ( memberDefn.getType( ).getTypeCode( ) == IPropertyType.RESOURCE_KEY_TYPE )
+				{
+					continue;
+				}
+				
 				// for example: highlightrule structure contains
 				// StringFormat,DateTimeFormat
 				// structure.
@@ -1141,7 +1161,11 @@ public abstract class ModuleWriter extends ElementVisitor
 			while ( memberIter.hasNext( ) )
 			{
 				PropertyDefn memberDefn = (PropertyDefn) memberIter.next( );
-
+				
+				if ( memberDefn.getType( ).getTypeCode( ) == IPropertyType.RESOURCE_KEY_TYPE )
+				{
+					continue;
+				}
 				// for example: highlightrule structure contains
 				// StringFormat,DateTimeFormat
 				// structure.
