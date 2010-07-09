@@ -174,4 +174,15 @@ public class Util
 	{
 		return (char)('!' + number);
 	}
+	
+	public static String toHexString( int c )
+	{
+		final String[] padding = {"0", "00", "000"};
+		String result = Integer.toHexString( c );
+		if ( result.length( ) < 4 )
+		{
+			result = padding[3 - result.length( )] + result;
+		}
+		return result;
+	}
 }
