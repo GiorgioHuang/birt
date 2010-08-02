@@ -332,6 +332,8 @@ public class SimpleResultSet implements IResultIterator
 	 */
 	public boolean next( ) throws DataException
 	{
+		if( currResultObj == null )
+			return false;
 		if ( this.streamsWrapper != null && currResultObj != null )
 		{
 			try
@@ -353,7 +355,15 @@ public class SimpleResultSet implements IResultIterator
 			{
 			}
 		}
-		this.currResultObj = this.rowResultSet.next( stopSign );
+		try
+		{
+			this.currResultObj = this.rowResultSet.next( stopSign );
+		}
+		catch ( DataException e )
+		{
+			currResultObj = null;
+			throw e;
+		}
 
 		if ( this.currResultObj != null )
 			rowCount++;
