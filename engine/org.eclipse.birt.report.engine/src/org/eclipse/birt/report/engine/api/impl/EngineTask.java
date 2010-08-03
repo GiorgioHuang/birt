@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2004, 2008 Actuate Corporation.
+ * Copyright (c) 2004, 2010 Actuate Corporation.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -1172,7 +1172,7 @@ public abstract class EngineTask implements IEngineTask
 	public void close( )
 	{
 		executionContext.close( );
-		EngineLoggerHandler.setLogger( null );
+		EngineLogger.setThreadLogger( null );
 	}
 	
 	protected IContentEmitter createContentEmitter( ) throws EngineException
@@ -1672,7 +1672,7 @@ public abstract class EngineTask implements IEngineTask
 			throw new IllegalArgumentException(
 					"the logger can't be NULL or children or in namespace of org.eclipse.birt" );
 		}
-		EngineLoggerHandler.setLogger( logger );
+		EngineLogger.setThreadLogger( logger );
 		this.log = logger;
 		this.executionContext.setLogger( logger );
 	}

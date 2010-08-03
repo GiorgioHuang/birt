@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2004,2008 Actuate Corporation.
+ * Copyright (c) 2004,2010 Actuate Corporation.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -191,15 +191,14 @@ public class ReportEngine implements IReportEngine
 		Logger logger = null;
 		String dest = null;
 		String file = null;
-		Level level = Level.WARNING;
+		Level level = null;
+		if (config != null)
+		{
 			logger = config.getLogger( );
 			dest = config.getLogDirectory( );
 			file = config.getLogFile( );
 			level = config.getLogLevel( );
-			if ( level == null )
-			{
-				level = Level.WARNING;
-			}
+		}
 		EngineLogger.startEngineLogging( logger, dest, file, level );
 	}
 	
@@ -679,7 +678,7 @@ public class ReportEngine implements IReportEngine
 	{
 		if ( logger != null )
 		{
-			EngineLogger.startEngineLogging( logger, null, null, null );
+			EngineLogger.setLogger( logger );
 		}
 	}
 
