@@ -46,8 +46,6 @@ public class DummyCell extends CellArea
 	public void setRowSpan(int rowSpan)
 	{
 		this.rowSpan = rowSpan;
-		//Update the row span for the cells extending to next page.
-		((ICellContent)getContent( )).setRowSpan( rowSpan );
 	}
 	
 	public int getRowSpan()

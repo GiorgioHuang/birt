@@ -31,9 +31,9 @@ import org.eclipse.birt.report.engine.ir.EngineIRConstants;
 import org.eclipse.birt.report.engine.layout.area.impl.AbstractArea;
 import org.eclipse.birt.report.engine.layout.area.impl.AreaFactory;
 import org.eclipse.birt.report.engine.layout.area.impl.CellArea;
-import org.eclipse.birt.report.engine.layout.area.impl.ContainerArea;
 import org.eclipse.birt.report.engine.layout.area.impl.RowArea;
 import org.eclipse.birt.report.engine.layout.area.impl.TableArea;
+import org.eclipse.birt.report.engine.layout.pdf.emitter.TableAreaLayout.Row;
 import org.eclipse.birt.report.engine.layout.pdf.util.PropertyUtil;
 
 
@@ -172,7 +172,7 @@ public class TableLayout extends RepeatableLayout
 		tableContext = (TableContext) currentContext;
 	}
 	
-
+	
 	protected void closeLayout( ContainerContext currentContext, int index, boolean finished )
 	{
 		if ( currentContext.root == null
@@ -188,6 +188,17 @@ public class TableLayout extends RepeatableLayout
 		int borderHeight = 0;
 		if ( tableContext.layout != null )
 		{
+			if ( !finished )
+			{
+				Row unresolvedRow = tableContext.layout.getUnresolvedRow( );
+				if ( this.contextList.size( ) > 0 )
+				{
+					TableAreaLayout layout = ( (TableContext) contextList
+							.get( 0 ) ).layout;
+					unresolvedRow.setFinished( true );
+					layout.setUnresolvedRow( unresolvedRow );
+				}
+			}
 			int height = tableContext.layout.resolveAll( );
 			if ( 0 != height)
 			{

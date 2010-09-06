@@ -152,4 +152,9 @@ public class CellContentWrapper extends AbstractContentWrapper implements ICellC
 			return new CellContentWrapper( this );
 		}
 	}
+	
+	public ICellContent getCell( )
+	{
+		return cell;
+	}
 }

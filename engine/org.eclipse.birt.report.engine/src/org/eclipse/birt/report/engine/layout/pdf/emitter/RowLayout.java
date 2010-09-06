@@ -20,7 +20,6 @@ import org.eclipse.birt.report.engine.layout.area.impl.AreaFactory;
 import org.eclipse.birt.report.engine.layout.area.impl.CellArea;
 import org.eclipse.birt.report.engine.layout.area.impl.ContainerArea;
 import org.eclipse.birt.report.engine.layout.area.impl.RowArea;
-import org.eclipse.birt.report.engine.layout.pdf.cache.CursorableList;
 import org.eclipse.birt.report.engine.layout.pdf.emitter.TableAreaLayout.Row;
 import org.eclipse.birt.report.engine.layout.pdf.emitter.TableLayout.TableContext;
 
@@ -112,12 +111,19 @@ public class RowLayout extends ContainerLayout
 			{
 				TableContext tc = (TableContext) ( tbl.contextList.get( tableSize - size + index ) );
 				tc.layout.setUnresolvedRow( unresolvedRow );
+				unresolvedRow = null;
 			}
 			
 			boolean isRowEmpty = isRowEmpty( currentContext );
 			if ( finished || !isRowEmpty )
 			{	
 				tbl.addRow( (RowArea) currentContext.root, specifiedHeight, index, size );
+				int delta = tbl.tableContext.layout.getRowHeightDelta( );
+				if ( delta != 0 )
+				{
+					parent.contextList.get( parentIndex).currentBP += delta;
+					tbl.tableContext.layout.setRowHeightDelta( 0 );
+				}
 				parent.addToRoot( currentContext.root, parentIndex );
 			}
 			if ( !finished && unresolvedRow == null )
@@ -131,6 +137,7 @@ public class RowLayout extends ContainerLayout
 				{
 					unresolvedRow = tc.layout.getUnresolvedRow( );
 				}
+				unresolvedRow.setFinished( false );
 			}
 		}
 	}

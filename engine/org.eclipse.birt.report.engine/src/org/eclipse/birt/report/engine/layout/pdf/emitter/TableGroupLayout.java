@@ -60,8 +60,7 @@ public class TableGroupLayout extends RepeatableLayout
 		{	
 			TableContext tableContext = (TableContext)tableLM.contextList.getLast( );
 			tableContext.layout.addRows( rLayout.getTableAreaLayout( ).getRows( ) );
-			
-			// add to root
+//			// add to root
 			Iterator iter = tableRegion.getChildren( );
 			while ( iter.hasNext( ) )
 			{

@@ -82,8 +82,6 @@ public class CellArea extends ContainerArea
 	public void setRowSpan( int rowSpan )
 	{
 		this.rowSpan = rowSpan;
-		//Update the row span for the cells extending to next page.
-		((ICellContent)content).setRowSpan( rowSpan );
 	}
 
 	protected void setDefaultPadding( )

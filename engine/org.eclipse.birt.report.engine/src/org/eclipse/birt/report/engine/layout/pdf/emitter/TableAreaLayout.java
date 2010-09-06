@@ -20,6 +20,7 @@ import org.eclipse.birt.report.engine.content.IRowContent;
 import org.eclipse.birt.report.engine.content.IStyle;
 import org.eclipse.birt.report.engine.content.ITableContent;
 import org.eclipse.birt.report.engine.css.engine.StyleConstants;
+import org.eclipse.birt.report.engine.internal.content.wrap.CellContentWrapper;
 import org.eclipse.birt.report.engine.layout.area.IArea;
 import org.eclipse.birt.report.engine.layout.area.impl.AbstractArea;
 import org.eclipse.birt.report.engine.layout.area.impl.AreaFactory;
@@ -27,7 +28,6 @@ import org.eclipse.birt.report.engine.layout.area.impl.CellArea;
 import org.eclipse.birt.report.engine.layout.area.impl.ContainerArea;
 import org.eclipse.birt.report.engine.layout.area.impl.RowArea;
 import org.eclipse.birt.report.engine.layout.area.impl.TableArea;
-import org.eclipse.birt.report.engine.layout.area.impl.TextArea;
 import org.eclipse.birt.report.engine.layout.pdf.BorderConflictResolver;
 import org.eclipse.birt.report.engine.layout.pdf.cache.CursorableList;
 import org.eclipse.birt.report.engine.layout.pdf.cache.DummyCell;
@@ -57,6 +57,8 @@ public class TableAreaLayout
 	protected int endCol;
 
 	protected Row unresolvedRow;
+	
+	private int rowHeightDelta;
 
 	public TableAreaLayout( ITableContent tableContent,
 			TableLayoutInfo layoutInfo, int startCol, int endCol )
@@ -77,6 +79,17 @@ public class TableAreaLayout
 	public Row getUnresolvedRow( )
 	{
 		return (Row) rows.getCurrent( );
+	}
+	
+	public int getRowHeightDelta( )
+	{
+		return rowHeightDelta;
+	}
+
+	
+	public void setRowHeightDelta( int rowHeightDelta )
+	{
+		this.rowHeightDelta = rowHeightDelta;
 	}
 	
 	public Row createUnresolvedRow( RowArea rowArea )
@@ -584,12 +597,106 @@ public class TableAreaLayout
 			rows.add( iter.next( ) );
 		}
 	}
+	
+	public void resolveRepeatHeader( )
+	{
+		if ( unresolvedRow == null )
+			return;
+		CellArea[] unresolvedCells = unresolvedRow.getCells( );
+		if ( unresolvedCells == null )
+			return;
+		Row lastRow = (Row) rows.getCurrent( );
+		if ( lastRow == null )
+			return;
+		CellArea[] cells = lastRow.getCells( );
+		if ( cells == null )
+			return;
+		for ( int i = 0; i < cells.length; i++ )
+		{
+			IContent lastRowCellContent = null;
+			IContent unresolvedCellContent = null;
+			lastRowCellContent = cells[i].getContent( );
+			if( lastRowCellContent == null )
+			{
+				continue;
+			}
+			while ( lastRowCellContent instanceof CellContentWrapper )
+			{
+				lastRowCellContent = ( (CellContentWrapper) lastRowCellContent )
+						.getCell( );
+			}
+			unresolvedCellContent = unresolvedCells[i].getContent( );
+			if( unresolvedCellContent == null )
+			{
+				continue;
+			}
+			while ( unresolvedCellContent instanceof CellContentWrapper )
+			{
+				unresolvedCellContent = ( (CellContentWrapper) unresolvedCellContent )
+						.getCell( );
+			}
+			if ( lastRowCellContent == unresolvedCellContent )
+			{
+				if ( unresolvedRow.isFinished( ) )
+				{
+					cells[i].setRowSpan( unresolvedCells[i].getRowSpan( ) );
+				}
+				else
+				{
+					cells[i].setRowSpan( unresolvedCells[i].getRowSpan( ) + 1 );
+				}
+			}
+			else
+			{
+				cells[i].setRowSpan( 1 );
+			}
+		}
+		resolveLastHeaderRow( lastRow );
+	}
+	
+	private void resolveLastHeaderRow( Row row )
+	{
+		int height = 0;
+		for ( int i = startCol; i <= endCol; i++ )
+		{
+			CellArea cell = row.getCell( i );
+			if ( cell == null )
+			{
+				continue;
+			}
+			if ( cell instanceof DummyCell )
+			{
+				if ( cell.getRowSpan( ) == 1 )
+				{
+					DummyCell dummyCell = (DummyCell) cell;
+					int delta = dummyCell.getDelta( );
+					height = Math.max( height, delta );
+				}
+			}
+			else
+			{
+				if( cell.getRowSpan( ) == 1 )
+				{
+					height = Math.max( height, cell.getHeight( ) );
+				}
+			}
+		}
+		int oldHeight = row.getArea( ).getHeight( );
+		updateRowHeight( row, height );
+		rowHeightDelta = height - oldHeight; 
+	}
 
+	boolean resolveRepeatHeader = true;
 	/**
 	 * Adds the updated row wrapper to rows.
 	 */
 	public void addRow( RowArea rowArea, int specifiedHeight )
 	{
+		if( resolveRepeatHeader )
+		{
+			resolveRepeatHeader( );
+			resolveRepeatHeader = false;
+		}
 		Row row = updateRow( rowArea, specifiedHeight );
 		rows.add( row );
 	}
@@ -807,7 +914,7 @@ public class TableAreaLayout
 		}
 		return 0;
 	}
-
+	
 	public static class Row
 	{
 		protected int start;
@@ -815,6 +922,8 @@ public class TableAreaLayout
 		protected int end;
 		protected RowArea row;
 		protected CellArea[] cells;
+		
+		protected boolean finished = false;
 
 		Row( RowArea row, int start, int end )
 		{
@@ -823,6 +932,7 @@ public class TableAreaLayout
 			this.end = end;
 			this.length = end - start + 1;
 			cells = new CellArea[length];
+			
 
 			Iterator iter = row.getChildren( );
 			while ( iter.hasNext( ) )
@@ -883,6 +993,11 @@ public class TableAreaLayout
 			}
 			return cells[colId - start];
 		}
+		
+		public CellArea[] getCells( )
+		{
+			return cells;
+		}
 
 		public void addArea( IArea area )
 		{
@@ -907,6 +1022,17 @@ public class TableAreaLayout
 		{
 			return row;
 		}
+		
+		public boolean isFinished( )
+		{
+			return finished;
+		}
+		
+		public void setFinished( boolean finished )
+		{
+			this.finished = finished;
+		}
+		
 	}
 
 	public CursorableList getRows( )
