@@ -195,7 +195,6 @@ public class TableLayout extends RepeatableLayout
 				{
 					TableAreaLayout layout = ( (TableContext) contextList
 							.get( 0 ) ).layout;
-					unresolvedRow.setFinished( true );
 					layout.setUnresolvedRow( unresolvedRow );
 				}
 			}

@@ -923,7 +923,7 @@ public class TableAreaLayout
 		protected RowArea row;
 		protected CellArea[] cells;
 		
-		protected boolean finished = false;
+		protected boolean finished = true;
 
 		Row( RowArea row, int start, int end )
 		{
