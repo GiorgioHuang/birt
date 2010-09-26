@@ -343,96 +343,6 @@ public class TableAreaLayout
 		return null;
 	}
 
-	protected void verticalAlign( CellArea c )
-	{
-		CellArea cell;
-		if ( c instanceof DummyCell )
-		{
-			cell = ( (DummyCell) c ).getCell( );
-		}
-		else
-		{
-			cell = c;
-		}
-		IContent content = cell.getContent( );
-		if ( content == null )
-		{
-			return;
-		}
-		CSSValue verticalAlign = content.getComputedStyle( ).getProperty(
-				IStyle.STYLE_VERTICAL_ALIGN );
-		if ( IStyle.BOTTOM_VALUE.equals( verticalAlign )
-				|| IStyle.MIDDLE_VALUE.equals( verticalAlign ) )
-		{
-			int totalHeight = 0;
-			Iterator iter = cell.getChildren( );
-			while ( iter.hasNext( ) )
-			{
-				AbstractArea child = (AbstractArea) iter.next( );
-				totalHeight += child.getAllocatedHeight( );
-			}
-			int offset = cell.getContentHeight( ) - totalHeight;
-			if ( offset > 0 )
-			{
-				if ( IStyle.BOTTOM_VALUE.equals( verticalAlign ) )
-				{
-					iter = cell.getChildren( );
-					while ( iter.hasNext( ) )
-					{
-						AbstractArea child = (AbstractArea) iter.next( );
-						child.setAllocatedPosition( child.getAllocatedX( ),
-								child.getAllocatedY( ) + offset );
-					}
-				}
-				else if ( IStyle.MIDDLE_VALUE.equals( verticalAlign ) )
-				{
-					iter = cell.getChildren( );
-					while ( iter.hasNext( ) )
-					{
-						AbstractArea child = (AbstractArea) iter.next( );
-						child.setAllocatedPosition( child.getAllocatedX( ),
-								child.getAllocatedY( ) + offset / 2 );
-					}
-				}
-
-			}
-		}
-
-		CSSValue align = content.getComputedStyle( ).getProperty(
-				IStyle.STYLE_TEXT_ALIGN );
-
-		// bidi_hcg: handle empty or justify align in RTL direction as right
-		// alignment
-		boolean isRightAligned = BidiAlignmentResolver.isRightAligned( content,
-				align, false );
-
-		// single line
-		if ( isRightAligned || IStyle.CENTER_VALUE.equals( align ) )
-		{
-
-			Iterator iter = cell.getChildren( );
-			while ( iter.hasNext( ) )
-			{
-				AbstractArea area = (AbstractArea) iter.next( );
-				int spacing = cell.getContentWidth( )
-						- area.getAllocatedWidth( );
-				if ( spacing > 0 )
-				{
-					if ( isRightAligned )
-					{
-						area.setAllocatedPosition( spacing
-								+ area.getAllocatedX( ), area.getAllocatedY( ) );
-					}
-					else if ( IStyle.CENTER_VALUE.equals( align ) )
-					{
-						area.setAllocatedPosition( spacing / 2
-								+ area.getAllocatedX( ), area.getAllocatedY( ) );
-					}
-				}
-			}
-		}
-	}
-
 	public void reset( TableArea table )
 	{
 		Iterator iter = rows.iterator( );
@@ -504,7 +414,7 @@ public class TableAreaLayout
 						CellArea refCell = ( (DummyCell) cell ).getCell( );
 						refCell.setHeight( refCell.getHeight( ) + height
 								- originalRowHeight );
-						verticalAlign( refCell );
+						refCell.align( );
 					}
 				}
 				else
@@ -516,7 +426,7 @@ public class TableAreaLayout
 						refCell.setHeight( refCell.getHeight( ) - delta
 								+ height );
 					}
-					verticalAlign( refCell );
+					refCell.align( );
 				}
 			}
 			else
@@ -524,7 +434,7 @@ public class TableAreaLayout
 				if ( dValue != 0 )
 				{
 					cell.setHeight( height );
-					verticalAlign( cell );
+					cell.align( );
 				}
 			}
 			i = i + cell.getColSpan( ) - 1;
@@ -894,12 +804,12 @@ public class TableAreaLayout
 						refCell.setHeight( refCell.getHeight( ) - delta + height );
 					}
 					( (DummyCell) cell ).setDelta( 0 );
-					verticalAlign( refCell );
+					refCell.align(  );
 				}
 				else
 				{
 					cell.setHeight( height );
-					verticalAlign( cell );
+					cell.align( );
 				}				
 			}
 			i = i + cell.getColSpan( ) - 1;
