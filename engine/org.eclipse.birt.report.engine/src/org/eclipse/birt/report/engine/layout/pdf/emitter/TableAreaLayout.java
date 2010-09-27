@@ -592,8 +592,8 @@ public class TableAreaLayout
 			}
 		}
 		int oldHeight = row.getArea( ).getHeight( );
-		updateRowHeight( row, height );
 		rowHeightDelta = height - oldHeight; 
+		updateLastHeaderRowHeight( row, height );
 	}
 
 	boolean resolveRepeatHeader = true;
@@ -804,6 +804,37 @@ public class TableAreaLayout
 						refCell.setHeight( refCell.getHeight( ) - delta + height );
 					}
 					( (DummyCell) cell ).setDelta( 0 );
+					refCell.align(  );
+				}
+				else
+				{
+					cell.setHeight( height );
+					cell.align( );
+				}				
+			}
+			i = i + cell.getColSpan( ) - 1;
+		}
+	}
+	
+	/**
+	 * Updates the row height and the height of the cells in the row.
+	 * @param rowArea
+	 * @param height
+	 */
+	private void updateLastHeaderRowHeight( Row row, int height )
+	{
+		if ( height < 0 )
+			return;
+		row.getArea( ).setHeight( height );
+		for ( int i = startCol; i <= endCol; i++ )
+		{
+			CellArea cell = row.getCell( i );
+			if ( cell.getRowSpan( ) == 1 )
+			{
+				if ( cell instanceof DummyCell )
+				{
+					CellArea refCell = ( (DummyCell) cell ).getCell( );	
+					refCell.setHeight( refCell.getHeight( ) + rowHeightDelta );
 					refCell.align(  );
 				}
 				else

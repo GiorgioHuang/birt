@@ -30,9 +30,6 @@ public class CellArea extends ContainerArea
 			CSSPrimitiveValue.CSS_NUMBER, 1500 );
 
 	protected int rowSpan = 0;
-	
-	private boolean aligned = false;
-	private boolean verticalAligned = false;
 
 	public CellArea( )
 	{
@@ -125,10 +122,6 @@ public class CellArea extends ContainerArea
 	
 	public void align( )
 	{
-		if( aligned && verticalAligned )
-		{
-			return;
-		}
 		CellArea cell;
 		if ( this instanceof DummyCell )
 		{
@@ -161,26 +154,27 @@ public class CellArea extends ContainerArea
 				if ( IStyle.BOTTOM_VALUE.equals( verticalAlign ) )
 				{
 					iter = cell.getChildren( );
+					int y = cell.getContentY( ) - cell.getY( ) + offset;
 					while ( iter.hasNext( ) )
 					{
 						AbstractArea child = (AbstractArea) iter.next( );
-						child.setAllocatedPosition( child.getAllocatedX( ),
-								child.getAllocatedY( ) + offset );
+						child.setAllocatedPosition( child.getAllocatedX( ), y );
+						y += child.getAllocatedHeight( );
 					}
 				}
 				else if ( IStyle.MIDDLE_VALUE.equals( verticalAlign ) )
 				{
 					iter = cell.getChildren( );
+					int y = cell.getContentY( ) - cell.getY( ) + offset/2;
 					while ( iter.hasNext( ) )
 					{
 						AbstractArea child = (AbstractArea) iter.next( );
-						child.setAllocatedPosition( child.getAllocatedX( ),
-								child.getAllocatedY( ) + offset / 2 );
+						child.setAllocatedPosition( child.getAllocatedX( ), y );
+						y += child.getAllocatedHeight( );
 					}
 				}
 			}
 		}
-		verticalAligned = true;
 
 		CSSValue align = content.getComputedStyle( ).getProperty(
 				IStyle.STYLE_TEXT_ALIGN );
@@ -215,7 +209,6 @@ public class CellArea extends ContainerArea
 				}
 			}
 		}
-		aligned = true;
 	}
 
 }
