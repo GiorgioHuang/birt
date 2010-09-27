@@ -1731,6 +1731,7 @@ public class UIUtil
 		{
 			gd.widthHint = 20;
 			gd.heightHint = 20;
+			gd.horizontalAlignment = SWT.END;
 		}
 		button.setLayoutData( gd );
 

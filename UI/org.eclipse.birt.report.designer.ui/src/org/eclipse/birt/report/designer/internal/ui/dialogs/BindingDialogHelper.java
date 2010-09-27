@@ -11,6 +11,7 @@
 
 package org.eclipse.birt.report.designer.internal.ui.dialogs;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -25,12 +26,14 @@ import org.eclipse.birt.data.engine.api.aggregation.IAggrFunction;
 import org.eclipse.birt.data.engine.api.aggregation.IParameterDefn;
 import org.eclipse.birt.report.data.adapter.api.AdapterException;
 import org.eclipse.birt.report.data.adapter.api.DataAdapterUtil;
+import org.eclipse.birt.report.designer.core.model.SessionHandleAdapter;
 import org.eclipse.birt.report.designer.data.ui.dataset.DataSetUIUtil;
 import org.eclipse.birt.report.designer.data.ui.util.DataUtil;
 import org.eclipse.birt.report.designer.internal.ui.util.ExceptionHandler;
 import org.eclipse.birt.report.designer.internal.ui.util.UIUtil;
 import org.eclipse.birt.report.designer.internal.ui.util.WidgetUtil;
 import org.eclipse.birt.report.designer.nls.Messages;
+import org.eclipse.birt.report.designer.ui.ReportPlatformUIImages;
 import org.eclipse.birt.report.designer.ui.dialogs.BindingExpressionProvider;
 import org.eclipse.birt.report.designer.ui.dialogs.ExpressionBuilder;
 import org.eclipse.birt.report.designer.ui.views.attributes.providers.ChoiceSetFactory;
@@ -43,6 +46,7 @@ import org.eclipse.birt.report.model.api.DataSetHandle;
 import org.eclipse.birt.report.model.api.DesignElementHandle;
 import org.eclipse.birt.report.model.api.GridHandle;
 import org.eclipse.birt.report.model.api.GroupHandle;
+import org.eclipse.birt.report.model.api.IResourceLocator;
 import org.eclipse.birt.report.model.api.ListHandle;
 import org.eclipse.birt.report.model.api.ListingHandle;
 import org.eclipse.birt.report.model.api.ReportItemHandle;
@@ -65,7 +69,8 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.events.TraverseEvent;
+import org.eclipse.swt.events.TraverseListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -126,6 +131,12 @@ public class BindingDialogHelper extends AbstractBindingDialogHelper
 	private boolean isCreate;
 	private boolean isRef;
 	private Object container;
+	private Text txtDisplayNameID;
+	
+	private static final String EMPTY_STRING = ""; //$NON-NLS-1$
+	protected static final String DISPLAY_NAME_ID = Messages.getString( "BindingDialogHelper.text.displayNameID" ); //$NON-NLS-1$
+	
+	private Button btnRemoveDisplayNameID;
 
 	public void createContent( Composite parent )
 	{
@@ -134,18 +145,19 @@ public class BindingDialogHelper extends AbstractBindingDialogHelper
 		isRef = getBindingHolder( ).getDataBindingType( ) == ReportItemHandle.DATABINDING_TYPE_REPORT_ITEM_REF;
 		composite = parent;
 
-		( (GridLayout) composite.getLayout( ) ).numColumns = 3;
+		( (GridLayout) composite.getLayout( ) ).numColumns = 4;
 
 		lbName = new Label( composite, SWT.NONE );
 		lbName.setText( NAME );
 
 		GridData gd = new GridData( GridData.FILL_HORIZONTAL );
-		gd.horizontalSpan = 2;
+		gd.horizontalSpan = 3;
 		gd.widthHint = 200;
 		if ( isRef )
 		{
 			cmbName = new Combo( composite, SWT.BORDER | SWT.READ_ONLY );
 			cmbName.setLayoutData( gd );
+			cmbName.setVisibleItemCount( 30 );
 			cmbName.addSelectionListener( new SelectionAdapter( ) {
 
 				public void widgetSelected( SelectionEvent e )
@@ -182,6 +194,47 @@ public class BindingDialogHelper extends AbstractBindingDialogHelper
 		}
 		// WidgetUtil.createGridPlaceholder( composite, 1, false );
 
+		Label lbDisplayNameID = new Label( composite, SWT.NONE );
+		lbDisplayNameID.setText( DISPLAY_NAME_ID );
+		lbDisplayNameID.addTraverseListener( new TraverseListener( ) {
+
+			public void keyTraversed( TraverseEvent e )
+			{
+				if ( e.detail == SWT.TRAVERSE_MNEMONIC && e.doit )
+				{
+					e.detail = SWT.TRAVERSE_NONE;
+					openKeySelectionDialog( );
+				}
+			}
+		} );
+		txtDisplayNameID = new Text( composite, SWT.BORDER | SWT.READ_ONLY );
+		txtDisplayNameID.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+
+		Button btnDisplayNameID = new Button( composite, SWT.NONE );
+		btnDisplayNameID.setEnabled( getResourceURL( ) != null ? true : false );
+		btnDisplayNameID.setText( "..." ); //$NON-NLS-1$
+		btnDisplayNameID.setToolTipText( Messages.getString( "ResourceKeyDescriptor.button.browse.tooltip" ) ); //$NON-NLS-1$
+		btnDisplayNameID.addSelectionListener( new SelectionAdapter( ) {
+
+			public void widgetSelected( SelectionEvent event )
+			{
+				openKeySelectionDialog( );
+			}
+		} );
+
+		btnRemoveDisplayNameID = new Button( composite, SWT.NONE );
+		btnRemoveDisplayNameID.setImage( ReportPlatformUIImages.getImage( ISharedImages.IMG_TOOL_DELETE ) );
+		btnRemoveDisplayNameID.setToolTipText( Messages.getString( "ResourceKeyDescriptor.button.reset.tooltip" ) ); //$NON-NLS-1$
+		btnRemoveDisplayNameID.addSelectionListener( new SelectionAdapter( ) {
+
+			public void widgetSelected( SelectionEvent event )
+			{
+				txtDisplayNameID.setText( EMPTY_STRING );
+				txtDisplayName.setText( EMPTY_STRING );
+				updateRemoveBtnState( );
+			}
+		} );
+		
 		new Label( composite, SWT.NONE ).setText( DISPLAY_NAME );
 		txtDisplayName = new Text( composite, SWT.BORDER );
 		txtDisplayName.setLayoutData( gd );
@@ -220,6 +273,22 @@ public class BindingDialogHelper extends AbstractBindingDialogHelper
 		setContentSize(composite);
 	}
 
+	private void openKeySelectionDialog( )
+	{
+		ResourceEditDialog dlg = new ResourceEditDialog( composite.getShell( ),
+				Messages.getString( "ResourceKeyDescriptor.title.SelectKey" ) ); //$NON-NLS-1$
+
+		dlg.setResourceURL( getResourceURL( ) );
+
+		if ( dlg.open( ) == Window.OK )
+		{
+			String[] result = (String[]) dlg.getDetailResult( );
+			txtDisplayNameID.setText( result[0] );
+			txtDisplayName.setText( result[1] );
+			updateRemoveBtnState( );
+		}
+	}
+	
 	public void initDialog( )
 	{
 		cmbType.setItems( dataTypes );
@@ -263,6 +332,7 @@ public class BindingDialogHelper extends AbstractBindingDialogHelper
 				else
 				{
 					setDisplayName( getBinding( ).getDisplayName( ) );
+					setDisplayNameID( getBinding( ).getDisplayNameID( ) );
 					for ( int i = 0; i < DATA_TYPE_CHOICES.length; i++ )
 					{
 						if ( DATA_TYPE_CHOICES[i].getName( )
@@ -319,6 +389,7 @@ public class BindingDialogHelper extends AbstractBindingDialogHelper
 					i++;
 				}
 				setDisplayName( getBinding( ).getDisplayName( ) );
+				setDisplayNameID( getBinding( ).getDisplayNameID( ) );
 				for ( i = 0; i < DATA_TYPE_CHOICES.length; i++ )
 				{
 					if ( DATA_TYPE_CHOICES[i].getName( )
@@ -334,7 +405,7 @@ public class BindingDialogHelper extends AbstractBindingDialogHelper
 			{
 				setName( getBinding( ).getName( ) );
 				setDisplayName( getBinding( ).getDisplayName( ) );
-
+				setDisplayNameID( getBinding( ).getDisplayNameID( ) );
 				if ( getBinding( ).getDataType( ) != null )
 				{
 					if ( DATA_TYPE_CHOICE_SET.findChoice( getBinding( ).getDataType( ) ) != null )
@@ -648,6 +719,12 @@ public class BindingDialogHelper extends AbstractBindingDialogHelper
 			txtDisplayName.setText( displayName );
 	}
 
+	private void setDisplayNameID( String displayNameID )
+	{
+		if ( displayNameID != null && txtDisplayNameID != null )
+			txtDisplayNameID.setText( displayNameID );
+	}
+
 	private void setTypeSelect( String typeSelect )
 	{
 		if ( dataTypes != null && cmbType != null )
@@ -675,7 +752,7 @@ public class BindingDialogHelper extends AbstractBindingDialogHelper
 		new Label( composite, SWT.NONE ).setText( FUNCTION );
 		cmbFunction = new Combo( composite, SWT.BORDER | SWT.READ_ONLY );
 		GridData gd = new GridData( GridData.FILL_HORIZONTAL );
-		gd.horizontalSpan = 2;
+		gd.horizontalSpan = 3;
 		cmbFunction.setLayoutData( gd );
 
 		// WidgetUtil.createGridPlaceholder( composite, 1, false );
@@ -692,7 +769,7 @@ public class BindingDialogHelper extends AbstractBindingDialogHelper
 		paramsComposite = new Composite( composite, SWT.NONE );
 		GridData gridData = new GridData( GridData.FILL_HORIZONTAL );
 		gridData.horizontalIndent = 0;
-		gridData.horizontalSpan = 3;
+		gridData.horizontalSpan = 4;
 		gridData.exclude = true;
 		paramsComposite.setLayoutData( gridData );
 		GridLayout layout = new GridLayout( );
@@ -703,8 +780,9 @@ public class BindingDialogHelper extends AbstractBindingDialogHelper
 
 		new Label( composite, SWT.NONE ).setText( FILTER_CONDITION );
 		txtFilter = new Text( composite, SWT.BORDER );
-		txtFilter.setLayoutData( new GridData( GridData.FILL_HORIZONTAL
-				| GridData.GRAB_HORIZONTAL ) );
+		gd = new GridData( GridData.FILL_HORIZONTAL );
+		gd.horizontalSpan = 2;
+		txtFilter.setLayoutData( gd );
 
 		createExpressionButton( composite, txtFilter );
 
@@ -724,7 +802,7 @@ public class BindingDialogHelper extends AbstractBindingDialogHelper
 
 		Composite aggOnComposite = new Composite( composite, SWT.NONE );
 		gridData = new GridData( GridData.FILL_HORIZONTAL );
-		gridData.horizontalSpan = 2;
+		gridData.horizontalSpan = 3;
 		aggOnComposite.setLayoutData( gridData );
 
 		layout = new GridLayout( );
@@ -789,7 +867,9 @@ public class BindingDialogHelper extends AbstractBindingDialogHelper
 	{
 		new Label( composite, SWT.NONE ).setText( EXPRESSION );
 		txtExpression = new Text( composite, SWT.BORDER );
-		txtExpression.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+		GridData gd = new GridData( GridData.FILL_HORIZONTAL );
+		gd.horizontalSpan = 2;
+		txtExpression.setLayoutData( gd );
 		createExpressionButton( composite, txtExpression );
 		txtExpression.addModifyListener( new ModifyListener( ) {
 
@@ -1153,6 +1233,7 @@ public class BindingDialogHelper extends AbstractBindingDialogHelper
 	public void validate( )
 	{
 		verifyInput( );
+		updateRemoveBtnState( );
 	}
 
 	public boolean differs( ComputedColumnHandle binding )
@@ -1287,7 +1368,7 @@ public class BindingDialogHelper extends AbstractBindingDialogHelper
 		if ( isAggregate( ) )
 		{
 			binding.setDisplayName( txtDisplayName.getText( ) );
-
+			binding.setDisplayNameID( txtDisplayNameID.getText( ) );
 			for ( int i = 0; i < DATA_TYPE_CHOICES.length; i++ )
 			{
 				if ( DATA_TYPE_CHOICES[i].getDisplayName( )
@@ -1340,6 +1421,7 @@ public class BindingDialogHelper extends AbstractBindingDialogHelper
 				}
 			}
 			binding.setDisplayName( txtDisplayName.getText( ) );
+			binding.setDisplayNameID( txtDisplayNameID.getText( ) );
 			binding.setExpression( txtExpression.getText( ) );
 		}
 		return binding;
@@ -1509,4 +1591,23 @@ public class BindingDialogHelper extends AbstractBindingDialogHelper
 		return dialog.open( ) == 0;
 	}
 
+	private URL getResourceURL( )
+	{
+		return SessionHandleAdapter.getInstance( )
+				.getReportDesignHandle( )
+				.findResource( getBaseName( ), IResourceLocator.MESSAGE_FILE );
+	}
+
+	private String getBaseName( )
+	{
+		return SessionHandleAdapter.getInstance( )
+				.getReportDesignHandle( )
+				.getIncludeResource( );
+	}
+
+	private void updateRemoveBtnState( )
+	{
+		btnRemoveDisplayNameID.setEnabled( txtDisplayNameID.getText( ).equals( EMPTY_STRING ) ? false
+				: true );
+	}
 }
