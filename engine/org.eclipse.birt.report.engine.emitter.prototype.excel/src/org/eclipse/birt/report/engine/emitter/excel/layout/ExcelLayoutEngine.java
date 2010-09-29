@@ -280,7 +280,9 @@ public class ExcelLayoutEngine
 				Data upstair = cache
 						.getColumnLastData( currentColumnIndex );
 				
-				if ( upstair != null && canSpan(upstair, rowContainer ) )
+				if ( upstair != null
+						&& canSpan( upstair, rowContainer, currentColumnIndex,
+								endColumnIndex ) )
 				{
 					Data predata = upstair;
 					int rs = predata.getRowSpan( ) + rowspan;
@@ -302,14 +304,35 @@ public class ExcelLayoutEngine
 		}
 	}
 
-	private boolean canSpan( Data data, XlsContainer rowContainer )
+	private boolean canSpan( Data data, XlsContainer rowContainer, int currentColumn, int lastColumn )
 	{
 		Data realData = getRealData(data);
 		if ( realData == null )
 			return false;
-		if ( isInContainer( realData, rowContainer ) )
+		if ( !isInContainer( realData, rowContainer ) )
 		{
-			return true;
+			return false;
+		}
+		
+		//Data can only span if the span doesn't conflict with some other items.
+		for ( int i = currentColumn + 1; i < lastColumn; i++ )
+		{
+			Data lastData = cache.getColumnLastData( i );
+			Data lastRealData = getRealData( lastData );
+			
+			// If there is some item under current data and would be
+			// overridden if current data span rows, then current data can't
+			// span.
+			if ( lastRealData == null
+					|| lastRealData.getRowIndex( ) <= realData.getRowIndex( ) )
+			{
+				continue;
+			}
+			if ( realData.getSizeInfo( ).getEndCoordinate( ) > lastRealData
+					.getSizeInfo( ).getStartCoordinate( ) )
+			{
+				return false;
+			}
 		}
 		return realData.getRowSpanInDesign( ) > 0;
 	}
