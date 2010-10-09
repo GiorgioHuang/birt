@@ -44,12 +44,11 @@ feature@org.eclipse.birt.report.data.oda.jdbc.dbprofile.feature=r232_v20081010,:
 !*************** Third Party Features  ***********
 feature@org.eclipse.birt.thirdparty=r232_v20081010,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/features/org.eclipse.birt.thirdparty.feature
 plugin@org.eclipse.birt.thirdparty=r232_v20090521,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/org.eclipse.birt.thirdparty
-feature@org.eclipse.birt.nl=r232_v20090227,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/features/org.eclipse.birt.nl.feature
+feature@org.eclipse.birt.nl=r232_v20101009,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/features/org.eclipse.birt.nl.feature
 feature@org.eclipse.birt.dtp.nl=v200811271130,:ext:xgu@dev.eclipse.org:/cvsroot/datatools,,org.eclipse.datatools.build/R1.6_Feature_Projects/org.eclipse.birt.dtp.nl.feature
 feature@org.eclipse.birt.rcp.nl=r232_v20091229,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/features/org.eclipse.birt.rcp.nl.feature
 feature@org.eclipse.birt.dtp.sybase.nl=v200912291500,:ext:xgu@dev.eclipse.org:/cvsroot/datatools,,org.eclipse.datatools.build/R1.6_Feature_Projects/org.eclipse.birt.dtp.sybase.nl.feature
-
-
+feature@org.eclipse.birt.wtp.nl=r232_v20101009,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/features/org.eclipse.birt.wtp.nl.feature
 
 !*** Apache Xerces**************************************************************************** 
 feature@org.apache.commons.codec=v20070920,:ext:xgu@dev.eclipse.org:/cvsroot/birt,,source/features/org.apache.commons.codec.feature 
