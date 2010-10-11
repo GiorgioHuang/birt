@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2004, 2007 Actuate Corporation.
+ * Copyright (c) 2004, 2010 Actuate Corporation.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -500,13 +500,11 @@ public class CallStatement implements IAdvancedQuery
 			if ( paramMetaData != null
 					&& paramMetaData.getParameterCount( ) >= i )
 				return paramMetaData.getParameterType( i );
-			else
-				return parameterDefn.getParameterType( i );
 		}
-		catch ( OdaException ex )
+		catch ( Exception ex )
 		{
-			return parameterDefn.getParameterType( i );
 		}
+		return parameterDefn.getParameterType( i );
 	}
 	
 	/**
@@ -1072,7 +1070,7 @@ public class CallStatement implements IAdvancedQuery
 		assertNotNull( callStat );
 		try
 		{
-			if ( this.getParameterMetaData( ) != null )
+			if ( this.parameterDefn != null )
 			{
 				this.callStat.setNull( parameterId, getParameterType( parameterId ) );
 			}
