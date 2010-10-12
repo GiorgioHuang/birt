@@ -19,7 +19,6 @@ import java.util.logging.SimpleFormatter;
 import java.util.logging.StreamHandler;
 
 import org.eclipse.birt.report.engine.EngineCase;
-import org.eclipse.birt.report.engine.api.impl.EngineLoggerHandler;
 
 public class EngintTaskLoggerTest extends EngineCase
 {
