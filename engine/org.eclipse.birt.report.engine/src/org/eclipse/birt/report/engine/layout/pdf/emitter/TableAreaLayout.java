@@ -124,8 +124,13 @@ public class TableAreaLayout
 					{
 						upperCell = unresolvedRow.getCell( i );
 						usedResolvedRow = true;
+						cell = createEmptyCell( upperCell, i, row, lastRow,
+								unresolvedRow.isFinished( ) );
 					}
-					cell = createEmptyCell( upperCell, i, row, lastRow );	
+					else
+					{
+						cell = createEmptyCell( null, i, row, lastRow, true );
+					}
 				}
 				i = i + cell.getColSpan( ) - 1;
 			}
@@ -431,7 +436,7 @@ public class TableAreaLayout
 			}
 			else
 			{
-				if ( dValue != 0 )
+				if ( height != cell.getHeight( ) )
 				{
 					cell.setHeight( height );
 					cell.align( );
@@ -658,8 +663,13 @@ public class TableAreaLayout
 					{
 						upperCell = unresolvedRow.getCell( i );
 						usedResolvedRow = true;
+						cell = createEmptyCell( upperCell, i, row, lastRow,
+								unresolvedRow.isFinished( ) );
 					}
-					cell = createEmptyCell( upperCell, i, row, lastRow );	
+					else
+					{
+						cell = createEmptyCell( null, i, row, lastRow, true );
+					}
 				}
 				if( cell.getRowSpan( ) == 1 )
 				{
@@ -708,7 +718,7 @@ public class TableAreaLayout
 	}
 	
 	private CellArea createEmptyCell( CellArea upperCell,
-			int columnId, Row row, Row lastRow )
+			int columnId, Row row, Row lastRow, boolean unresolvedRowFinished )
 	{
 		ICellContent cellContent = null;
 		int rowSpan = 1;
@@ -716,7 +726,15 @@ public class TableAreaLayout
 		if ( upperCell != null )
 		{
 			cellContent = (ICellContent) upperCell.getContent( );
-			rowSpan = upperCell.getRowSpan( );
+			if ( unresolvedRowFinished )
+			{
+				rowSpan = upperCell.getRowSpan( ) - 1;	
+			}
+			else
+			{
+				rowSpan = upperCell.getRowSpan( );
+			}
+			
 		}
 		
 		if ( cellContent == null )
