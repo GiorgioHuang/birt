@@ -53,6 +53,7 @@ public class Data implements Serializable, Cloneable
 		this(data.getText( ), data.getStyle( ), data.getDatatype( ), data
 				.getContainer( ) );
 		this.rowIndex = data.getRowIndex( );
+		this.sizeInfo = data.getSizeInfo( );
 	}
 	
 	public Data(final Object txt, final String datatype, XlsContainer container )
