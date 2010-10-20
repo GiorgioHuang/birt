@@ -339,7 +339,7 @@ public class ExcelLayoutEngine
 	
 	private Data getRealData(Data data )
 	{
-		if ( data.isBlank( ) )
+		if ( data != null && data.isBlank( ) )
 		{
 			return ((BlankData)data).getData( );
 		}
