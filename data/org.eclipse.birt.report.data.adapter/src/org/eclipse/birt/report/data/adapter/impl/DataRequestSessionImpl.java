@@ -90,6 +90,7 @@ import org.eclipse.birt.report.model.api.DesignElementHandle;
 import org.eclipse.birt.report.model.api.DimensionConditionHandle;
 import org.eclipse.birt.report.model.api.DimensionJoinConditionHandle;
 import org.eclipse.birt.report.model.api.FilterConditionHandle;
+import org.eclipse.birt.report.model.api.GroupHandle;
 import org.eclipse.birt.report.model.api.JointDataSetHandle;
 import org.eclipse.birt.report.model.api.LevelAttributeHandle;
 import org.eclipse.birt.report.model.api.ModuleHandle;
@@ -204,11 +205,16 @@ public class DataRequestSessionImpl extends DataRequestSession
 	 * (non-Javadoc)
 	 * @see org.eclipse.birt.report.data.adapter.api.DataRequestSession#getColumnValueIterator(org.eclipse.birt.report.model.api.DataSetHandle, java.util.Iterator, java.util.Iterator, java.lang.String)
 	 */
-	public IColumnValueIterator getColumnValueIterator (  DataSetHandle dataSet,
+	public IColumnValueIterator getColumnValueIterator( DataSetHandle dataSet,
 			Iterator inputParamBindings, Iterator columnBindings,
 			String boundColumnName ) throws BirtException
 	{
-		return this.getColumnValueIterator(dataSet, inputParamBindings, columnBindings, boundColumnName, null );
+		return this.getColumnValueIterator( dataSet,
+				inputParamBindings,
+				columnBindings,
+				null,
+				boundColumnName,
+				null );
 	}
 	
 	/**
@@ -216,6 +222,7 @@ public class DataRequestSessionImpl extends DataRequestSession
 	 * @param dataSet
 	 * @param inputParamBindings
 	 * @param columnBindings
+	 * @param groupDefn
 	 * @param boundColumnName
 	 * @param requestInfo
 	 * @return
@@ -223,22 +230,17 @@ public class DataRequestSessionImpl extends DataRequestSession
 	 */
 	private IColumnValueIterator getColumnValueIterator( DataSetHandle dataSet,
 			Iterator inputParamBindings, Iterator columnBindings,
-			String boundColumnName, IRequestInfo requestInfo ) throws BirtException
+			Iterator groupDefn, String boundColumnName, IRequestInfo requestInfo )
+			throws BirtException
 	{
-		ArrayList temp = new ArrayList( );
-		
-		while ( columnBindings != null && columnBindings.hasNext( ) )
-		{
-			temp.add( columnBindings.next( ) );
-		}
-//		if ( referToAggregation( temp, boundColumnName ) )
-//			return new ColumnValueIterator( null, null, null );
-		
 		IQueryResults queryResults = getQueryResults( dataSet,
 				inputParamBindings,
-				temp.iterator( ),
+				columnBindings,
+				groupDefn,
 				boundColumnName );
-		return new ColumnValueIterator( queryResults, boundColumnName, requestInfo );
+		return new ColumnValueIterator( queryResults,
+				boundColumnName,
+				requestInfo );
 	}
 	
 	/*
@@ -253,9 +255,10 @@ public class DataRequestSessionImpl extends DataRequestSession
 		IColumnValueIterator columnValueIterator = getColumnValueIterator( dataSet,
 				inputParamBindings,
 				columnBindings,
+				null,
 				boundColumnName,
 				requestInfo );
-		
+
 		ArrayList values = new ArrayList( );
 
 		do
@@ -268,7 +271,33 @@ public class DataRequestSessionImpl extends DataRequestSession
 
 		return values;
 	}
+	
+	/*
+	 * @see org.eclipse.birt.report.data.adapter.api.DataRequestSession#getColumnValueSet(org.eclipse.birt.report.model.api.DataSetHandle, java.util.Iterator, java.util.Iterator, java.util.Iterator, java.lang.String, org.eclipse.birt.report.data.adapter.api.IRequestInfo)
+	 */
+	public Collection getColumnValueSet( DataSetHandle dataSet,
+			Iterator inputParamBindings, Iterator columnBindings,
+			Iterator groupDefns, String boundColumnName,
+			IRequestInfo requestInfo ) throws BirtException
+	{
+		IColumnValueIterator columnValueIterator = getColumnValueIterator( dataSet,
+				inputParamBindings,
+				columnBindings,
+				groupDefns,
+				boundColumnName,
+				requestInfo );
 
+		ArrayList values = new ArrayList( );
+
+		do
+		{
+			if ( columnValueIterator.getValue( ) != null )
+				values.add( columnValueIterator.getValue( ) );
+		} while ( columnValueIterator.next( ) );
+
+		columnValueIterator.close( );
+		return values;
+	}
 	/*
 	 * @see org.eclipse.birt.report.data.adaptor.api.DataRequestSession#refreshMetaData(org.eclipse.birt.report.model.api.DataSetHandle)
 	 */
@@ -390,7 +419,7 @@ public class DataRequestSessionImpl extends DataRequestSession
 	 */
 	private IQueryResults getQueryResults( DataSetHandle dataSet,
 			Iterator inputParamBindings, Iterator columnBindings,
-			String boundColumnName ) throws BirtException
+			Iterator groupDefns, String boundColumnName ) throws BirtException
 	{
 		assert dataSet != null;
 		// TODO: this is the inefficient implementation
@@ -408,7 +437,17 @@ public class DataRequestSessionImpl extends DataRequestSession
 			query.setAutoBinding(true);
 			useDataSetFilter = false;
 		}
-
+		
+		if ( groupDefns != null )
+		{
+			while ( groupDefns.hasNext( ) )
+			{
+				GroupHandle groupHandle = (GroupHandle) groupDefns.next( );
+				query.addGroup( this.modelAdaptor.adaptGroup( groupHandle ) );
+			}
+		}
+		
+		
 		ModuleHandle moduleHandle = sessionContext.getModuleHandle( );
 		if ( moduleHandle == null )
 			moduleHandle = dataSet.getModuleHandle( );
@@ -426,47 +465,6 @@ public class DataRequestSessionImpl extends DataRequestSession
 		return results;
 	}
 
-	/**
-	 * This method is used to validate the column binding to see if it contains aggregations.
-	 * If so then return true, else return false;
-	 * 
-	 * @param columnBindings
-	 * @param boundColumnName
-	 * @throws BirtException
-	 */
-	private boolean referToAggregation( List bindings,
-			String boundColumnName ) throws BirtException
-	{
-		if ( boundColumnName == null )
-			return true;
-		Iterator columnBindings = bindings.iterator( ); 
-		while ( columnBindings != null && columnBindings.hasNext( ) )
-		{
-			IComputedColumn column = this.modelAdaptor.adaptComputedColumn( (ComputedColumnHandle) columnBindings.next( ) );
-			if ( column.getName( ).equals( boundColumnName ) )
-			{
-				ScriptExpression sxp = (ScriptExpression) column.getExpression( );
-				if ( column.getAggregateFunction( )!= null || ExpressionUtil.hasAggregation( sxp.getText( ) ) )
-				{
-					return true;
-				}
-				else
-				{
-					Iterator columnBindingNameIt = ExpressionUtil.extractColumnExpressions( sxp.getText( ) )
-							.iterator( );
-					while ( columnBindingNameIt.hasNext( ) )
-					{
-						IColumnBinding columnBinding = (IColumnBinding)columnBindingNameIt.next( );
-						
-						if ( referToAggregation( bindings,
-								columnBinding.getResultSetColumnName( ) ) )
-							return true;
-					}
-				}
-			}
-		}
-		return false;
-	}
 	/*
 	 * (non-Javadoc)
 	 * @see org.eclipse.birt.report.data.adapter.api.DataRequestSession#execute(org.eclipse.birt.data.engine.api.IBasePreparedQuery, org.eclipse.birt.data.engine.api.IBaseQueryResults, org.mozilla.javascript.Scriptable)
