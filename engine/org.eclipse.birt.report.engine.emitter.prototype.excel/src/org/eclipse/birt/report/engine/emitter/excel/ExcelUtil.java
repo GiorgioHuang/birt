@@ -819,6 +819,10 @@ public class ExcelUtil
 						String symbol = getCurrencySymbol( locale );
 						returnStr = returnStr + "\"" + symbol + "\"";
 					}
+					else if ( temp == '‰' )
+					{
+						returnStr = returnStr + "%";
+					}
 					else if ( currencySymbol.indexOf( temp ) != -1 )
 					{
 						returnStr = returnStr + "\"" + temp + "\"";

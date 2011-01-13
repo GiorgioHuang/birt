@@ -389,6 +389,14 @@ public class ExcelLayoutEngine
 	
 	public void endContainer( )
 	{
+		XlsContainer container = getCurrentContainer( );
+		if ( container.isEmpty( ) )
+		{
+			Data data = new Data( EMPTY, container.getStyle( ), Data.STRING,
+					container );
+			data.setSizeInfo( container.getSizeInfo( ) );
+			addData( data );
+		}
 		setParentContainerIndex( );
 		endNormalContainer( );
 	}
@@ -403,14 +411,6 @@ public class ExcelLayoutEngine
 
 	private void endNormalContainer( )
 	{
-		XlsContainer container = getCurrentContainer( );
-		if ( container.isEmpty( ) )
-		{
-			Data data = new Data( EMPTY, container.getStyle( ), Data.STRING,
-					container );
-			data.setSizeInfo( container.getSizeInfo( ) );
-			addData( data );
-		}
 		engine.applyContainerBottomStyle( );
 		containers.pop( );
 	}
