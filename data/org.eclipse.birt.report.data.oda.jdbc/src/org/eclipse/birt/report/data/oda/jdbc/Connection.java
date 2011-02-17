@@ -454,6 +454,16 @@ public class Connection implements IConnection
 		}
 		catch ( SQLException e )
 		{
+			try 
+			{
+				if (DBConfig.getInstance().qualifyPolicy(
+						jdbcConn.getMetaData().getDriverName(),
+						DBConfig.IGNORE_UNIMPORTANT_EXCEPTION))
+					return;
+			} 
+			catch (SQLException e1) {
+
+			}
 			throw new JDBCException( ResourceConstants.CONN_CANNOT_CLOSE, e );
 		}
 		jdbcConn = null;
