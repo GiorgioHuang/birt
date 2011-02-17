@@ -61,10 +61,12 @@ public class DBConfig
 	 */
 	public boolean qualifyPolicy( String driverName, int policyNumber )
 	{
+		if( driverName == null )
+			return false;
 		Set<String> policySet = driverPolicy.get( policyNumber );
 		if( policySet == null )
 			return false;
-		return policySet.contains( driverName );
+		return policySet.contains( driverName.toUpperCase() );
 	}
 	
 	/**
@@ -74,11 +76,13 @@ public class DBConfig
 	 */
 	public void putPolicy( String driverName, int policy )
 	{
+		if( driverName == null )
+			return;
 		if( !driverPolicy.containsKey(policy))
 		{
 			driverPolicy.put( policy, new HashSet<String>());	
 		}
-		driverPolicy.get(policy).add(driverName);
+		driverPolicy.get(policy).add(driverName.toUpperCase());
 	}
 	
 	/**
