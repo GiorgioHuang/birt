@@ -105,7 +105,7 @@ public class Statement implements IQuery
 	 */
 	public void prepare( String command ) throws OdaException
 	{
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINEST,
 				Statement.class.getName( ),
 				"prepare",
 				"Statement.prepare( \"" + command + "\" )" );
@@ -218,7 +218,7 @@ public class Statement implements IQuery
 	 */
 	public void close( ) throws OdaException
 	{
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINER,
 				Statement.class.getName( ),
 				"close",
 				"Statement.close( )" );
@@ -253,7 +253,7 @@ public class Statement implements IQuery
 	 */
 	public void setMaxRows( int max )
 	{
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINEST,
 				Statement.class.getName( ),
 				"setMaxRows",
 				"Statement.setMaxRows( " + max + " )" );
@@ -269,7 +269,7 @@ public class Statement implements IQuery
 	 */
 	public int getMaxRows( )
 	{
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINEST,
 				Statement.class.getName( ),
 				"getMaxRows",
 				"Statement.getMaxRows( )" );
@@ -282,7 +282,7 @@ public class Statement implements IQuery
 	 */
 	public IResultSetMetaData getMetaData( ) throws OdaException
 	{
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINEST,
 				Statement.class.getName( ),
 				"getMetaData",
 				"Statement.getMetaData( )" );		
@@ -426,7 +426,7 @@ public class Statement implements IQuery
 	 */
 	public IResultSet executeQuery( ) throws OdaException
 	{
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINER,
 				Statement.class.getName( ),
 				"executeQuery",
 				"Statement.executeQuery( )" );
@@ -922,7 +922,7 @@ public class Statement implements IQuery
 	{
 		/* not supported */
 		UnsupportedOperationException e = new UnsupportedOperationException( "setSortSpec is not supported." );
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINEST,
 				Statement.class.getName( ),
 				"getSortSpec",
 				"getSortSpec is not supported.",
@@ -983,7 +983,7 @@ public class Statement implements IQuery
 	{
 		OdaException odaException = new OdaException( msg );
 		odaException.initCause( e );
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINEST,
 				Statement.class.getName( ),
 				"rethrowRunTimeException",
 				msg,
@@ -992,8 +992,8 @@ public class Statement implements IQuery
 	}
 	
 	private void addLog ( String methodName, int parameterId, String value ){
-		if ( logger.isLoggable( Level.FINE ) )
-			logger.logp( Level.FINE,
+		if ( logger.isLoggable( Level.FINEST ) )
+			logger.logp( Level.FINEST,
 					Statement.class.getName( ),
 					methodName,
 					"parameter " + parameterId + " = " + value );

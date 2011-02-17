@@ -132,7 +132,7 @@ public class CallStatement implements IAdvancedQuery
 	 */
 	public void prepare( String command ) throws OdaException
 	{
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINEST,
 				CallStatement.class.getName( ),
 				"prepare",
 				"CallableStatement.prepare( \"" + command + "\" )" );
@@ -258,7 +258,7 @@ public class CallStatement implements IAdvancedQuery
 	 */
 	public void close( ) throws OdaException
 	{
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINER,
 				CallStatement.class.getName( ),
 				"close",
 				"CallStatement.close( )" );
@@ -293,7 +293,7 @@ public class CallStatement implements IAdvancedQuery
 	 */
 	public void setMaxRows( int max )
 	{
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINEST,
 				CallStatement.class.getName( ),
 				"setMaxRows",
 				"CallStatement.setMaxRows( " + max + " )" );
@@ -309,7 +309,7 @@ public class CallStatement implements IAdvancedQuery
 	 */
 	public int getMaxRows( )
 	{
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINEST,
 				CallStatement.class.getName( ),
 				"getMaxRows",
 				"CallStatement.getMaxRows( )" );
@@ -322,7 +322,7 @@ public class CallStatement implements IAdvancedQuery
 	 */
 	public IResultSetMetaData getMetaData( ) throws OdaException
 	{
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINEST,
 				CallStatement.class.getName( ),
 				"getMetaData",
 				"CallableStatement.getMetaData( )" );
@@ -375,7 +375,7 @@ public class CallStatement implements IAdvancedQuery
 	 */
 	public IResultSet executeQuery( ) throws OdaException
 	{
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINER,
 				CallStatement.class.getName( ),
 				"executeQuery",
 				"CallableStatement.executeQuery( )" );
@@ -586,7 +586,7 @@ public class CallStatement implements IAdvancedQuery
 	 */
 	public boolean execute( ) throws OdaException
 	{
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINER,
 				CallStatement.class.getName( ),
 				"execute",
 				"CallableStatement.execute( )" );
@@ -1118,7 +1118,7 @@ public class CallStatement implements IAdvancedQuery
     {
 		/* not supported */
 		UnsupportedOperationException e = new UnsupportedOperationException( "No named Parameter supported." );
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINEST,
 				Statement.class.getName( ),
 				"findInParameter",
 				"No named Parameter supported.",
@@ -1830,7 +1830,7 @@ public class CallStatement implements IAdvancedQuery
 	{
 		/* not supported */
 		UnsupportedOperationException e = new UnsupportedOperationException( "No named Parameter supported." );
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINEST,
 				Statement.class.getName( ),
 				"findInParameter",
 				"No named Parameter supported.",
@@ -1845,7 +1845,7 @@ public class CallStatement implements IAdvancedQuery
 	{
 		/* not supported */
 		UnsupportedOperationException e = new UnsupportedOperationException( "No named Parameter supported." );
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINEST,
 				Statement.class.getName( ),
 				"findOutParameter",
 				"No named Parameter supported.",
@@ -2018,7 +2018,7 @@ public class CallStatement implements IAdvancedQuery
 	{
 		/* not supported */
 		UnsupportedOperationException e = new UnsupportedOperationException( "setSortSpec is not supported." );
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINEST,
 				CallStatement.class.getName( ),
 				"setSortSpec",
 				"setSortSpec is not supported.",
@@ -2032,7 +2032,7 @@ public class CallStatement implements IAdvancedQuery
 	public SortSpec getSortSpec( ) throws OdaException
 	{
 		UnsupportedOperationException e = new UnsupportedOperationException( "setSortSpec is not supported." );
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINEST,
 				CallStatement.class.getName( ),
 				"getSortSpec",
 				"getSortSpec is not supported.",
@@ -2049,7 +2049,7 @@ public class CallStatement implements IAdvancedQuery
     {
         /* not supported */
         UnsupportedOperationException e = new UnsupportedOperationException( "setSpecification is not supported." );
-        logger.logp( java.util.logging.Level.FINE,
+        logger.logp( java.util.logging.Level.FINEST,
                 CallStatement.class.getName( ),
                 "setSpecification", //$NON-NLS-1$
                 "setSpecification is not supported.", //$NON-NLS-1$
@@ -2081,7 +2081,7 @@ public class CallStatement implements IAdvancedQuery
 	{
 		/* not supported */
 		UnsupportedOperationException e = new UnsupportedOperationException( "setSortSpec is not supported." );
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINEST,
 				CallStatement.class.getName( ),
 				"getSortSpec",
 				"getSortSpec is not supported.",
@@ -2116,7 +2116,7 @@ public class CallStatement implements IAdvancedQuery
 	{
 		OdaException odaException = new OdaException( msg );
 		odaException.initCause( e );
-		logger.logp( java.util.logging.Level.FINE,
+		logger.logp( java.util.logging.Level.FINEST,
 				CallStatement.class.getName( ),
 				"rethrowRunTimeException",
 				msg,
