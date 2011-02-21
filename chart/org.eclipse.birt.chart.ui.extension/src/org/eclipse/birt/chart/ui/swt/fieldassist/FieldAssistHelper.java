@@ -27,7 +27,6 @@ import org.eclipse.jface.fieldassist.IContentProposalProvider;
 import org.eclipse.jface.fieldassist.IControlContentAdapter;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceStore;
-import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -420,24 +419,6 @@ public final class FieldAssistHelper
 		}
 	}
 
-	private void showRequiredFieldDecoration( AssistField smartField,
-			boolean show )
-	{
-		FieldDecoration dec = getRequiredFieldDecoration( );
-		ControlDecoration cd = smartField.controlDecoration;
-		if ( show )
-		{
-			cd.setImage( dec.getImage( ) );
-			cd.setDescriptionText( dec.getDescription( ) );
-			cd.setShowOnlyOnFocus( false );
-			cd.show( );
-		}
-		else
-		{
-			cd.hide( );
-		}
-	}
-
 	private void showError( AssistField smartField )
 	{
 		showErrorDecoration( smartField, true );
@@ -468,12 +449,6 @@ public final class FieldAssistHelper
 		return ( getDecorationLocationBits( ) & SWT.LEFT ) == SWT.LEFT;
 	}
 
-	private FieldDecoration getRequiredFieldDecoration( )
-	{
-		return FieldDecorationRegistry.getDefault( )
-				.getFieldDecoration( FieldDecorationRegistry.DEC_REQUIRED );
-	}
-
 	private FieldDecoration getCueDecoration( )
 	{
 		// We use our own decoration which is based on the JFace version.
@@ -485,14 +460,14 @@ public final class FieldAssistHelper
 			// text.
 			FieldDecoration standardDecoration = registry.getFieldDecoration( FieldDecorationRegistry.DEC_CONTENT_PROPOSAL );
 			registry.registerFieldDecoration( DEC_CONTENTASSIST_ID,
-					NLS.bind( Messages.getString( "ssDecoratorContentAssist" ), //$NON-NLS-1$
+					Messages.getFormattedString( "ssDecoratorContentAssist", //$NON-NLS-1$
 							getTriggerKeyText( ) ),
 					standardDecoration.getImage( ) );
 			dec = registry.getFieldDecoration( DEC_CONTENTASSIST_ID );
 		}
 		else
 		{
-			dec.setDescription( NLS.bind( Messages.getString( "ssDecoratorContentAssist" ), //$NON-NLS-1$
+			dec.setDescription( Messages.getFormattedString( "ssDecoratorContentAssist", //$NON-NLS-1$
 					getTriggerKeyText( ) ) );
 		}
 		return dec;
