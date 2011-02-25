@@ -24,6 +24,7 @@ import org.eclipse.birt.report.engine.emitter.wpml.AbstractEmitterImpl.TextFlag;
 import org.eclipse.birt.report.engine.emitter.wpml.DiagonalLineInfo.Line;
 import org.eclipse.birt.report.engine.layout.pdf.util.PropertyUtil;
 import org.w3c.dom.css.CSSValue;
+import java.util.regex.*;
 
 public abstract class AbstractWordXmlWriter
 {
@@ -517,21 +518,32 @@ public abstract class AbstractWordXmlWriter
 		}
 
 		writer.openTag( "w:t" );
-		boolean notFirst = false;
-
-		for ( String st : txt.split( "\n" ) )
+		
+		Pattern p = Pattern.compile( "\r|\n" );
+		Matcher m = p.matcher( txt );
+		int length = txt.length( );
+		int index = 0;
+		while ( m.find( index ) )
 		{
-			String row = "<![CDATA[" + st + "]]>";
-			if ( notFirst )
+			int start = m.start( );
+			if ( start > index )
 			{
-				row = "<w:br/>" + row;
+				writer.cdata("<![CDATA[" + txt.substring( index, start )+ "]]>");
 			}
-			else
+
+			int end = m.end( );
+			if (txt.charAt( end - 1 ) != '\r' || end == length
+					||  txt.charAt( end ) != '\n' )
 			{
-				notFirst = true;
+				writer.cdata("<w:br/>");
 			}
-			writer.cdata( row );
+			index = end;
 		}
+		if ( index < length )
+		{
+			writer.cdata("<![CDATA[" +  txt.substring( index ) + "]]>");
+		}
+
 		writer.closeTag( "w:t" );
 	}
 
