@@ -893,7 +893,11 @@ class ElementExporterImpl
 				onlyFactoryProperty, true );
 				
 		if ( newElementHandle.getElement( ) instanceof ISupportThemeElement )
-			newElementHandle.setProperty( ISupportThemeElementConstants.THEME_PROP, null );		
+		{
+			PropertyHandle propHandle = newElementHandle.getPropertyHandle( ISupportThemeElementConstants.THEME_PROP );
+			if ( propHandle != null)
+				propHandle.clearValue( );
+		}
 			
 		// Duplicate all contents in the original element to new one.
 
