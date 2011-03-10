@@ -110,7 +110,6 @@ public class DataEngineImpl extends DataEngine
 		
 		dataSourceManager = new DataSourceManager( logger );
 		this.session = new DataEngineSession( this );
-		DataEngineThreadLocal.getInstance( ).getPathManager( ).setTempPath( this.session.getTempDir( ) );
 		DataEngineThreadLocal.getInstance( ).getCloseListener( ).dataEngineStart( );
 		
 		logger.exiting( DataEngineImpl.class.getName( ), "DataEngineImpl" );
@@ -549,8 +548,8 @@ public class DataEngineImpl extends DataEngine
 			}
 			catch ( DataException e )
 			{
-				if ( logger.isLoggable( Level.FINE ) )
-					logger.log( Level.FINE, "The data source ("
+				if ( logger.isLoggable( Level.FINER ) )
+					logger.log( Level.FINER, "The data source ("
 							+ ds + ") fails to shut down", e );
 			}
 		}
@@ -568,7 +567,7 @@ public class DataEngineImpl extends DataEngine
 			shutdownListenerList.clear( );
 		}
 		
-		logger.logp( Level.FINER,
+		logger.logp( Level.FINE,
 				DataEngineImpl.class.getName( ),
 				"shutdown",
 				"Data engine shuts down" );
