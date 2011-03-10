@@ -110,6 +110,7 @@ public class DataEngineImpl extends DataEngine
 		
 		dataSourceManager = new DataSourceManager( logger );
 		this.session = new DataEngineSession( this );
+		DataEngineThreadLocal.getInstance( ).getPathManager( ).setTempPath( this.session.getTempDir( ) );
 		DataEngineThreadLocal.getInstance( ).getCloseListener( ).dataEngineStart( );
 		
 		logger.exiting( DataEngineImpl.class.getName( ), "DataEngineImpl" );
