@@ -379,6 +379,7 @@ public class ExcelWriter
 
 		if ( isValid( fontName ) )
 		{
+			fontName = getFirstFont( fontName );
 			writer.attribute( "ss:FontName", fontName );
 		}
 
@@ -429,6 +430,19 @@ public class ExcelWriter
 	private boolean isValid( String value )
 	{
 		return !StyleEntry.isNull( value );
+	}
+	
+	private String getFirstFont( String fontName )
+	{
+		int firstSeperatorIndex = fontName.indexOf( ',' );
+		if ( firstSeperatorIndex != -1 )
+		{
+			return fontName.substring( 0, firstSeperatorIndex );
+		}
+		else
+		{
+			return fontName;
+		}
 	}
 
 	private void declareStyle( StyleEntry style, int id )
