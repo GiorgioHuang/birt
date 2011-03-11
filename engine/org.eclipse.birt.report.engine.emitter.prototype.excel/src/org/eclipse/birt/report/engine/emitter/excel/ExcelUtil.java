@@ -33,7 +33,7 @@ public class ExcelUtil
 	
 	private static String validStr = "#.0<>()%_";
 	private static String specialStr="mMdDyYhHsSeEbBgGnN/*\"@";
-	private static String currencySymbol= "£¢€￥¥";
+	private static String currencySymbol= "\u00a3\u00a2\u20ac\uffe5\u00a5"; //£¢€￥¥
 	
 	public static String ridQuote( String val )
 	{
@@ -44,9 +44,9 @@ public class ExcelUtil
 		return val;
 	}
 	
-	
+	//`~!@#$%^&*()-=+\\|[]{};:'\",./?>< \t\n\r！￥（）：；，
 	private static String invalidBookmarkChars = 
-		"`~!@#$%^&*()-=+\\|[]{};:'\",./?>< \t\n\r！￥（）：；，";
+		"`~!@#$%^&*()-=+\\|[]{};:'\",./?>< \t\n\r\uff01\uffe5\uff08\uff09\uff1a\uff1b\uff0c";
 	
 	// This check can not cover all cases, cause we do not know exactly the
 	// excel range name restraint.
@@ -814,12 +814,12 @@ public class ExcelUtil
 					{
 						returnStr = returnStr + "\\" + temp;
 					}
-					else if ( temp == '¤' )
+					else if ( temp == '\u00a4' )  //¤
 					{
 						String symbol = getCurrencySymbol( locale );
 						returnStr = returnStr + "\"" + symbol + "\"";
 					}
-					else if ( temp == '‰' )
+					else if ( temp == '\u2030' )  //‰
 					{
 						returnStr = returnStr + "%";
 					}
@@ -848,15 +848,15 @@ public class ExcelUtil
 		String symbol = format.getCurrency( ).getSymbol( );
 		if ( symbol.equals( "EUR" ) )
 		{
-			symbol = "€";
+			symbol = "\u20ac"; //€
 		}
 		if ( symbol.equals( "GBP" ) )
 		{
-			symbol = "£";
+			symbol = "\u00a3"; //£
 		}
 		if ( symbol.equals( "XXX" ) )
 		{
-			symbol = "¤";
+			symbol = "\u00a4"; //¤
 		}
 		return symbol;
 	}
