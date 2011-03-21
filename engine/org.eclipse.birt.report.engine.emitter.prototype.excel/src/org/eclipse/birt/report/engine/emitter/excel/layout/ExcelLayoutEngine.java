@@ -276,7 +276,6 @@ public class ExcelLayoutEngine
 			int rowspan = maxRowIndex - rowIndexes[currentColumnIndex - startColumnIndex];
 			if ( rowspan > 0 )
 			{
-				Data data = null;				
 				Data upstair = cache
 						.getColumnLastData( currentColumnIndex );
 				

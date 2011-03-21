@@ -223,12 +223,12 @@ public class ExcelEmitter extends ContentEmitterAdapter
 
 	public void startListBand( IListBandContent listBand )
 	{	
-		engine.addCell( 0, 1, 0, listBand.getComputedStyle( ) );
+		engine.addCell( 0, 1, 1, listBand.getComputedStyle( ) );
 	}
 	
 	public void endListBand( IListBandContent listBand )
 	{	
-		engine.endCell( );
+		engine.endContainer( );
 	}
 	
 	public void endList( IListContent list )
