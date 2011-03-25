@@ -75,7 +75,7 @@
 		
 		<property file="${buildDirectory}/label.properties" />
 		
-		<condition property="fetchTag" value="BIRT_2_6_1_Branch">
+		<condition property="fetchTag" value="BIRT_2_6_2_Branch">
 			<equals arg1="${buildType}" arg2="N" />
 		</condition>		
 		<condition property="forceContextQualifier" value="${buildId}">
@@ -829,7 +829,7 @@
 		<property name="NLtmpsite" value="${buildDirectory}/NLtmpsite"/>
         <ant antfile="build.xml" dir="${basedir}">
         	<property name="component" value="${eclipse.build.configs}/birt.nl" />
-        	<property name="fetchTag" value="BIRT_2_6_1_Branch" />
+        	<property name="fetchTag" value="BIRT_2_6_2_Branch" />
         	<property name="forceContextQualifier" value="${buildId}"/>
     		<property name="generateFeatureVersionSuffix" value="false"/>
         </ant>	
@@ -842,7 +842,7 @@
 		
 		<ant antfile="build.xml" dir="${basedir}">
 			<property name="component" value="${eclipse.build.configs}/birt.rcp.nl" />
-        	<property name="fetchTag" value="BIRT_2_6_1_Branch" />
+        	<property name="fetchTag" value="BIRT_2_6_2_Branch" />
         	<property name="forceContextQualifier" value="${buildId}"/>
     		<property name="generateFeatureVersionSuffix" value="false"/>
 		</ant>
@@ -855,7 +855,7 @@
 		</antcall>
 		<ant antfile="build.xml" dir="${basedir}">
 			<property name="component" value="${eclipse.build.configs}/birt.wtp.nl" />
-        	<property name="fetchTag" value="BIRT_2_6_1_Branch" />
+        	<property name="fetchTag" value="BIRT_2_6_2_Branch" />
         	<property name="forceContextQualifier" value="${buildId}"/>
     		<property name="generateFeatureVersionSuffix" value="false"/>
 		</ant>
