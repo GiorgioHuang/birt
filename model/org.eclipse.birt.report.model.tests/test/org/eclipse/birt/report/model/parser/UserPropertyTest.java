@@ -142,6 +142,14 @@ public class UserPropertyTest extends BaseTestCase
 		label.addUserPropertyDefn( defn );
 		assertTrue( defn.isVisible( ) );
 		
+		// add xml type user property
+		defn = new UserPropertyDefn( );
+		defn.setName( "TestProperty_1" ); //$NON-NLS-1$
+		defn.setType( MetaDataDictionary.getInstance( ).getPropertyType(
+				PropertyType.XML_TYPE ) );
+		label.addUserPropertyDefn( defn ); 
+		label.setProperty( defn.getName( ), "value for xml property" );
+		
 		save( );
 		assertTrue( compareFile( "UserPropertyTest_1_golden.xml" ) ); //$NON-NLS-1$
 
