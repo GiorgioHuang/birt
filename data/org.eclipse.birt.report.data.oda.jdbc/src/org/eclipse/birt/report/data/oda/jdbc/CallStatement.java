@@ -276,7 +276,7 @@ public class CallStatement implements IAdvancedQuery
 			try 
 			{
 				if (DBConfig.getInstance().qualifyPolicy(
-						this.callStat.getConnection().getMetaData().getDriverName(),
+						this.conn.getMetaData().getDriverName(),
 						DBConfig.IGNORE_UNIMPORTANT_EXCEPTION))
 					return;
 			} 
@@ -433,13 +433,13 @@ public class CallStatement implements IAdvancedQuery
 				}
 			}
 			if ( rs != null )
-				return new ResultSet( rs );
+				return new ResultSet( conn, rs );
 			
 			this.populateOutputParamResultSet();
 			java.sql.ResultSet resultSet = this.outputParameterResultSetsMap.size() == 0? null: this.outputParameterResultSetsMap.values().iterator().next();
 			
 			if ( resultSet != null )
-				return new ResultSet( resultSet );
+				return new ResultSet( conn, resultSet );
 			else
 				return new SPResultSet( null );
 		}
@@ -1739,13 +1739,13 @@ public class CallStatement implements IAdvancedQuery
 				this.execute();
 			if( this.outputParameterResultSetsMap.size() > 0 )
 			{
-				return new ResultSet(this.outputParameterResultSetsMap
+				return new ResultSet( conn, this.outputParameterResultSetsMap
 						.get(this.resultSetNames[this.resultIndex]));
 			}
 			if (!this.isExecuted)
 				rs = callStat.getResultSet();
 			if (rs != null)
-				return new ResultSet(rs);
+				return new ResultSet(conn, rs);
 			else
 				return new SPResultSet( null );
 		}
@@ -1761,7 +1761,7 @@ public class CallStatement implements IAdvancedQuery
 	public IResultSet getResultSet( String resultSetName ) throws OdaException
 	{
 		if( this.outputParameterResultSetsMap.size() > 0 && this.outputParameterResultSetsMap.containsKey( resultSetName ) )
-			return new ResultSet( this.outputParameterResultSetsMap.get( resultSetName ) );
+			return new ResultSet( conn, this.outputParameterResultSetsMap.get( resultSetName ) );
 		throw new JDBCException( ResourceConstants.RESULTSET_CANNOT_GET, -1 );
 	}
 

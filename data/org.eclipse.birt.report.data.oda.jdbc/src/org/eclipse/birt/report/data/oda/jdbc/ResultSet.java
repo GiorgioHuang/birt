@@ -45,6 +45,8 @@ public class ResultSet implements IResultSet
 	/** the variable to indicate the current row number */
 	protected int currentRow;
 
+	private java.sql.Connection conn;
+	
 	private static Logger logger = Logger.getLogger( ResultSet.class.getName( ) );	
 
 	/**
@@ -70,7 +72,7 @@ public class ResultSet implements IResultSet
 	 * construct it.
 	 *  
 	 */
-	public ResultSet( java.sql.ResultSet jrs ) throws OdaException
+	public ResultSet( java.sql.Connection connection, java.sql.ResultSet jrs ) throws OdaException
 	{
 
 		/* record down the JDBC ResultSet object */
@@ -80,6 +82,8 @@ public class ResultSet implements IResultSet
 		maxRows = Integer.MAX_VALUE;
 
 		currentRow = 0;
+		
+		conn = connection;
 
 	}
 
@@ -115,7 +119,7 @@ public class ResultSet implements IResultSet
 	 */
 	public void close( ) throws OdaException
 	{
-		logger.logp( java.util.logging.Level.FINER,
+		logger.logp( java.util.logging.Level.FINEST,
 				ResultSet.class.getName( ),
 				"close", //$NON-NLS-1$
 				"ResultSet.close()" );		 //$NON-NLS-1$
@@ -131,7 +135,7 @@ public class ResultSet implements IResultSet
 			try 
 			{
 				if (DBConfig.getInstance().qualifyPolicy(
-						this.rs.getStatement().getConnection().getMetaData().getDriverName(),
+						this.conn.getMetaData().getDriverName(),
 						DBConfig.IGNORE_UNIMPORTANT_EXCEPTION))
 					return;
 			} 

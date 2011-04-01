@@ -235,7 +235,7 @@ public class Statement implements IQuery
 			try 
 			{
 				if (DBConfig.getInstance().qualifyPolicy(
-						preStat.getConnection().getMetaData().getDriverName(),
+						this.conn.getMetaData().getDriverName(),
 						DBConfig.IGNORE_UNIMPORTANT_EXCEPTION))
 					return;
 			} 
@@ -457,7 +457,7 @@ public class Statement implements IQuery
 				maxRowsUpToDate = true;
 			}
 			/* redirect the call to JDBC preparedStatement.executeQuery() */
-			return new ResultSet( this.preStat.executeQuery( ) );
+			return new ResultSet( conn, this.preStat.executeQuery( ) );
 		}
 		catch ( SQLException e )
 		{
