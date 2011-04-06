@@ -111,6 +111,8 @@ ResourceAction.ConvertToFile.URLIsNull=URL ist Null, Konvertierung in Datei nich
 ResourceAction.FileRemoveFailure=Fehler beim Entfernen von Datei(en).
 LibraryNotExist.Dialog.Title=Bibliothek öffnen
 LibraryNotExist.Dialog.Message=Die Bibliothek existiert nicht. Möchten Sie den Ressourcen-Explorer aktualisieren? 
+DesignerNotExist.Dialog.Title=Open Report Design
+DesignerNotExist.Dialog.Message=The report design does not exist, would you like to refresh Resource Explorer? 
 ###########################################################
 #LibraryFileFilterAction properties
 LibraryFileFilterAction.Text=Filter...
@@ -1818,6 +1820,7 @@ GeneralInsertMenuAction.text.Text=T&ext
 
 GeneralPreferencePage.errorMsg.duplicate.styleName=Der Stilname ist bereits vorhanden.
 GeneralPreferencePage.label.styleNameDuplicate=Stilname "{0}" ist bereits vorhanden. Wählen Sie einen anderen Namen.
+GeneralPreferencePage.label.styleNamePredefind=Style name "{0}" is predefined, please choose a different name
 GeneralPreferencePage.label.customStyle=&Benutzerdefinierter Stil
 GeneralPreferencePage.Label.CustomStyle=Name:
 GeneralPreferencePage.Label.Note=HINWEIS: * Stileigenschaften müssen auf einen bestimmten Berichtelementtyp angewendet werden.
