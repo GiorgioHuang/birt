@@ -207,7 +207,10 @@ public class BirtDateTime implements IScriptFunctionExecutor
 			{
 				return null;
 			}
-			return Integer.valueOf( quarter(DataTypeUtil.toDate(args[0])));
+			if( args[0] instanceof Date )
+				return Integer.valueOf( quarter((Date) args[0]));
+			else
+				return Integer.valueOf( quarter(DataTypeUtil.toDate(args[0])));
 		}
 	}		
 	
@@ -258,13 +261,18 @@ public class BirtDateTime implements IScriptFunctionExecutor
 			minParamCount = 1;
 			maxParamCount = 2;
 		}
-		
+		static long lasttime = 0;
 		protected Object getValue( Object[] args ) throws BirtException
 		{
 			if( existNullValue( args ) )
 			{
 				return null;
 			}
+			long time = DataTypeUtil.toDate(args[0]).getTime( );
+			System.out.println( DataTypeUtil.toDate(args[0]) );
+			double day = (time - lasttime )/ 24.0/3600/1000;
+			System.out.println( day );
+			lasttime = time;
 			if( args.length == 1 )
 				return Integer.valueOf( month(DataTypeUtil.toDate(args[0])));
 			else
