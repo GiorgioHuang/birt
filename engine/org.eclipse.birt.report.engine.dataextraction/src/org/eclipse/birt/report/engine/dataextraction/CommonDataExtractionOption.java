@@ -153,6 +153,27 @@ public class CommonDataExtractionOption extends DataExtractionOption
 		setOption( OUTPUT_LOCALE_NEUTRAL_FORMAT, Boolean.valueOf(
 				isLocaleNeutralFormat ) );
 	}
+	
+	/**
+	 * @see org.eclipse.birt.report.engine.dataextraction.ICommonDataExtractionOption#setLocaleNeutralFlags(java.util.Map)
+	 */
+	public void setLocaleNeutralFlags( Map localeNeutralFlags )
+	{
+		setOption( LOCALE_NEUTRAL_FLAGS, localeNeutralFlags );
+	}
+
+	/**
+	 * @see org.eclipse.birt.report.engine.dataextraction.ICommonDataExtractionOption#getLocaleNeutralFlags()
+	 */
+	public Map getLocaleNeutralFlags( )
+	{
+		Object value = getOption( LOCALE_NEUTRAL_FLAGS );
+		if ( value instanceof Map )
+		{
+			return (Map) value;
+		}
+		return null;
+	}
 
 	/**
 	 * @see org.eclipse.birt.report.engine.dataextraction.csv.ICSVDataExtractionOption#setUserParameters(java.util.Map)
