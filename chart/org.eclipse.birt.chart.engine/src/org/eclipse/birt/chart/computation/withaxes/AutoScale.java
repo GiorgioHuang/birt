@@ -3229,7 +3229,6 @@ public final class AutoScale extends Methods implements Cloneable
 				}
 			}
 
-			
 			if ( !isTickLabelVisible( dsi.size( ) - 1 ) )
 			{
 				dEndShift = dMaxES;
