@@ -1167,10 +1167,11 @@ public abstract class EngineTask implements IEngineTask
 				{
 					Object value = evaluateExpression( expr, parameter
 							.getDataType( ) );
-					if ( value != null )
-					{
-						results.add( value );
-					}
+					results.add( value );
+				}
+				else
+				{
+					results.add( null );
 				}
 			}
 			return results.toArray( );
