@@ -15,15 +15,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Level;
 
 import org.eclipse.birt.core.data.ExpressionUtil;
 import org.eclipse.birt.report.designer.core.model.SessionHandleAdapter;
+import org.eclipse.birt.report.designer.core.model.schematic.CellHandleAdapter;
 import org.eclipse.birt.report.designer.core.model.schematic.HandleAdapterFactory;
 import org.eclipse.birt.report.designer.core.model.schematic.ListBandProxy;
 import org.eclipse.birt.report.designer.core.model.schematic.TableHandleAdapter;
 import org.eclipse.birt.report.designer.data.ui.dataset.DataSetUIUtil;
-import org.eclipse.birt.report.designer.internal.ui.editors.schematic.actions.AddGroupAction;
 import org.eclipse.birt.report.designer.internal.ui.editors.schematic.editparts.ReportElementEditPart;
 import org.eclipse.birt.report.designer.internal.ui.util.DataUtil;
 import org.eclipse.birt.report.designer.internal.ui.util.ExceptionHandler;
@@ -68,6 +67,7 @@ import org.eclipse.birt.report.model.api.activity.SemanticException;
 import org.eclipse.birt.report.model.api.elements.DesignChoiceConstants;
 import org.eclipse.birt.report.model.api.elements.ReportDesignConstants;
 import org.eclipse.birt.report.model.api.elements.structures.Action;
+import org.eclipse.birt.report.model.api.elements.structures.ColumnHint;
 import org.eclipse.birt.report.model.api.elements.structures.ComputedColumn;
 import org.eclipse.birt.report.model.api.elements.structures.FormatValue;
 import org.eclipse.birt.report.model.api.elements.structures.TOC;
@@ -611,7 +611,7 @@ public class InsertInLayoutUtil
 		return dataHandle;
 	}
 
-	private static GroupHandle addGroupHandle(TableHandle tableHandle, String columnName, DataItemHandle dataHandle)throws SemanticException
+	private static GroupHandle addGroupHandle(TableHandle tableHandle, String columnName, DataItemHandle dataHandle, int index)throws SemanticException
 	{
 		DesignElementFactory factory = DesignElementFactory.getInstance( tableHandle.getModuleHandle( ) );
 		GroupHandle groupHandle = factory.newTableGroup( );
@@ -636,8 +636,18 @@ public class InsertInLayoutUtil
 
 		RowHandle rowHandle = ( (RowHandle) groupHandle.getHeader( )
 				.get( 0 ) );
-		CellHandle cellHandle = (CellHandle) rowHandle.getCells( )
+		CellHandle cellHandle = null;
+		if (index >= 0 && index <rowHandle.getCells( ).getCount( ) )
+		{
+			cellHandle = (CellHandle) rowHandle.getCells( )
+			.get( index );
+		}
+		if (cellHandle == null)
+		{
+			cellHandle = (CellHandle) rowHandle.getCells( )
 				.get( 0 );
+		}
+		
 		cellHandle.getContent( ).add( dataHandle );
 
 		return groupHandle;
@@ -699,8 +709,14 @@ public class InsertInLayoutUtil
 						if ( group.getName( ).equals( model.getColumnName( ) ) )
 							return null;
 					}
-
-					return addGroupHandle( tableHandle, model.getColumnName( ), dataHandle );
+					int index = -1;
+					if ( target instanceof CellHandle)
+					{
+						CellHandle cellTarget = (CellHandle)target;
+						CellHandleAdapter cellAdapter = HandleAdapterFactory.getInstance( ).getCellHandleAdapter( cellTarget );
+						index = cellAdapter.getColumnNumber( );
+					}
+					return addGroupHandle( tableHandle, model.getColumnName( ), dataHandle, index - 1 );
 				}
 				else if (DesignChoiceConstants.ANALYSIS_TYPE_ATTRIBUTE.equals( UIUtil.getColumnAnalysis( model ) ))
 				{
@@ -768,8 +784,14 @@ public class InsertInLayoutUtil
 								if ( displayKey != null )
 									bindingColumn.setDisplayNameID( displayKey );
 								tableHandle.addColumnBinding( bindingColumn, false );
-								
-								return addGroupHandle( tableHandle, newResultColumn.getColumnName( ), dataHandle );
+								int index = -1;
+								if ( target instanceof CellHandle)
+								{
+									CellHandle cellTarget = (CellHandle)target;
+									CellHandleAdapter cellAdapter = HandleAdapterFactory.getInstance( ).getCellHandleAdapter( cellTarget );
+									index = cellAdapter.getColumnNumber( );
+								}
+								return addGroupHandle( tableHandle, newResultColumn.getColumnName( ), dataHandle, index - 1 );
 							}
 						}
 					}
@@ -825,15 +847,19 @@ public class InsertInLayoutUtil
 							|| DesignChoiceConstants.COLUMN_DATA_TYPE_FLOAT.equals( model.getDataType( ) )
 							|| DesignChoiceConstants.COLUMN_DATA_TYPE_DECIMAL.equals( model.getDataType( ) ) )
 					{
-						binding.setAggregateFunction( DesignChoiceConstants.MEASURE_FUNCTION_COUNT );
+						binding.setAggregateFunction( DesignChoiceConstants.MEASURE_FUNCTION_SUM );
 					}
-					else if ( DesignChoiceConstants.COLUMN_DATA_TYPE_STRING.equals( model.getDataType( )))
-					{
-						binding.setAggregateFunction( DesignChoiceConstants.MEASURE_FUNCTION_MAX );
-					}
+//					else if ( DesignChoiceConstants.COLUMN_DATA_TYPE_STRING.equals( model.getDataType( )))
+//					{
+//						binding.setAggregateFunction( DesignChoiceConstants.MEASURE_FUNCTION_MAX );
+//					}
+//					else
+//					{
+//						binding.setAggregateFunction( DesignChoiceConstants.MEASURE_FUNCTION_SUM );
+//					}
 					else
 					{
-						binding.setAggregateFunction( DesignChoiceConstants.MEASURE_FUNCTION_SUM );
+						binding.setAggregateFunction( DesignChoiceConstants.MEASURE_FUNCTION_MAX );
 					}
 
 					//binding.setExpression( ExpressionUtil.createJSRowExpression( model.getColumnName( ) ) );
@@ -1822,14 +1848,18 @@ public class InsertInLayoutUtil
 		try
 		{
 			StyleHandle styleHandle = dataHandle.getPrivateStyle( );
-			boolean wordWrap = UIUtil.isWordWrap( column );
-			if (wordWrap)
+			ColumnHintHandle hintHandle = findColumnHintHandle( column );
+			if (hintHandle != null && hintHandle.isLocal( ColumnHint.WORD_WRAP_MEMBER ))
 			{
-				styleHandle.setWhiteSpace( DesignChoiceConstants.WHITE_SPACE_NORMAL );
-			}
-			else
-			{
-				styleHandle.setWhiteSpace( DesignChoiceConstants.WHITE_SPACE_NOWRAP );
+				boolean wordWrap = UIUtil.isWordWrap( column );
+				if (wordWrap)
+				{
+					styleHandle.setWhiteSpace( DesignChoiceConstants.WHITE_SPACE_NORMAL );
+				}
+				else
+				{
+					styleHandle.setWhiteSpace( DesignChoiceConstants.WHITE_SPACE_NOWRAP );
+				}
 			}
 			
 			String aliment = UIUtil.getClolumnHandleAlignment( column );
@@ -1843,7 +1873,7 @@ public class InsertInLayoutUtil
 			{
 				dataHandle.setHelpText( helpText );
 			}
-			ColumnHintHandle hintHandle = findColumnHintHandle( column );
+			
 			if (hintHandle != null)
 			{
 				formatDataHandleDataType( column.getDataType( ), hintHandle.getValueFormat( ), styleHandle );
