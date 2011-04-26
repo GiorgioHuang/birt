@@ -331,6 +331,7 @@ public class SimpleResultSet implements IResultIterator
 	 */
 	public int getEndingGroupLevel( ) throws DataException
 	{
+		this.groupCalculator.registerCurrentResultObject( this.currResultObj );
 		this.groupCalculator.registerNextResultObject( this.rowResultSet.getNext( ) );
 		return this.groupCalculator.getEndingGroup( );
 	}
