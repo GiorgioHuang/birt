@@ -468,17 +468,26 @@ public class ExecutionContext
 			engineExtensionManager = null;
 		}
 
-		if ( scriptContext != null )
-		{
-			unRegisterDataObject( );
-			scriptContext.close( );
-			scriptContext = null;
-		}
 		if ( bookmarkManager != null )
 		{
 			bookmarkManager.close( );
 			bookmarkManager = null;
 		}
+
+		if ( dataEngine != null )
+		{
+			unRegisterDataObject( );
+			dataEngine.shutdown( );
+			dataEngine = null;
+		}
+		// the data engine need script context in closing, it must be closed
+		// after data engine
+		if ( scriptContext != null )
+		{
+			scriptContext.close( );
+			scriptContext = null;
+		}
+
 		if ( dataSource != null )
 		{
 			try
@@ -491,11 +500,7 @@ public class ExecutionContext
 			}
 			dataSource = null;
 		}
-		if ( dataEngine != null )
-		{
-			dataEngine.shutdown( );
-			dataEngine = null;
-		}
+
 		if ( closeClassLoader
 				&& applicationClassLoader instanceof ApplicationClassLoader )
 		{
