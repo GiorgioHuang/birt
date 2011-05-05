@@ -273,12 +273,19 @@ public class ResultSetWrapper implements IResultIterator
 			try
 			{
 				
-				Object[] resultValues = Arrays.copyOfRange( fields, 0, trimedResultClass.getFieldCount( ) );
+				Object[] resultValues = new Object[ trimedResultClass.getFieldCount( ) ];
+				System.arraycopy( fields, 0, resultValues, 0,  Math.min( fields.length, resultValues.length) );
+				
+				Object[] results = new Object[fields.length
+						- trimedResultClass.getFieldCount() - 2];
+				System.arraycopy( fields, trimedResultClass.getFieldCount( )+2, results, 0, 
+						results.length );
+
 				return new ResultObjectHolder( new ResultObject( trimedResultClass,
 						resultValues ),
 						(Integer) fields[trimedResultClass.getFieldCount( )],
 						(Integer) fields[trimedResultClass.getFieldCount( )+1],
-						Arrays.copyOfRange( fields, trimedResultClass.getFieldCount( )+2, fields.length ) );
+						results );
 			}
 			catch ( Exception e )
 			{

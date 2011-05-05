@@ -326,7 +326,11 @@ public class SimpleResultSet implements IResultIterator
 			Arrays.fill( result, 0 );
 			return result;
 		}
-		return Arrays.copyOf( this.groupCalculator.getGroupInstanceIndex( ), this.groupCalculator.getGroupInstanceIndex( ).length);
+		
+		Integer[] groupIndex = this.groupCalculator.getGroupInstanceIndex( );
+        Integer[] copy = new Integer[ groupIndex.length];
+        System.arraycopy( groupIndex, 0, copy, 0, copy.length );		
+		return copy;
 	}
 	/*
 	 * (non-Javadoc)
