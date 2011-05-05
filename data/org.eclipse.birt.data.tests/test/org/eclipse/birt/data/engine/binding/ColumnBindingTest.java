@@ -1052,7 +1052,7 @@ public class ColumnBindingTest extends APITestCase
 		catch ( BirtException e )
 		{
 			ri.close();
-	//		assertTrue( e.getErrorCode( ) == ResourceConstants.EXPRESSION_CANNOT_BE_NULL_OR_BLANK );
+			//assertTrue( e.getErrorCode( ) == ResourceConstants.EXPRESSION_CANNOT_BE_NULL_OR_BLANK );
 			
 		}
 	}
@@ -1094,6 +1094,7 @@ public class ColumnBindingTest extends APITestCase
 		
 		this.preBasic( );
 		this.closeArchiveReader( );
+		this.checkOutputFile( );
 	}
 	
 	/**
@@ -1483,7 +1484,7 @@ public class ColumnBindingTest extends APITestCase
 				}
 			}
 			
-			System.out.println( "row result set: " + str );
+			this.testPrintln( "row result set: " + str );
 		}
 	}
 	

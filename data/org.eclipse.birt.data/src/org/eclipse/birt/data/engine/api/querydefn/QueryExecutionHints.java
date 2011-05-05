@@ -30,6 +30,11 @@ public class QueryExecutionHints implements IQueryExecutionHints
 	private boolean doSortBeforeGrouping = true;
 	private List<IGroupInstanceInfo> targetGroupInstances = new ArrayList<IGroupInstanceInfo>();
 	private boolean enablePushdown = true;
+	
+	public QueryExecutionHints()
+	{
+		this.enablePushdown = true;
+	}
 	/**
 	 * 
 	 * @param doSortBeforeGrouping

@@ -18,6 +18,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -308,11 +309,25 @@ public class SimpleResultSet implements IResultIterator
 	 */
 	public Object getAggrValue( String aggrName ) throws DataException
 	{
-		//For generation, we need not return aggregation value
-		return null;
-		//return this.aggrHelper.getAggrValue( aggrName, this );
+		return this.aggrHelper.getAggrValue( aggrName, this );
+	}
+	
+	public ProgressiveAggregationHelper getAggrHelper( ) throws DataException
+	{
+		return this.aggrHelper;
 	}
 
+	public Integer[] getGroupIndex( ) throws DataException
+	{
+		//For the first group, the group have not been populated yet.
+		if( this.groupCalculator.getStartingGroup( ) == 0 )
+		{
+			Integer[] result = new Integer[this.groupCalculator.getGroupInstanceIndex( ).length];
+			Arrays.fill( result, 0 );
+			return result;
+		}
+		return Arrays.copyOf( this.groupCalculator.getGroupInstanceIndex( ), this.groupCalculator.getGroupInstanceIndex( ).length);
+	}
 	/*
 	 * (non-Javadoc)
 	 * @see org.eclipse.birt.data.engine.odi.IResultIterator#getCurrentGroupIndex(int)
