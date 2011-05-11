@@ -327,7 +327,7 @@ public class TextCompositor
 			// for no wrap text, the first exceed word should also been add into text area.
 			if ( !textWrapping && insertFirstExceedWord )
 			{
-				addWord( textArea, textLength, wordWidth );
+				addWord( textArea, textLength );
 				wordVestige = null;
 				insertFirstExceedWord = false;
 			}
@@ -449,5 +449,10 @@ public class TextCompositor
 	{
 		textArea.addWord( textLength, wordWidth );
 	}
-
+	
+	private void addWord( TextArea textArea, int textLength )
+	{
+		textArea.addWordUsingMaxWidth( textLength );
+	}
+	
 }
