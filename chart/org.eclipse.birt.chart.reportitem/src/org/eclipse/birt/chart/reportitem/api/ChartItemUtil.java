@@ -1317,6 +1317,10 @@ public class ChartItemUtil extends ChartExpressionUtil implements
 		{
 			ExtendedItemHandle hostChart = (ExtendedItemHandle) eih.getElementProperty( ChartReportItemConstants.PROPERTY_HOST_CHART );
 			cm = ChartCubeUtil.getChartFromHandle( hostChart );
+			if ( cm == null )
+			{
+				return null;
+			}
 			// Use plot chart's size as axis chart's. Even if model sizes
 			// are different, the output size are same
 			if ( ( (ChartWithAxes) cm ).isTransposed( ) )
@@ -1333,6 +1337,10 @@ public class ChartItemUtil extends ChartExpressionUtil implements
 		else
 		{
 			cm = ChartCubeUtil.getChartFromHandle( eih );
+			if ( cm == null )
+			{
+				return null;
+			}
 			dhHeight = eih.getHeight( );
 			dhWidth = eih.getWidth( );
 		}
