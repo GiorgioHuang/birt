@@ -367,11 +367,16 @@ public class CubeQueryResults implements ICubeQueryResults
 	{
 		ICube cube = null;
 		
-		cube = CubeQueryExecutorHelper.loadCube( executor.getCubeQueryDefinition( )
+		if( this.preparedQuery.getInaccessibleDimLevels( ) == null )
+			cube = CubeQueryExecutorHelper.loadCube( executor.getCubeQueryDefinition( )
 				.getName( ),
 				documentManager,
 				executor.getSession( ).getStopSign( ) );
-
+		else 
+			cube = CubeQueryExecutorHelper.loadCube( executor.getCubeQueryDefinition( )
+					.getName( ),
+					documentManager,
+					executor.getSession( ).getStopSign( ), this.preparedQuery.getInaccessibleDimLevels( ) );
 		return cube;
 	}
 	
