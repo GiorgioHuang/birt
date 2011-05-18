@@ -47,6 +47,11 @@ public interface IPDFRenderOption extends IRenderOption
 	public static final int ENLARGE_PAGE_SIZE = 8;
 
 	/**
+	 * define the PDF page count limit, it should be an Integer object
+	 */
+	public static final String PDF_PAGE_LIMIT = "pdfRenderOption.pageLimit";
+	
+	/**
 	 * If it is set to false, all the text should be displayed into one line,
 	 * the text which can not be displayed in the line will be clipped.
 	 */
