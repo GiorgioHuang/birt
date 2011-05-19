@@ -552,20 +552,17 @@ class ElementExporterImpl
 	 * @param canOverride
 	 *            indicates whether the element with the same name in target
 	 *            library will be overridden.
-	 * 
+	 * @return the handle of the element exported
 	 * @throws SemanticException
 	 *             if error encountered when adding this element to target
 	 *             library or duplicating property value from the given element.
 	 */
 
-	protected void exportElement( DesignElementHandle elementToExport,
+	protected DesignElementHandle exportElement( DesignElementHandle elementToExport,
 			boolean canOverride ) throws SemanticException
 	{
 		if ( elementToExport instanceof StyleHandle )
-		{
-			exportStyle( (StyleHandle) elementToExport, canOverride );
-			return;
-		}
+			return exportStyle( (StyleHandle) elementToExport, canOverride );
 
 		int slotID = getExportSlotID( elementToExport );
 
@@ -574,7 +571,7 @@ class ElementExporterImpl
 		// slotCount, for there is specified slot id cases in meta-data, like
 		// datamart
 		if ( targetModuleHandle.getDefn( ).getSlot( slotID ) == null )
-			return;
+			return null;
 
 		DesignElementHandle newElementHandle = duplicateElement(
 				elementToExport, false );		
@@ -593,6 +590,7 @@ class ElementExporterImpl
 		{
 			propBindingMap.put( elementToExport, newElementHandle );
 		}
+		return newElementHandle;
 	}
 
 	/**
@@ -628,10 +626,11 @@ class ElementExporterImpl
 	 *            <code>true</code> indicates the element with the same name in
 	 *            target library will be overriden. Otherwise <code>false</code>
 	 *            .
+	 * @return the handle of the style exported
 	 * @throws SemanticException
 	 */
 
-	protected void exportStyle( StyleHandle elementToExport, boolean canOverride )
+	protected DesignElementHandle exportStyle( StyleHandle elementToExport, boolean canOverride )
 			throws SemanticException
 	{
 		checkOperation( );
@@ -660,7 +659,7 @@ class ElementExporterImpl
 			themeHandle = (ThemeHandle) theme.getHandle( targetModuleHandle
 					.getModule( ) );
 
-		exportStyle( elementToExport, themeHandle, canOverride );
+		return exportStyle( elementToExport, themeHandle, canOverride );
 	}
 
 	/**
@@ -674,10 +673,11 @@ class ElementExporterImpl
 	 *            <code>true</code> indicates the element with the same name in
 	 *            target library will be overriden. Otherwise <code>false</code>
 	 *            .
+	 * @return the handle of the style exported
 	 * @throws SemanticException
 	 */
 
-	protected void exportStyle( StyleHandle elementToExport, ThemeHandle theme,
+	protected DesignElementHandle exportStyle( StyleHandle elementToExport, ThemeHandle theme,
 			boolean canOverride ) throws SemanticException
 	{
 		assert theme != null;
@@ -692,6 +692,7 @@ class ElementExporterImpl
 		DesignElementHandle newElementHandle = duplicateElement(
 				elementToExport, false );
 		addToSlot( theme.getStyles( ), newElementHandle );
+		return newElementHandle;
 	}
 
 	/**
