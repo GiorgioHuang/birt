@@ -297,9 +297,7 @@ public abstract class AbstractEmitterImpl
 	{
 		if ( previousPage != null )
 		{
-			adjustInline( );
-			writeSectionInBody( );
-			wordWriter.endPage( );
+			outputPrePageProperties( );
 			wordWriter.end( );
 		}
 	}
