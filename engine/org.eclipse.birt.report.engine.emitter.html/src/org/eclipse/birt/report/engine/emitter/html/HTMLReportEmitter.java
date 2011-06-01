@@ -2914,6 +2914,7 @@ public class HTMLReportEmitter extends ContentEmitterAdapter
 				writer.openTag( HTMLTags.TAG_MAP );
 				writer.attribute( HTMLTags.ATTR_ID, imageMapId );
 				writer.attribute( HTMLTags.ATTR_NAME, imageMapId );
+				writer.attribute( HTMLTags.ATTR_STYLE, "display:none" );//$NON-NLS-1$
 				writer.cdata( (String) imageMapObject );
 				writer.closeTag( HTMLTags.TAG_MAP );
 			}
