@@ -136,18 +136,23 @@ public class FontMappingManagerFactory
 	 * 
 	 */
 	protected HashMap cachedManagers = new HashMap( );
+	
+	protected static final String BIRT_CUSTOM_FONT_DIRS = "birt.font.dirs";
 
 	protected FontMappingManagerFactory( )
 	{
 		// Register java fonts.
-		registerJavaFonts();
-		
-		// register the embedded font directorys
+		registerJavaFonts( );
+
+		// register the embedded font directories.
 		String embeddedFonts = getEmbededFontPath( );
 		if ( embeddedFonts != null )
 		{
 			registerFontPath( embeddedFonts );
 		}
+		
+		// register the font path in system properties.
+		registerFontsFromSystemProperty( );
 	}
 
 	public synchronized FontMappingManager getFontMappingManager(
@@ -174,6 +179,9 @@ public class FontMappingManagerFactory
 		// Register the fonts defined in JRE fonts directory.
 		registerJavaFonts( );
 		
+		// register the font path in system properties.
+		registerFontsFromSystemProperty( );
+
 		// register the fonts defined in the configuration
 		Iterator iter = config.fontPaths.iterator( );
 		while ( iter.hasNext( ) )
@@ -205,11 +213,31 @@ public class FontMappingManagerFactory
 			}
 		} );
 	}
+	
+	private void registerFontsFromSystemProperty( )
+	{
+		String customFontsDirs = AccessController
+				.doPrivileged( new PrivilegedAction<String>( ) {
+
+					public String run( )
+					{
+						return System.getProperty( BIRT_CUSTOM_FONT_DIRS );
+					}
+				} );
+		if ( customFontsDirs != null )
+		{
+			String[] fontDirs = customFontsDirs.split( File.pathSeparator );
+			for ( String fontPath : fontDirs )
+			{
+				registerFontPath( fontPath );
+			}
+		}
+	}
 
 	protected FontMappingManager createFontMappingManager( String format,
 			Locale locale )
 	{
-		String formatString = format.toLowerCase();
+		String formatString = format.toLowerCase( );
 		// we have max 19 configs
 		String[] configNames = new String[19];
 		int count = 0;
