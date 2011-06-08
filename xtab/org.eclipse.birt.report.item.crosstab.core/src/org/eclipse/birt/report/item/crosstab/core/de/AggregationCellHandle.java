@@ -23,14 +23,14 @@ import org.eclipse.birt.report.model.api.DesignElementHandle;
 import org.eclipse.birt.report.model.api.ExtendedItemHandle;
 import org.eclipse.birt.report.model.api.activity.SemanticException;
 import org.eclipse.birt.report.model.api.olap.LevelHandle;
+import org.eclipse.birt.report.model.api.util.CubeUtil;
 
 /**
  * AggregationCellHandle.
  */
-public class AggregationCellHandle extends CrosstabCellHandle
-		implements
-			IAggregationCellConstants,
-			ICrosstabConstants
+public class AggregationCellHandle extends CrosstabCellHandle implements
+		IAggregationCellConstants,
+		ICrosstabConstants
 {
 
 	/**
@@ -49,8 +49,7 @@ public class AggregationCellHandle extends CrosstabCellHandle
 	 */
 	public LevelHandle getAggregationOnRow( )
 	{
-		return (LevelHandle) handle
-				.getElementProperty( AGGREGATION_ON_ROW_PROP );
+		return (LevelHandle) handle.getElementProperty( AGGREGATION_ON_ROW_PROP );
 	}
 
 	/**
@@ -60,8 +59,7 @@ public class AggregationCellHandle extends CrosstabCellHandle
 	 */
 	public LevelHandle getAggregationOnColumn( )
 	{
-		return (LevelHandle) handle
-				.getElementProperty( AGGREGATION_ON_COLUMN_PROP );
+		return (LevelHandle) handle.getElementProperty( AGGREGATION_ON_COLUMN_PROP );
 	}
 
 	/**
@@ -82,8 +80,7 @@ public class AggregationCellHandle extends CrosstabCellHandle
 	 */
 	public LevelHandle getSpanOverOnColumn( )
 	{
-		return (LevelHandle) handle
-				.getElementProperty( SPAN_OVER_ON_COLUMN_PROP );
+		return (LevelHandle) handle.getElementProperty( SPAN_OVER_ON_COLUMN_PROP );
 	}
 
 	/**
@@ -164,10 +161,24 @@ public class AggregationCellHandle extends CrosstabCellHandle
 	{
 		LevelHandle cubeLevel = getLevel( axisType );
 		if ( cubeLevel == null )
+		{
+			String aggLevelName = getLevelName( axisType );
+			if ( aggLevelName != null )
+			{
+				// this means the cell aggregateOn property is there but the
+				// corresponding cube level handle is not resolved, it may
+				// caused by the associated cube handle is not resolved. In this
+				// case, we still try to extract the dimension name literally
+				// from the string property, though it may erroneous in certain
+				// cases depending on the namespaces.
+				String[] names = CubeUtil.splitLevelName( aggLevelName );
+				return names[0];
+			}
 			return null;
+		}
 		DesignElementHandle hierarchy = cubeLevel.getContainer( );
-		DesignElementHandle dimension = hierarchy == null ? null : hierarchy
-				.getContainer( );
+		DesignElementHandle dimension = hierarchy == null ? null
+				: hierarchy.getContainer( );
 		return dimension == null ? null : dimension.getQualifiedName( );
 
 	}
@@ -227,12 +238,10 @@ public class AggregationCellHandle extends CrosstabCellHandle
 		ExtendedItemHandle crosstab = (ExtendedItemHandle) getCrosstabHandle( );
 		if ( crosstab == null )
 			return null;
-		CrosstabReportItemHandle crosstabItem = (CrosstabReportItemHandle) CrosstabUtil
-				.getReportItem( crosstab );
+		CrosstabReportItemHandle crosstabItem = (CrosstabReportItemHandle) CrosstabUtil.getReportItem( crosstab );
 		if ( crosstabItem == null )
 			return null;
-		DimensionViewHandle dimensionView = crosstabItem
-				.getDimension( getDimensionName( axisType ) );
+		DimensionViewHandle dimensionView = crosstabItem.getDimension( getDimensionName( axisType ) );
 		return dimensionView;
 	}
 
@@ -253,8 +262,7 @@ public class AggregationCellHandle extends CrosstabCellHandle
 		DimensionViewHandle dimensionView = getDimensionView( axisType );
 		if ( dimensionView == null )
 			return -1;
-		LevelViewHandle levelView = dimensionView
-				.getLevel( getLevelName( axisType ) );
+		LevelViewHandle levelView = dimensionView.getLevel( getLevelName( axisType ) );
 		return levelView == null ? -1 : levelView.getIndex( );
 	}
 
@@ -292,7 +300,8 @@ public class AggregationCellHandle extends CrosstabCellHandle
 
 		if ( container instanceof MeasureViewHandle )
 		{
-			String propName = handle.getContainerPropertyHandle( ).getDefn( )
+			String propName = handle.getContainerPropertyHandle( )
+					.getDefn( )
 					.getName( );
 			if ( IMeasureViewConstants.AGGREGATIONS_PROP.equals( propName ) )
 			{
@@ -311,9 +320,7 @@ public class AggregationCellHandle extends CrosstabCellHandle
 					if ( dimensionView != null && levelView != null )
 					{
 						int index = dimensionView.getIndex( );
-						if ( !( index == crosstab
-								.getDimensionCount( ROW_AXIS_TYPE ) - 1 && levelView
-								.getIndex( ) == dimensionView.getLevelCount( ) - 1 ) )
+						if ( !( index == crosstab.getDimensionCount( ROW_AXIS_TYPE ) - 1 && levelView.getIndex( ) == dimensionView.getLevelCount( ) - 1 ) )
 							styles.add( CROSSTAB_ROW_SUB_TOTAL_SELECTOR );
 					}
 				}
@@ -330,9 +337,7 @@ public class AggregationCellHandle extends CrosstabCellHandle
 					if ( dimensionView != null && levelView != null )
 					{
 						int index = dimensionView.getIndex( );
-						if ( !( index == crosstab
-								.getDimensionCount( COLUMN_AXIS_TYPE ) - 1 && levelView
-								.getIndex( ) == dimensionView.getLevelCount( ) - 1 ) )
+						if ( !( index == crosstab.getDimensionCount( COLUMN_AXIS_TYPE ) - 1 && levelView.getIndex( ) == dimensionView.getLevelCount( ) - 1 ) )
 							styles.add( CROSSTAB_COLUMN_SUB_TOTAL_SELECTOR );
 					}
 				}
