@@ -470,6 +470,28 @@ public class EngineConfig extends PlatformConfig implements IEngineConfig
 	}
 	
 	/**
+	 * @return the custom font directories.
+	 */
+	public String getCustomFontDirs( )
+	{
+		Object customFontDirs = getProperty( CUSTOM_FONT_DIRS );
+		if ( customFontDirs instanceof String )
+		{
+			return (String) customFontDirs;
+		}
+		return null;
+	}
+
+	/**
+	 * @param fontDirs
+	 *            the user defined font directories.
+	 */
+	public void setCustomFontDirs( String fontDirs )
+	{
+		setProperty( CUSTOM_FONT_DIRS, fontDirs );
+	}
+
+	/**
 	 * Set the max rows per query
 	 * @param maxRows: max rows
 	 * @deprecated
