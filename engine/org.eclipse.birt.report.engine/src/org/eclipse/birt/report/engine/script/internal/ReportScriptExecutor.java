@@ -69,7 +69,7 @@ public class ReportScriptExecutor extends ScriptExecutor
 				scriptExpr = Expression.newScript( scriptText );
 				scriptExpr.setFileName( id );
 			}
-			if ( handleScript( new Object( ), scriptExpr, context ).didRun( ) )
+			if ( handleScript( null, scriptExpr, context ).didRun( ) )
 				return;
 			IReportEventHandler eh = (IReportEventHandler) getInstance( design,
 					context );
