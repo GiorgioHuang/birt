@@ -20,16 +20,11 @@ import org.eclipse.birt.report.item.crosstab.core.de.CrosstabReportItemHandle;
 import org.eclipse.birt.report.model.api.DesignElementHandle;
 import org.eclipse.birt.report.model.api.PropertyHandle;
 import org.eclipse.birt.report.model.api.extension.ExtendedElementException;
-import org.eclipse.birt.report.model.api.olap.HierarchyHandle;
 import org.eclipse.birt.report.model.api.olap.LevelHandle;
 import org.eclipse.birt.report.model.api.olap.TabularDimensionHandle;
 import org.eclipse.birt.report.model.elements.interfaces.ICubeModel;
 import org.eclipse.birt.report.model.elements.interfaces.IHierarchyModel;
 
-/**
- * @author Administrator
- * 
- */
 public class CrosstabFilterExpressionProvider extends
 		CrosstabExpressionProvider
 {
