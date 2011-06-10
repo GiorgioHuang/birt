@@ -221,6 +221,10 @@ class ReportDesignSerializerImpl extends ElementVisitor
 
 		visitSlots( obj, targetDesign, IReportDesignModel.SLOT_COUNT );
 
+		List<IElementPropertyDefn> properties = obj.getContents( );
+		if ( properties.size( ) > 0 )
+			visitContainerProperties( obj, targetDesign, properties );
+
 		// visit external selectors
 		localizeExternalSelectors( );
 
@@ -2959,7 +2963,7 @@ class ReportDesignSerializerImpl extends ElementVisitor
 	 *         the given type name is not found
 	 */
 
-	private DesignElementHandle newExtensionElement( String elementTypeName,
+	protected DesignElementHandle newExtensionElement( String elementTypeName,
 			String name )
 	{
 		MetaDataDictionary dd = MetaDataDictionary.getInstance( );
@@ -3065,7 +3069,7 @@ class ReportDesignSerializerImpl extends ElementVisitor
 	 * (org.eclipse.birt.report.model.elements.ContentElement)
 	 */
 
-	protected void visitContentElement( ContentElement obj )
+	public void visitContentElement( ContentElement obj )
 	{
 		visitDesignElement( obj );
 	}
