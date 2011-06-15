@@ -215,27 +215,44 @@ public class DteDataEngine extends AbstractDataEngine
 		}
 
 		ScriptContext scriptContext = context.getScriptContext( );
-		IBaseResultSet resultSet;
+		
 
-		ICubeQueryResults dteResults; // the dteResults of this query
-		if ( parentResultSet == null )
+		ICubeQueryResults dteResults = null; // the dteResults of this query
+		boolean needExecute = cubeCache.needExecute( query, queryOwner,
+				useCache );
+		if ( !needExecute )
 		{
-			// this is the root query
-			dteResults = (ICubeQueryResults) dteSession.execute( pQuery,
-					null, scriptContext );
-			resultSet = new CubeResultSet( this,
-					context,
-					query,
-					dteResults );
+			dteResults = (ICubeQueryResults) getCachedCubeResult(
+					(ICubeQueryDefinition) query, parentResultSet );
 		}
-		else
+		if ( dteResults == null )
 		{
-			// this is the nest query, execute the query in the
-			// parent results
-			dteResults = (ICubeQueryResults) dteSession.execute( pQuery,
-					parentResultSet.getQueryResults( ), scriptContext );
-			resultSet = new CubeResultSet( this, context, parentResultSet, query,
-					(ICubeQueryResults) dteResults );
+			if ( parentResultSet == null )
+			{
+				// this is the root query
+				dteResults = (ICubeQueryResults) dteSession.execute( pQuery,
+						null, scriptContext );
+			}
+			else
+			{
+				// this is the nest query, execute the query in the
+				// parent results
+				dteResults = (ICubeQueryResults) dteSession.execute( pQuery,
+						parentResultSet.getQueryResults( ), scriptContext );
+			}
+		}
+		
+		IBaseResultSet resultSet = null;
+		{
+			if ( parentResultSet == null )
+			{
+				resultSet = new CubeResultSet( this, context, query, dteResults );
+			}
+			else
+			{
+				resultSet = new CubeResultSet( this, context, parentResultSet,
+						query,  dteResults );
+			}
 		}
 
 		// persist the queryResults witch need cached. 
