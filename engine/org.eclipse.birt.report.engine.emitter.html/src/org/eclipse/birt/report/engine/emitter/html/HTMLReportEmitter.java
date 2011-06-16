@@ -2608,6 +2608,7 @@ public class HTMLReportEmitter extends ContentEmitterAdapter
 
 		StringBuffer styleBuffer = new StringBuffer( );
 		htmlEmitter.buildForeignStyle( foreign, styleBuffer, display );
+		HTMLEmitterUtil.buildOverflowStyle( styleBuffer, mergedStyle, true );
 		writer.attribute( HTMLTags.ATTR_STYLE, styleBuffer.toString( ) );
 
 		String rawType = foreign.getRawType( );
