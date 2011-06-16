@@ -33,6 +33,10 @@ OptionDisplayValue.ChartDpi=图表 DPI
 OptionDisplayValue.Resolution=分辨率
 OptionDisplayValue.Scale=缩放比例
 OptionDisplayValue.Color=颜色
+OptionDescription.AutoPaperSizeSelection=Selects paper size according to page size.
+OptionDisplayValue.DUPLEX_SIMPLEX=Simplex
+OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=Flip on short edge
+OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=Flip on long edge
 
 ###########################################################
 #Option Description
@@ -49,6 +53,7 @@ OptionDescription.ChartDpi=DPI 用于生成图表。
 OptionDescription.Resolution=分辨率。
 OptionDescription.Scale=缩放比例。
 OptionDescription.Color=颜色。
+OptionDescription.AutoPaperSizeSelection=Selects paper size according to page size.
 
 ###########################################################
 #tooltip

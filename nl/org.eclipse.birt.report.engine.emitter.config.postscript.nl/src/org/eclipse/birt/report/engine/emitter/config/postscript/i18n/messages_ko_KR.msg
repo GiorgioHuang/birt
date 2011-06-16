@@ -33,6 +33,10 @@ OptionDisplayValue.ChartDpi=차트 DPI
 OptionDisplayValue.Resolution=해상도
 OptionDisplayValue.Scale=배율
 OptionDisplayValue.Color=색
+OptionDescription.AutoPaperSizeSelection=Selects paper size according to page size.
+OptionDisplayValue.DUPLEX_SIMPLEX=Simplex
+OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=Flip on short edge
+OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=Flip on long edge
 
 ###########################################################
 #Option Description
@@ -49,6 +53,7 @@ OptionDescription.ChartDpi=DPI는 차트를 생성하는 데 사용합니다.
 OptionDescription.Resolution=해상도입니다.
 OptionDescription.Scale=배율입니다.
 OptionDescription.Color=색입니다.
+OptionDescription.AutoPaperSizeSelection=Selects paper size according to page size.
 
 ###########################################################
 #tooltip
