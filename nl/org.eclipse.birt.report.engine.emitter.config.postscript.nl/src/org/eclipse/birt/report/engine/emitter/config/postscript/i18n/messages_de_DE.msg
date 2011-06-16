@@ -33,7 +33,7 @@ OptionDisplayValue.ChartDpi=Diagramm-DPI
 OptionDisplayValue.Resolution=Auflösung
 OptionDisplayValue.Scale=Skala
 OptionDisplayValue.Color=Farbe
-OptionDescription.AutoPaperSizeSelection=Selects paper size according to page size.
+OptionDescription.AutoPaperSizeSelection=Wählt Papierformat je nach Seitengröße aus.
 OptionDisplayValue.DUPLEX_SIMPLEX=Simplex
 OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=Flip on short edge
 OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=Flip on long edge
@@ -53,7 +53,7 @@ OptionDescription.ChartDpi=DPI zum Erstellen von Diagrammen.
 OptionDescription.Resolution=Auflösung.
 OptionDescription.Scale=Skalierung.
 OptionDescription.Color=Farbe.
-OptionDescription.AutoPaperSizeSelection=Selects paper size according to page size.
+OptionDescription.AutoPaperSizeSelection=Wählt Papierformat je nach Seitengröße aus.
 
 ###########################################################
 #tooltip

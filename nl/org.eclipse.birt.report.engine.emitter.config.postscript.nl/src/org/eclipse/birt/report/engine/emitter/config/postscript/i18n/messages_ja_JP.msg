@@ -33,7 +33,7 @@ OptionDisplayValue.ChartDpi=グラフの DPI
 OptionDisplayValue.Resolution=解像度
 OptionDisplayValue.Scale=スケール
 OptionDisplayValue.Color=カラー
-OptionDescription.AutoPaperSizeSelection=Selects paper size according to page size.
+OptionDescription.AutoPaperSizeSelection=ページサイズに合わせて用紙サイズを選択します。
 OptionDisplayValue.DUPLEX_SIMPLEX=Simplex
 OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=Flip on short edge
 OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=Flip on long edge
@@ -53,7 +53,7 @@ OptionDescription.ChartDpi=グラフの生成に使用する DPI です。
 OptionDescription.Resolution=解像度。
 OptionDescription.Scale=スケール。
 OptionDescription.Color=カラー。
-OptionDescription.AutoPaperSizeSelection=Selects paper size according to page size.
+OptionDescription.AutoPaperSizeSelection=ページサイズに合わせて用紙サイズを選択します。
 
 ###########################################################
 #tooltip
