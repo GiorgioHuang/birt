@@ -350,6 +350,10 @@ public class XMLWriter
 				out.print( Integer.toHexString( c ) );
 				out.print( ';' );
 			}
+			else if ( c == '\n' )
+			{
+				printLine( );
+			}
 			else
 				out.print( c );
 		}
@@ -439,14 +443,15 @@ public class XMLWriter
 		if ( elementActive )
 		{
 			out.print( "/>" ); //$NON-NLS-1$ 
+			printLine( );
 		}
 		else
 		{
 			out.print( "</" ); //$NON-NLS-1$ 
 			out.print( tagName );
-			out.print( ">" ); //$NON-NLS-1$
+			out.print( ">" ); //$NON-NLS-1$ 
+			printLine( );
 		}
-		printLine( );
 		elementActive = false;
 	}
 
@@ -490,7 +495,7 @@ public class XMLWriter
 			}
 			else if ( c == '\n' )
 			{
-				doPrintLine( );
+				printLine( );
 			}
 			else if( c =='\r')
 			{
@@ -526,7 +531,7 @@ public class XMLWriter
 			{
 				char c = text.charAt( i );
 				if ( c == '\n' )
-					doPrintLine( );
+					printLine( );
 				else
 					out.print( c );
 			}
@@ -555,7 +560,7 @@ public class XMLWriter
 		{
 			char c = text.charAt( i );
 			if ( c == '\n' )
-				doPrintLine( );
+				printLine( );
 			else
 				out.print( c );
 		}
@@ -664,22 +669,14 @@ public class XMLWriter
 	}
 
 	/**
-	 * Prints '\n', and plus the line counter.
+	 * Prints '\n', and plus the line conter.
 	 */
 
-	protected void doPrintLine( )
+	protected void printLine( )
 	{
 		out.print( '\n' );
 		if ( markLineNumber )
 			lineCounter++;
-	}
-
-	/**
-	 * Prints new line, and plus the line counter.
-	 */
-	protected void printLine( )
-	{
-		doPrintLine( );
 	}
 
 }
