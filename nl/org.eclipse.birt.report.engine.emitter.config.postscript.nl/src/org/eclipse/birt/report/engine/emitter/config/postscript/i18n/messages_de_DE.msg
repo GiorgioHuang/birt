@@ -35,8 +35,8 @@ OptionDisplayValue.Scale=Skala
 OptionDisplayValue.Color=Farbe
 OptionDescription.AutoPaperSizeSelection=Wählt Papierformat je nach Seitengröße aus.
 OptionDisplayValue.DUPLEX_SIMPLEX=Simplex
-OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=Flip on short edge
-OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=Flip on long edge
+OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=Kurze Seite umkehren
+OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=Lange Seite umkehren
 
 ###########################################################
 #Option Description

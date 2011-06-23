@@ -34,9 +34,9 @@ OptionDisplayValue.Resolution=解像度
 OptionDisplayValue.Scale=スケール
 OptionDisplayValue.Color=カラー
 OptionDescription.AutoPaperSizeSelection=ページサイズに合わせて用紙サイズを選択します。
-OptionDisplayValue.DUPLEX_SIMPLEX=Simplex
-OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=Flip on short edge
-OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=Flip on long edge
+OptionDisplayValue.DUPLEX_SIMPLEX=片面印刷
+OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=短辺とじ
+OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=長辺とじ
 
 ###########################################################
 #Option Description

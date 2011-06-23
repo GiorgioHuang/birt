@@ -34,9 +34,9 @@ OptionDisplayValue.Resolution=Résolution
 OptionDisplayValue.Scale=Echelle
 OptionDisplayValue.Color=Couleur
 OptionDescription.AutoPaperSizeSelection=Sélectionne la taille du papier en fonction de la taille de la page.
-OptionDisplayValue.DUPLEX_SIMPLEX=Simplex
-OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=Flip on short edge
-OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=Flip on long edge
+OptionDisplayValue.DUPLEX_SIMPLEX=Recto
+OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=Inverser sur le bord court
+OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=Inverser sur le long bord
 
 ###########################################################
 #Option Description

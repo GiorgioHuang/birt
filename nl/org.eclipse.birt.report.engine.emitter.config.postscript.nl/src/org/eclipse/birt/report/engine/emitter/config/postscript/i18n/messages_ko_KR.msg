@@ -34,9 +34,9 @@ OptionDisplayValue.Resolution=해상도
 OptionDisplayValue.Scale=배율
 OptionDisplayValue.Color=색
 OptionDescription.AutoPaperSizeSelection=용지 크기를 페이지 크기에 맞춰 선택합니다.
-OptionDisplayValue.DUPLEX_SIMPLEX=Simplex
-OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=Flip on short edge
-OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=Flip on long edge
+OptionDisplayValue.DUPLEX_SIMPLEX=단면
+OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=짧은 쪽으로 넘김
+OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=긴 쪽으로 넘김
 
 ###########################################################
 #Option Description

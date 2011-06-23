@@ -34,9 +34,9 @@ OptionDisplayValue.Resolution=Resolución
 OptionDisplayValue.Scale=Escala
 OptionDisplayValue.Color=Color
 OptionDescription.AutoPaperSizeSelection=Selecciona el tamaño de papel de acuerdo con el tamaño de página.
-OptionDisplayValue.DUPLEX_SIMPLEX=Simplex
-OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=Flip on short edge
-OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=Flip on long edge
+OptionDisplayValue.DUPLEX_SIMPLEX=Una cara
+OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=Girar por el borde corto
+OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=Girar por el borde largo
 
 ###########################################################
 #Option Description

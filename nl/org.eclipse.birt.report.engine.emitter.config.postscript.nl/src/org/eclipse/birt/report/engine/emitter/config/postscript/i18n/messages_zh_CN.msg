@@ -34,9 +34,9 @@ OptionDisplayValue.Resolution=分辨率
 OptionDisplayValue.Scale=缩放比例
 OptionDisplayValue.Color=颜色
 OptionDescription.AutoPaperSizeSelection=根据页面大小选择纸张大小。
-OptionDisplayValue.DUPLEX_SIMPLEX=Simplex
-OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=Flip on short edge
-OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=Flip on long edge
+OptionDisplayValue.DUPLEX_SIMPLEX=单面
+OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=短边翻转
+OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=长边翻转
 
 ###########################################################
 #Option Description
