@@ -37,6 +37,7 @@ OptionDescription.AutoPaperSizeSelection=용지 크기를 페이지 크기에 맞춰 선택합니
 OptionDisplayValue.DUPLEX_SIMPLEX=단면
 OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=짧은 쪽으로 넘김
 OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=긴 쪽으로 넘김
+OptionDisplayValue.FitToPaper=Fit to paper
 
 ###########################################################
 #Option Description

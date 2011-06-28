@@ -37,6 +37,7 @@ OptionDescription.AutoPaperSizeSelection=根据页面大小选择纸张大小。
 OptionDisplayValue.DUPLEX_SIMPLEX=单面
 OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=短边翻转
 OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=长边翻转
+OptionDisplayValue.FitToPaper=Fit to paper
 
 ###########################################################
 #Option Description

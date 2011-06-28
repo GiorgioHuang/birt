@@ -37,6 +37,7 @@ OptionDescription.AutoPaperSizeSelection=Selecciona el tamaño de papel de acuerd
 OptionDisplayValue.DUPLEX_SIMPLEX=Una cara
 OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=Girar por el borde corto
 OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=Girar por el borde largo
+OptionDisplayValue.FitToPaper=Fit to paper
 
 ###########################################################
 #Option Description

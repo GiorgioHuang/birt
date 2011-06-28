@@ -37,6 +37,7 @@ OptionDescription.AutoPaperSizeSelection=Sélectionne la taille du papier en fonc
 OptionDisplayValue.DUPLEX_SIMPLEX=Recto
 OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=Inverser sur le bord court
 OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=Inverser sur le long bord
+OptionDisplayValue.FitToPaper=Fit to paper
 
 ###########################################################
 #Option Description

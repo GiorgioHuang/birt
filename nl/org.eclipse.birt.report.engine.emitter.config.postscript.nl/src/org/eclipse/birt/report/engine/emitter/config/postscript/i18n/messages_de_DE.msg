@@ -37,6 +37,7 @@ OptionDescription.AutoPaperSizeSelection=Wählt Papierformat je nach Seitengröße 
 OptionDisplayValue.DUPLEX_SIMPLEX=Simplex
 OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=Kurze Seite umkehren
 OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=Lange Seite umkehren
+OptionDisplayValue.FitToPaper=Fit to paper
 
 ###########################################################
 #Option Description

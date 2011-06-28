@@ -37,6 +37,7 @@ OptionDescription.AutoPaperSizeSelection=ƒy[ƒWƒTƒCƒY‚É‡‚í‚¹‚Ä—p†ƒTƒCƒY‚ğ‘I‘ğ‚
 OptionDisplayValue.DUPLEX_SIMPLEX=•Ğ–Êˆóü
 OptionDisplayValue.DUPLEX_FLIP_ON_SHORT_EDGE=’Z•Ó‚Æ‚¶
 OptionDisplayValue.DUPLEX_FLIP_ON_LONG_EDGE=’·•Ó‚Æ‚¶
+OptionDisplayValue.FitToPaper=Fit to paper
 
 ###########################################################
 #Option Description
