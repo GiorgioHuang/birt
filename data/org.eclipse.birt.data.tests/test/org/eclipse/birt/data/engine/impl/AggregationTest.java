@@ -15,7 +15,6 @@
 package org.eclipse.birt.data.engine.impl;
 
 import org.eclipse.birt.data.engine.api.APITestCase;
-import org.eclipse.birt.data.engine.api.IPreparedQuery;
 import org.eclipse.birt.data.engine.api.IQueryResults;
 import org.eclipse.birt.data.engine.api.IResultIterator;
 import org.eclipse.birt.data.engine.api.ISortDefinition;
@@ -26,9 +25,9 @@ import org.eclipse.birt.data.engine.api.querydefn.ScriptExpression;
 import org.eclipse.birt.data.engine.api.querydefn.SortDefinition;
 import org.eclipse.birt.data.engine.expression.AggregateExpression;
 
-import com.ibm.icu.util.Calendar;
-
 import testutil.ConfigText;
+
+import com.ibm.icu.util.Calendar;
 
 /**
  * Test case for aggregate JSExpression
@@ -305,51 +304,60 @@ public class AggregationTest extends APITestCase
 //		assertEquals( null, resultIt.getValue( "e2" ));
 //	}
 	
+	// This test is obsoleted. We will throw exception when evaluating column binding.
 	// When there is exception thrown by the calculator of aggregation,it
 	// caused by "expression is invalid", "filter is invalid" etc, but it should
 	// not affect latter aggregations caculation.
-	public void test5( ) throws Exception
-	{
-		QueryDefinition query = newReportQuery( );
-
-		GroupDefinition g1 = new GroupDefinition( "G1" );
-		g1.setKeyExpression( "row.e0" );
-		query.addGroup( g1 );
-
-		ScriptExpression e0 = new ScriptExpression( "dataSetRow.CITY" );
-		query.addResultSetExpression("e0", e0 );
-		// wrong filter
-		ScriptExpression e1 = new ScriptExpression( "Total.runningSum(dataSetRow.PRICE,abc,1)" );
-		e1.setGroupName("G1");
-		query.addResultSetExpression("e1", e1 );
-
-		// Aggregate: count at city level
-		ScriptExpression e2 = new ScriptExpression( "Total.Sum(dataSetRow.PRICE,null,1)" );
-		e2.setGroupName("G1");
-		query.addResultSetExpression("e2", e2 );
-
-		ScriptExpression e3 = new ScriptExpression( "Total.rank(dataSetRow.PRICE,true)" );
-		e3.setGroupName("G1");
-		query.addResultSetExpression("e3", e3 );
-		
-		// wrong expression
-		ScriptExpression e4 = new ScriptExpression( "Total.Sum(dataSetRow.PRICE,a,1)" );
-		e4.setGroupName("G1");
-		query.addResultSetExpression("e4", e4 );
-
-		ScriptExpression e5 = new ScriptExpression( "Total.runningSum(dataSetRow.PRICE)" );
-		e5.setGroupName("G1");
-		query.addResultSetExpression("e5", e5 );
-
-		IResultIterator resultIt = executeQuery( query );
-
-		String[] exprs = new String[]{
-				"e0", "e1", "e2", "e3", "e4", "e5" 
-		};
-
-		outputQueryResult( resultIt, exprs );
-		checkOutputFile( );
-	}
+//	public void test5( ) throws Exception
+//	{
+//		QueryDefinition query = newReportQuery( );
+//
+//		GroupDefinition g1 = new GroupDefinition( "G1" );
+//		g1.setKeyExpression( "row.e0" );
+//		query.addGroup( g1 );
+//
+//		ScriptExpression e0 = new ScriptExpression( "dataSetRow.CITY" );
+//		query.addResultSetExpression("e0", e0 );
+//		// wrong filter
+//		ScriptExpression e1 = new ScriptExpression( "Total.runningSum(dataSetRow.PRICE,abc,1)" );
+//		e1.setGroupName("G1");
+//		query.addResultSetExpression("e1", e1 );
+//
+//		// Aggregate: count at city level
+//		ScriptExpression e2 = new ScriptExpression( "Total.Sum(dataSetRow.PRICE,null,1)" );
+//		e2.setGroupName("G1");
+//		query.addResultSetExpression("e2", e2 );
+//
+//		ScriptExpression e3 = new ScriptExpression( "Total.rank(dataSetRow.PRICE,true)" );
+//		e3.setGroupName("G1");
+//		query.addResultSetExpression("e3", e3 );
+//		
+//		// wrong expression
+//		ScriptExpression e4 = new ScriptExpression( "Total.Sum(dataSetRow.PRICE,a,1)" );
+//		e4.setGroupName("G1");
+//		query.addResultSetExpression("e4", e4 );
+//
+//		ScriptExpression e5 = new ScriptExpression( "Total.runningSum(dataSetRow.PRICE)" );
+//		e5.setGroupName("G1");
+//		query.addResultSetExpression("e5", e5 );
+//
+//		try
+//		{
+//			executeQuery( query );
+//			fail( "expected error here" );
+//		}
+//		catch ( DataException e )
+//		{
+//			assertTrue( e.getErrorCode( ) == ResourceConstants.WRAPPED_BIRT_EXCEPTION );
+//		}
+//		
+////		String[] exprs = new String[]{
+////				"e0", "e1", "e2", "e3", "e4", "e5" 
+////		};
+////
+////		outputQueryResult( resultIt, exprs );
+////		checkOutputFile( );
+//	}
 
 	// Test equality comparison
 	public void test4( ) throws Exception

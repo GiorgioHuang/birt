@@ -1037,23 +1037,15 @@ public class ColumnBindingTest extends APITestCase
 		
 		for ( int i = 0; i < name.length; i++ )
 			queryDefn.addResultSetExpression( name[i], se[i] );
-		IResultIterator ri = executeQuery( queryDefn );
+
 		try
 		{
-			
-			if ( ri.next( ) )
-			{
-
-				ri.getValue( name[0] );
-
-			}
-			fail( "Should not arrive here");
+			executeQuery( queryDefn );
+			fail( "expected error here" );
 		}
-		catch ( BirtException e )
+		catch ( DataException e )
 		{
-			ri.close();
-			//assertTrue( e.getErrorCode( ) == ResourceConstants.EXPRESSION_CANNOT_BE_NULL_OR_BLANK );
-			
+			assertTrue( e.getErrorCode( ) == ResourceConstants.EXPRESSION_CANNOT_BE_NULL_OR_BLANK );
 		}
 	}
 	
