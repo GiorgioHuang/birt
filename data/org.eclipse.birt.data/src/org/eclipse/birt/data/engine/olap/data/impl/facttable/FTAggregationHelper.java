@@ -12,7 +12,6 @@
 package org.eclipse.birt.data.engine.olap.data.impl.facttable;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.birt.data.engine.api.aggregation.Accumulator;
