@@ -84,6 +84,9 @@ public class FTAggregationHelper
 	
 	public Object[] getCurrentValues( )
 	{
-		return Arrays.copyOf( this.currentRoundAggrValue, this.currentRoundAggrValue.length );
+		Object[] result = new Object[this.currentRoundAggrValue.length];
+		for( int i = 0; i < result.length; i++ )
+			result[i] = this.currentRoundAggrValue[i];
+		return result;
 	}
 }
