@@ -37,7 +37,7 @@ public class HtmlRegionArea extends RegionArea implements IContainerArea
 			finished = false;
 		}
 		setContentHeight( specifiedHeight );
-		checkDisplayNone( );
+		//checkDisplayNone( );
 	}
 	
 	public void update( AbstractArea area ) throws BirtException
