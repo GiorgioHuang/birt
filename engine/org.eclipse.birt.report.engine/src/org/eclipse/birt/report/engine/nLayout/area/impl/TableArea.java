@@ -317,8 +317,10 @@ public class TableArea extends RepeatableArea
 					}
 				}
 			}
+			//when split result is not null, should re-layout the left rows
+			relayoutChildren( );
 		}
-		relayoutChildren( );
+		
 		return result;
 	}
 
