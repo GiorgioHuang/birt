@@ -12,6 +12,7 @@
 package org.eclipse.birt.chart.reportitem;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -393,7 +394,7 @@ public class ChartReportItemUtil extends ChartItemUtil
 			query.addBinding( binding );
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	private static GroupDefinition findGroupInQuery(
 			IBaseQueryDefinition query, String groupName )
@@ -430,7 +431,7 @@ public class ChartReportItemUtil extends ChartItemUtil
 			targetCM.setSampleData( null );
 		}
 	}
-	
+
 	/**
 	 * Copy series definition from one chart model to another.
 	 * 
@@ -699,7 +700,7 @@ public class ChartReportItemUtil extends ChartItemUtil
 		}
 		return adapter.adaptExpression( (Expression) eh.getValue( ) );
 	}
-	
+
 	public static ScriptExpression newExpression( IModelAdapter adapter,
 			AggregationArgumentHandle binding )
 	{
@@ -710,12 +711,16 @@ public class ChartReportItemUtil extends ChartItemUtil
 		}
 		return adapter.adaptExpression( (Expression) eh.getValue( ) );
 	}
-	
+
 	public static List<ScriptExpression> newExpression( IModelAdapter adapter,
 			ParamBindingHandle binding )
 	{
 		ExpressionListHandle eh = binding.getExpressionListHandle( );
 		List<Expression> exprs = eh.getListValue( );
+		if ( exprs == null )
+		{
+			return Collections.emptyList( );
+		}
 		List<ScriptExpression> ses = new ArrayList<ScriptExpression>( exprs.size( ) );
 		for ( Expression expr : exprs )
 		{
@@ -723,7 +728,7 @@ public class ChartReportItemUtil extends ChartItemUtil
 		}
 		return ses;
 	}
-	
+
 	public static ScriptExpression newExpression( IModelAdapter adapter,
 			ExpressionCodec exprCodec, String expr )
 	{
@@ -731,7 +736,7 @@ public class ChartReportItemUtil extends ChartItemUtil
 		return adapter.adaptExpression( new Expression( exprCodec.getExpression( ),
 				exprCodec.getType( ) ) );
 	}
-	
+
 	public static IScriptExpression adaptExpression( ExpressionCodec exprCodec,
 			IModelAdapter modelAdapter, boolean bCube )
 	{
