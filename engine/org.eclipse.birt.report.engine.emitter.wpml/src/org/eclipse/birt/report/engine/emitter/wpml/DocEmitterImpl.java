@@ -104,11 +104,6 @@ public class DocEmitterImpl extends AbstractEmitterImpl
 				adjustInline( );
 			}
 
-			if ( context.isLastTable( ) )
-			{
-				wordWriter.insertHiddenParagraph( );
-			}
-
 			if ( !CSSConstants.CSS_INLINE_VALUE.equalsIgnoreCase( container
 					.getComputedStyle( ).getDisplay( ) ) )
 			{
@@ -155,11 +150,6 @@ public class DocEmitterImpl extends AbstractEmitterImpl
 			HTML2Content.html2Content( foreign );
 
 			context.startCell( );
-
-			if ( context.isLastTable( ) )
-			{
-				wordWriter.insertHiddenParagraph( );
-			}
 
 			int width = WordUtil.convertTo( foreign.getWidth( ),
 					context.getCurrentWidth( ), reportDpi );
